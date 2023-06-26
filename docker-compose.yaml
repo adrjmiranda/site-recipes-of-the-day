@@ -10,6 +10,12 @@ services:
     env_file:
       - ./db/env/db.env
     volumes:
+      - ./db/scripts/admin.sql:/docker-entrypoint-initdb.d/1.sql
+      - ./db/scripts/users.sql:/docker-entrypoint-initdb.d/2.sql
+      - ./db/scripts/categories.sql:/docker-entrypoint-initdb.d/3.sql
+      - ./db/scripts/recipes.sql:/docker-entrypoint-initdb.d/4.sql
+      - ./db/scripts/rates.sql:/docker-entrypoint-initdb.d/5.sql
+      - ./db/scripts/comments.sql:/docker-entrypoint-initdb.d/6.sql
       - recipesdb:/var/lib/mysql
     networks:
       - recipes_network

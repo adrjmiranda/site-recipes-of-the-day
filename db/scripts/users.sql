@@ -1,3 +1,5 @@
+USE `recipesoftheday`;
+
 CREATE TABLE IF NOT EXISTS `recipesoftheday`.`users` (
   `id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `name` VARCHAR(255) NOT NULL,
