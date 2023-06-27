@@ -58,11 +58,15 @@
 	font-family: 'Poppins', sans-serif;
 }
 
+body {
+	overflow-x: hidden;
+}
+
 a {
 	text-decoration: none;
 }
 
-.container {
+.container-wrapper {
 	max-width: 1200px;
 	margin: 0 auto;
 }

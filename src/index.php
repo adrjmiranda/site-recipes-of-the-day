@@ -36,10 +36,10 @@ $categoriesBg = [
   <script src="js/scripts.js" defer></script>
 </head>
 <body>
-  <div class="container-expanded">
-    <div class="container">
-      <header>
-        <nav id="navbar">
+  <div class="container">
+    <header>
+      <nav id="navbar">
+        <div class="container-wrapper">
           <div class="logo">
             <a href="#"><span class="material-symbols-rounded">restaurant_menu</span> Recipes Of The Day</a>
           </div>
@@ -69,14 +69,52 @@ $categoriesBg = [
             </form>
           </div>
           <a href="#" class="btn login"><span class="material-symbols-rounded">person</span> enter</a>
-        </nav>
-        <div id="banner">
-          <?php foreach($categoriesBg as $categoryBg): ?>
-            <div class="category-bg" style="background-image: url('assets/imgs/<?= $categoryBg ?>');"></div>
-          <?php endforeach; ?>
         </div>
-      </header>
+      </nav>
+      <div id="banner">
+        <?php foreach($categoriesBg as $categoryBg): ?>
+          <div class="category-bg" style="background-image: url('assets/imgs/categories/<?= $categoryBg ?>');"></div>
+        <?php endforeach; ?>
+      </div>
+    </header>
+    <div id="most-searched-recipes">
+      <div class="most-searched"></div>
+      <div class="most-searched"></div>
+      <div class="most-searched"></div>
+      <div class="most-searched"></div>
     </div>
+    <div id="top-rated">
+      <div class="top-rated-card"></div>
+      <div class="top-rated-card"></div>
+      <div class="top-rated-card"></div>
+      <div class="top-rated-card"></div>
+    </div>
+    <div id="special">
+      <div class="special-card"></div>
+      <div class="special-card"></div>
+      <div class="special-card"></div>
+      <div class="special-card"></div>
+    </div>
+    <div id="new-recipes">
+      <div class="new-recipe-card"></div>
+      <div class="new-recipe-card"></div>
+      <div class="new-recipe-card"></div>
+      <div class="new-recipe-card"></div>
+      <div class="new-recipe-card"></div>
+      <div class="new-recipe-card"></div>
+      <div class="new-recipe-card"></div>
+      <div class="new-recipe-card"></div>
+      <div class="new-recipe-card"></div>
+      <div class="new-recipe-card"></div>
+      <div class="new-recipe-card"></div>
+      <div class="new-recipe-card"></div>
+    </div>
+    <div id="shopping-guide"></div>
+    <div id="selection-of-recipes"></div>
+    <footer id="footer">
+      <div id="social-media"></div>
+      <div id="reserved-rights"></div>
+    </footer>
   </div>
 </body>
 </html>
