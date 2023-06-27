@@ -83,10 +83,10 @@ $categoriesBg = [
       </div>
     </header>
     <div id="most-searched-recipes">
-      <div class="most-searched"></div>
-      <div class="most-searched"></div>
-      <div class="most-searched"></div>
-      <div class="most-searched"></div>
+      <div class="most-searched-recipes-card"></div>
+      <div class="most-searched-recipes-card"></div>
+      <div class="most-searched-recipes-card"></div>
+      <div class="most-searched-recipes-card"></div>
     </div>
     <div id="top-rated">
       <div class="top-rated-card"></div>
@@ -114,8 +114,18 @@ $categoriesBg = [
       <div class="new-recipe-card"></div>
       <div class="new-recipe-card"></div>
     </div>
-    <div id="shopping-guide"></div>
-    <div id="selection-of-recipes"></div>
+    <div id="shopping-guide">
+      <div class="shoping-guide-card"></div>
+      <div class="shoping-guide-card"></div>
+      <div class="shoping-guide-card"></div>
+      <div class="shoping-guide-card"></div>
+    </div>
+    <div id="selection-of-recipes">
+      <div class="selection-of-recipes-card"></div>
+      <div class="selection-of-recipes-card"></div>
+      <div class="selection-of-recipes-card"></div>
+      <div class="selection-of-recipes-card"></div>
+    </div>
     <footer id="footer">
       <div id="social-media"></div>
       <div id="reserved-rights"></div>
