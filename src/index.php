@@ -1,4 +1,6 @@
 <?php
+require_once __DIR__ . '/utils/globals.php';
+
 $categoriesBg = [
   'rice_and_risotto.jpg',
   'birds.jpg',
@@ -24,10 +26,10 @@ $categoriesBg = [
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=7">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="assets/recipesoftheday_icon.svg" type="image/x-icon">
+  <link rel="shortcut icon" href="<?= $BASE_URL ?>assets/recipesoftheday_icon.svg" type="image/x-icon">
   <title>Recipes Of The Day</title>
   <!-- style sheet -->
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="<?= $BASE_URL ?>css/styles.css">
   <!-- google fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,8 +38,10 @@ $categoriesBg = [
     rel="stylesheet">
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <!-- bootstrap icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
   <!-- js scipts -->
-  <script src="js/scripts.js" defer></script>
+  <script src="<?= $BASE_URL ?>js/scripts.js" defer></script>
 </head>
 
 <body>
@@ -46,7 +50,8 @@ $categoriesBg = [
       <nav id="navbar">
         <div class="container-wrapper">
           <div class="logo">
-            <a href="#"><span class="material-symbols-rounded">restaurant_menu</span> Recipes Of The Day</a>
+            <a href="<?= $BASE_URL ?>index.php"><span class="material-symbols-rounded">restaurant_menu</span> Recipes Of
+              The Day</a>
           </div>
           <div id="menu">
             <ul>
@@ -83,51 +88,62 @@ $categoriesBg = [
       </div>
     </header>
     <div id="most-searched-recipes">
-      <div class="most-searched-recipes-card"></div>
-      <div class="most-searched-recipes-card"></div>
-      <div class="most-searched-recipes-card"></div>
-      <div class="most-searched-recipes-card"></div>
+      <div class="most-searched-recipes container-wrapper">
+        <h3>Most searched recipes</h3>
+        <div class="most-searched-recipes-card"></div>
+        <div class="most-searched-recipes-card"></div>
+        <div class="most-searched-recipes-card"></div>
+        <div class="most-searched-recipes-card"></div>
+      </div>
     </div>
     <div id="top-rated">
-      <div class="top-rated-card"></div>
-      <div class="top-rated-card"></div>
-      <div class="top-rated-card"></div>
-      <div class="top-rated-card"></div>
+      <div class="top-rated container-wrapper">
+        <h3>Top rated</h3>
+        <div class="top-rated-card"></div>
+        <div class="top-rated-card"></div>
+        <div class="top-rated-card"></div>
+        <div class="top-rated-card"></div>
+      </div>
     </div>
     <div id="special">
-      <div class="special-card"></div>
-      <div class="special-card"></div>
-      <div class="special-card"></div>
-      <div class="special-card"></div>
+      <div class="special container-wrapper">
+        <h3>Special</h3>
+        <div class="special-card"></div>
+        <div class="special-card"></div>
+        <div class="special-card"></div>
+        <div class="special-card"></div>
+      </div>
     </div>
     <div id="new-recipes">
-      <div class="new-recipe-card"></div>
-      <div class="new-recipe-card"></div>
-      <div class="new-recipe-card"></div>
-      <div class="new-recipe-card"></div>
-      <div class="new-recipe-card"></div>
-      <div class="new-recipe-card"></div>
-      <div class="new-recipe-card"></div>
-      <div class="new-recipe-card"></div>
-      <div class="new-recipe-card"></div>
-      <div class="new-recipe-card"></div>
-      <div class="new-recipe-card"></div>
-      <div class="new-recipe-card"></div>
-    </div>
-    <div id="shopping-guide">
-      <div class="shoping-guide-card"></div>
-      <div class="shoping-guide-card"></div>
-      <div class="shoping-guide-card"></div>
-      <div class="shoping-guide-card"></div>
-    </div>
-    <div id="selection-of-recipes">
-      <div class="selection-of-recipes-card"></div>
-      <div class="selection-of-recipes-card"></div>
-      <div class="selection-of-recipes-card"></div>
-      <div class="selection-of-recipes-card"></div>
+      <div class="new-recipes container-wrapper">
+        <h3>New recipes</h3>
+        <div class="new-recipe-card"></div>
+        <div class="new-recipe-card"></div>
+        <div class="new-recipe-card"></div>
+        <div class="new-recipe-card"></div>
+        <div class="new-recipe-card"></div>
+        <div class="new-recipe-card"></div>
+        <div class="new-recipe-card"></div>
+        <div class="new-recipe-card"></div>
+        <div class="new-recipe-card"></div>
+        <div class="new-recipe-card"></div>
+        <div class="new-recipe-card"></div>
+        <div class="new-recipe-card"></div>
+      </div>
     </div>
     <footer id="footer">
-      <div id="social-media"></div>
+      <div id="social-media">
+        <div class="logo">
+          <a href="<?= $BASE_URL ?>index.php"><span class="material-symbols-rounded">restaurant_menu</span> Recipes Of
+            The Day</a>
+        </div>
+        <div class="social">
+          <a href="#" class="social-btn"></a>
+          <a href="#" class="social-btn"></a>
+          <a href="#" class="social-btn"></a>
+          <a href="#" class="social-btn"></a>
+        </div>
+      </div>
       <div id="reserved-rights"></div>
     </footer>
   </div>

@@ -1,0 +1,1 @@
+<div class="top-rated-card"></div>

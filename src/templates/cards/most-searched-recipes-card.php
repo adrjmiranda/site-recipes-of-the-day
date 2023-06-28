@@ -1,0 +1,1 @@
+<div class="most-searched-recipes-card"></div>
