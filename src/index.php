@@ -30,7 +30,7 @@ $categoriesBg = [
 </header>
 <div id="most-searched-recipes">
   <div class="most-searched-recipes container-wrapper">
-    <h3>Most searched recipes</h3>
+    <h3 class="title">Most searched recipes</h3>
     <div class="most-searched-recipes-card">
       <div class="most-searched-image">
         <div class="most-searched-time"><i class="bi bi-clock"></i> 20min</div>
@@ -67,7 +67,7 @@ $categoriesBg = [
 </div>
 <div id="top-rated">
   <div class="top-rated container-wrapper">
-    <h3>Top rated</h3>
+    <h3 class="title">Top rated</h3>
     <div class="top-rated-card">
       <div class="top-rated-image">
         <div class="top-rated-title">
@@ -104,7 +104,7 @@ $categoriesBg = [
 </div>
 <div id="special">
   <div class="special container-wrapper">
-    <h3>Special</h3>
+    <h3 class="title">Special</h3>
     <div class="special-card">
       <div class="special-card-image"></div>
       <div class="special-info">
@@ -153,7 +153,7 @@ $categoriesBg = [
 </div>
 <div id="new-recipes">
   <div class="new-recipes container-wrapper">
-    <h3>New recipes</h3>
+    <h3 class="title">New recipes</h3>
     <div class="recipe-card">
       <div class="recipe-image"></div>
       <div class="recipe-info">

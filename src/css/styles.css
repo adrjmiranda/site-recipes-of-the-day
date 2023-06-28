@@ -47,7 +47,7 @@
 	--secundary-color: #fdca49;
 	--tertiary-color: #ff494b;
 	--quaternary-color: #58ce74;
-	--bg-primary-color: #fcfdeb;
+	--bg-primary-color: #fbf7f1;
 	--bg-secundary-color: #ffd1b3;
 	--text-primary-color: #0b0b0d;
 	--text-secundary-color: #8f898d;
@@ -260,4 +260,83 @@ a {
 
 .move-left-4 {
 	animation-name: moveLeft4;
+}
+
+/* sections */
+
+.title {
+	color: var(--primary-color);
+	font-family: 'Pacifico', cursive;
+	font-size: 1.4rem;
+	margin-bottom: 2rem;
+	flex: 0 0 100%;
+}
+
+#most-searched-recipes,
+#top-rated,
+#special,
+#new-recipes {
+	margin-top: 3.5rem;
+}
+
+.most-searched-recipes,
+.top-rated,
+.special,
+.new-recipes {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1em;
+	justify-content: space-between;
+}
+
+/* just in dev */
+
+.most-searched-recipes-card,
+.top-rated-card,
+.special-card,
+.recipe-card {
+	border: 1px solid #000;
+	overflow: hidden;
+}
+
+/* just in dev */
+
+.most-searched-recipes-card {
+	height: 250px;
+	flex: 1 0 20%;
+	min-width: 250px;
+	max-width: calc(33% - 1em);
+	border-radius: 8px;
+}
+
+.most-searched-image {
+	height: 70%;
+	position: relative;
+	background-color: #000;
+}
+
+.most-searched-time {
+	position: absolute;
+	right: 0.8em;
+	top: 0.8em;
+	color: var(--text-secundary-color);
+}
+
+.most-searched-time .bi {
+	color: var(--bg-primary-color);
+}
+
+.most-searched-title {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 30%;
+	background-color: var(--bg-primary-color);
+	padding: 10px;
+}
+
+.most-searched-title h4 {
+	font-weight: 500;
+	font-size: 1rem;
+	color: var(--tertiary-color);
 }
