@@ -73,32 +73,32 @@ $categoriesBg = [
         <div class="top-rated-title">
           <h4>Lorem Ipsum is simply dummy</h4>
         </div>
+        <div class="top-rated-rating"><i class="bi bi-star-fill"></i> 5</div>
       </div>
-      <div class="top-rated-rating"></div>
     </div>
     <div class="top-rated-card">
       <div class="top-rated-image">
         <div class="top-rated-title">
           <h4>Lorem Ipsum is simply dummy</h4>
         </div>
+        <div class="top-rated-rating"><i class="bi bi-star-fill"></i> 5</div>
       </div>
-      <div class="top-rated-rating"></div>
     </div>
     <div class="top-rated-card">
       <div class="top-rated-image">
         <div class="top-rated-title">
           <h4>Lorem Ipsum is simply dummy</h4>
         </div>
+        <div class="top-rated-rating"><i class="bi bi-star-fill"></i> 5</div>
       </div>
-      <div class="top-rated-rating"></div>
     </div>
     <div class="top-rated-card">
       <div class="top-rated-image">
         <div class="top-rated-title">
           <h4>Lorem Ipsum is simply dummy</h4>
         </div>
+        <div class="top-rated-rating"><i class="bi bi-star-fill"></i> 5</div>
       </div>
-      <div class="top-rated-rating"></div>
     </div>
   </div>
 </div>
@@ -155,96 +155,84 @@ $categoriesBg = [
   <div class="new-recipes container-wrapper">
     <h3 class="title">New recipes</h3>
     <div class="recipe-card">
-      <div class="recipe-image"></div>
-      <div class="recipe-info">
+      <div class="recipe-image">
         <h4>Lorem Ipsum is simply dummy</h4>
         <div class="recipe-time"><i class="bi bi-stopwatch"></i> 20min</div>
         <span class="rating"><i class="bi bi-star-fill"></i> 4</span>
       </div>
     </div>
     <div class="recipe-card">
-      <div class="recipe-image"></div>
-      <div class="recipe-info">
+      <div class="recipe-image">
         <h4>Lorem Ipsum is simply dummy</h4>
         <div class="recipe-time"><i class="bi bi-stopwatch"></i> 20min</div>
         <span class="rating"><i class="bi bi-star-fill"></i> 4</span>
       </div>
     </div>
     <div class="recipe-card">
-      <div class="recipe-image"></div>
-      <div class="recipe-info">
+      <div class="recipe-image">
         <h4>Lorem Ipsum is simply dummy</h4>
         <div class="recipe-time"><i class="bi bi-stopwatch"></i> 20min</div>
         <span class="rating"><i class="bi bi-star-fill"></i> 4</span>
       </div>
     </div>
     <div class="recipe-card">
-      <div class="recipe-image"></div>
-      <div class="recipe-info">
+      <div class="recipe-image">
         <h4>Lorem Ipsum is simply dummy</h4>
         <div class="recipe-time"><i class="bi bi-stopwatch"></i> 20min</div>
         <span class="rating"><i class="bi bi-star-fill"></i> 4</span>
       </div>
     </div>
     <div class="recipe-card">
-      <div class="recipe-image"></div>
-      <div class="recipe-info">
+      <div class="recipe-image">
         <h4>Lorem Ipsum is simply dummy</h4>
         <div class="recipe-time"><i class="bi bi-stopwatch"></i> 20min</div>
         <span class="rating"><i class="bi bi-star-fill"></i> 4</span>
       </div>
     </div>
     <div class="recipe-card">
-      <div class="recipe-image"></div>
-      <div class="recipe-info">
+      <div class="recipe-image">
         <h4>Lorem Ipsum is simply dummy</h4>
         <div class="recipe-time"><i class="bi bi-stopwatch"></i> 20min</div>
         <span class="rating"><i class="bi bi-star-fill"></i> 4</span>
       </div>
     </div>
     <div class="recipe-card">
-      <div class="recipe-image"></div>
-      <div class="recipe-info">
+      <div class="recipe-image">
         <h4>Lorem Ipsum is simply dummy</h4>
         <div class="recipe-time"><i class="bi bi-stopwatch"></i> 20min</div>
         <span class="rating"><i class="bi bi-star-fill"></i> 4</span>
       </div>
     </div>
     <div class="recipe-card">
-      <div class="recipe-image"></div>
-      <div class="recipe-info">
+      <div class="recipe-image">
         <h4>Lorem Ipsum is simply dummy</h4>
         <div class="recipe-time"><i class="bi bi-stopwatch"></i> 20min</div>
         <span class="rating"><i class="bi bi-star-fill"></i> 4</span>
       </div>
     </div>
     <div class="recipe-card">
-      <div class="recipe-image"></div>
-      <div class="recipe-info">
+      <div class="recipe-image">
         <h4>Lorem Ipsum is simply dummy</h4>
         <div class="recipe-time"><i class="bi bi-stopwatch"></i> 20min</div>
         <span class="rating"><i class="bi bi-star-fill"></i> 4</span>
       </div>
     </div>
     <div class="recipe-card">
-      <div class="recipe-image"></div>
-      <div class="recipe-info">
+      <div class="recipe-image">
         <h4>Lorem Ipsum is simply dummy</h4>
         <div class="recipe-time"><i class="bi bi-stopwatch"></i> 20min</div>
         <span class="rating"><i class="bi bi-star-fill"></i> 4</span>
       </div>
     </div>
     <div class="recipe-card">
-      <div class="recipe-image"></div>
-      <div class="recipe-info">
+      <div class="recipe-image">
         <h4>Lorem Ipsum is simply dummy</h4>
         <div class="recipe-time"><i class="bi bi-stopwatch"></i> 20min</div>
         <span class="rating"><i class="bi bi-star-fill"></i> 4</span>
       </div>
     </div>
     <div class="recipe-card">
-      <div class="recipe-image"></div>
-      <div class="recipe-info">
+      <div class="recipe-image">
         <h4>Lorem Ipsum is simply dummy</h4>
         <div class="recipe-time"><i class="bi bi-stopwatch"></i> 20min</div>
         <span class="rating"><i class="bi bi-star-fill"></i> 4</span>
