@@ -13,10 +13,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Satisfy&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Pacifico&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   <!-- bootstrap icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
   <!-- js scipts -->
@@ -29,8 +27,8 @@
       <nav id="navbar">
         <div class="nav container-wrapper">
           <div class="logo">
-            <a href="<?= $BASE_URL ?>index.php"><span class="material-symbols-rounded">restaurant_menu</span> Recipes Of
-              The Day</a>
+            <a href="<?= $BASE_URL ?>index.php"><img src="<?= $BASE_URL ?>assets/recipesoftheday_logo.svg" alt="">
+              Recipes Of The Day</a>
           </div>
           <div id="menu">
             <ul>
@@ -47,16 +45,16 @@
                 <a href="#">cakes</a>
               </li>
               <li>
-                <a href="#">more <span class="material-symbols-rounded">arrow_drop_down</span></a>
+                <a href="#">more <i class="bi bi-caret-down-fill"></i></a>
               </li>
             </ul>
           </div>
           <div id="search">
             <form action="">
               <input type="search" name="search" id="search" placeholder="search recipe">
-              <button type="submit"><span class="material-symbols-rounded">search</span></button>
+              <button type="submit"><i class="bi bi-search"></i></button>
             </form>
           </div>
-          <a href="#" class="btn login"><span class="material-symbols-rounded">person</span> enter</a>
+          <a href="#" class="btn login"><i class="bi bi-person-fill"></i> enter</a>
         </div>
       </nav>

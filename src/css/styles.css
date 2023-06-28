@@ -47,6 +47,8 @@
 	--secundary-color: #fdca49;
 	--tertiary-color: #ff494b;
 	--quaternary-color: #58ce74;
+	--bg-primary-color: #fcfdeb;
+	--bg-secundary-color: #ffd1b3;
 	--text-primary-color: #0b0b0d;
 	--text-secundary-color: #8f898d;
 }
@@ -71,18 +73,19 @@ a {
 	margin: 0 auto;
 }
 
-.logo span {
-	font-size: 2.5rem;
-}
-
 .logo a {
 	font-family: 'Satisfy', cursive;
 	color: var(--primary-color);
-	font-size: 1.4rem;
+	font-size: 1.5rem;
 	display: flex;
 	align-items: center;
-	gap: 0.3em;
+	gap: 0.2em;
 	font-weight: bold;
+	font-family: 'Pacifico', cursive;
+}
+
+.logo a img {
+	width: 36px;
 }
 
 .btn {
@@ -103,7 +106,7 @@ a {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	padding: 30px 0;
+	height: 80px;
 }
 
 #menu ul {
@@ -154,7 +157,8 @@ a {
 	display: flex;
 	align-items: center;
 	width: auto;
-	right: 0.3rem;
+	right: 0.8rem;
+	font-size: 1rem;
 	position: absolute;
 	cursor: pointer;
 }
@@ -176,13 +180,14 @@ a {
 	display: flex;
 	align-items: center;
 	position: relative;
+	background-color: var(--bg-primary-color);
 }
 
 .category-bg {
 	position: absolute;
 	background-size: cover;
 	width: 94%;
-	height: 80%;
+	height: 95%;
 	border-radius: 8px;
 }
 
