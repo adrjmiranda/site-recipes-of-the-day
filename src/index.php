@@ -22,7 +22,8 @@ $categoriesBg = [
 <?php require_once __DIR__ . '/templates/navbar.php' ?>
 <div id="banner">
   <?php foreach ($categoriesBg as $categoryBg): ?>
-    <div class="category-bg" style="background-image: url('assets/imgs/categories/<?= $categoryBg ?>');"></div>
+    <div class="category-bg container-wrapper"
+      style="background-image: url('assets/imgs/categories/<?= $categoryBg ?>');"></div>
   <?php endforeach; ?>
 </div>
 </header>

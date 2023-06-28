@@ -2,41 +2,41 @@
 
 @keyframes moveLeft1 {
 	0% {
-		left: -97%;
+		left: -50%;
 	}
 
 	100% {
-		left: -197%;
+		left: -150%;
 	}
 }
 
 @keyframes moveLeft2 {
 	0% {
-		left: 3%;
+		left: 50%;
 	}
 
 	100% {
-		left: -97%;
+		left: -50%;
 	}
 }
 
 @keyframes moveLeft3 {
 	0% {
-		left: 103%;
+		left: 150%;
 	}
 
 	100% {
-		left: 3%;
+		left: 50%;
 	}
 }
 
 @keyframes moveLeft4 {
 	0% {
-		left: 203%;
+		left: 250%;
 	}
 
 	100% {
-		left: 103%;
+		left: 150%;
 	}
 }
 
@@ -180,31 +180,32 @@ a {
 	display: flex;
 	align-items: center;
 	position: relative;
-	background-color: var(--bg-primary-color);
+	background-image: url('../assets/imgs/tablecloth.jpg');
 }
 
 .category-bg {
 	position: absolute;
 	background-size: cover;
-	width: 94%;
+	width: 100%;
 	height: 95%;
 	border-radius: 8px;
+	transform: translateX(-50%);
 }
 
 .category-bg:nth-child(1) {
-	left: -97%;
+	left: -50%;
 }
 
 .category-bg:nth-child(2) {
-	left: 3%;
+	left: 50%;
 }
 
 .category-bg:nth-child(3) {
-	left: 103%;
+	left: 150%;
 }
 
 .category-bg:nth-child(4) {
-	left: 203%;
+	left: 250%;
 }
 
 .category-bg:nth-child(1),
