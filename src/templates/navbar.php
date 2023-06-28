@@ -27,7 +27,7 @@
   <div class="container">
     <header>
       <nav id="navbar">
-        <div class="container-wrapper">
+        <div class="nav container-wrapper">
           <div class="logo">
             <a href="<?= $BASE_URL ?>index.php"><span class="material-symbols-rounded">restaurant_menu</span> Recipes Of
               The Day</a>
@@ -54,7 +54,7 @@
           <div id="search">
             <form action="">
               <input type="search" name="search" id="search" placeholder="search recipe">
-              <button type="submit" class="btn"><span class="material-symbols-rounded">search</span></button>
+              <button type="submit"><span class="material-symbols-rounded">search</span></button>
             </form>
           </div>
           <a href="#" class="btn login"><span class="material-symbols-rounded">person</span> enter</a>

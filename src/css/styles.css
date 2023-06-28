@@ -72,7 +72,7 @@ a {
 }
 
 .logo span {
-	font-size: 1.8rem;
+	font-size: 2.5rem;
 }
 
 .logo a {
@@ -81,8 +81,92 @@ a {
 	font-size: 1.4rem;
 	display: flex;
 	align-items: center;
-	gap: 0.8em;
+	gap: 0.3em;
 	font-weight: bold;
+}
+
+.btn {
+	background-color: var(--primary-color);
+	color: #fff;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/* navbar */
+
+#navbar {
+	background-color: var(--secundary-color);
+}
+
+#navbar .nav {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 30px 0;
+}
+
+#menu ul {
+	list-style: none;
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+}
+
+#menu ul li:last-child a {
+	display: flex;
+	align-items: center;
+}
+
+#menu ul li a {
+	color: var(--primary-color);
+	font-size: 1.1rem;
+	transition: 0.3s;
+}
+
+#menu ul li a:hover {
+	color: var(--tertiary-color);
+}
+
+#search form {
+	display: flex;
+	gap: 0;
+	align-items: center;
+	position: relative;
+}
+
+#search form input {
+	border: 2px solid var(--secundary-color);
+	border-radius: 10px;
+	height: 40px;
+	padding-left: 0.5rem;
+	outline: none;
+}
+
+#search form input:focus {
+	border-color: var(--primary-color);
+}
+
+#search form button {
+	border: none;
+	height: 40px;
+	background-color: transparent;
+	display: flex;
+	align-items: center;
+	width: auto;
+	right: 0.3rem;
+	position: absolute;
+	cursor: pointer;
+}
+
+#search form button:hover {
+	color: var(--primary-color);
+}
+
+.login {
+	padding: 7px 15px;
+	border-radius: 15px;
+	gap: 0.3em;
 }
 
 /* banner */
