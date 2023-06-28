@@ -23,7 +23,8 @@ $categoriesBg = [
 <div id="banner">
   <?php foreach ($categoriesBg as $categoryBg): ?>
     <div class="category-bg container-wrapper"
-      style="background-image: url('assets/imgs/categories/<?= $categoryBg ?>');"></div>
+      style="background: linear-gradient(rgba(0, 0, 0, .1), rgba(0, 0, 0, .1)), url('assets/imgs/categories/<?= $categoryBg ?>') no-repeat center; background-size: cover;">
+    </div>
   <?php endforeach; ?>
 </div>
 </header>
