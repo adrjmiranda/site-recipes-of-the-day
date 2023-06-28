@@ -90,61 +90,257 @@ $categoriesBg = [
     <div id="most-searched-recipes">
       <div class="most-searched-recipes container-wrapper">
         <h3>Most searched recipes</h3>
-        <div class="most-searched-recipes-card"></div>
-        <div class="most-searched-recipes-card"></div>
-        <div class="most-searched-recipes-card"></div>
-        <div class="most-searched-recipes-card"></div>
+        <div class="most-searched-recipes-card">
+          <div class="most-searched-image">
+            <div class="most-searched-time"><i class="bi bi-clock"></i> 20min</div>
+          </div>
+          <div class="most-searched-title">
+            <h4>Lorem Ipsum is simply dummy</h4>
+          </div>
+        </div>
+        <div class="most-searched-recipes-card">
+          <div class="most-searched-image">
+            <div class="most-searched-time"><i class="bi bi-clock"></i> 20min</div>
+          </div>
+          <div class="most-searched-title">
+            <h4>Lorem Ipsum is simply dummy</h4>
+          </div>
+        </div>
+        <div class="most-searched-recipes-card">
+          <div class="most-searched-image">
+            <div class="most-searched-time"><i class="bi bi-clock"></i> 20min</div>
+          </div>
+          <div class="most-searched-title">
+            <h4>Lorem Ipsum is simply dummy</h4>
+          </div>
+        </div>
+        <div class="most-searched-recipes-card">
+          <div class="most-searched-image">
+            <div class="most-searched-time"><i class="bi bi-clock"></i> 20min</div>
+          </div>
+          <div class="most-searched-title">
+            <h4>Lorem Ipsum is simply dummy</h4>
+          </div>
+        </div>
       </div>
     </div>
     <div id="top-rated">
       <div class="top-rated container-wrapper">
         <h3>Top rated</h3>
-        <div class="top-rated-card"></div>
-        <div class="top-rated-card"></div>
-        <div class="top-rated-card"></div>
-        <div class="top-rated-card"></div>
+        <div class="top-rated-card">
+          <div class="top-rated-image">
+            <div class="top-rated-title">
+              <h4>Lorem Ipsum is simply dummy</h4>
+            </div>
+          </div>
+          <div class="top-rated-rating"></div>
+        </div>
+        <div class="top-rated-card">
+          <div class="top-rated-image">
+            <div class="top-rated-title">
+              <h4>Lorem Ipsum is simply dummy</h4>
+            </div>
+          </div>
+          <div class="top-rated-rating"></div>
+        </div>
+        <div class="top-rated-card">
+          <div class="top-rated-image">
+            <div class="top-rated-title">
+              <h4>Lorem Ipsum is simply dummy</h4>
+            </div>
+          </div>
+          <div class="top-rated-rating"></div>
+        </div>
+        <div class="top-rated-card">
+          <div class="top-rated-image">
+            <div class="top-rated-title">
+              <h4>Lorem Ipsum is simply dummy</h4>
+            </div>
+          </div>
+          <div class="top-rated-rating"></div>
+        </div>
       </div>
     </div>
     <div id="special">
       <div class="special container-wrapper">
         <h3>Special</h3>
-        <div class="special-card"></div>
-        <div class="special-card"></div>
-        <div class="special-card"></div>
-        <div class="special-card"></div>
+        <div class="special-card">
+          <div class="special-card-image"></div>
+          <div class="special-info">
+            <div class="special-title">
+              <h4>Lorem Ipsum is simply dummy</h4>
+            </div>
+            <div class="special-time">
+              <span><i class="bi bi-clock-fill"></i> 15min</span>
+            </div>
+          </div>
+        </div>
+        <div class="special-card">
+          <div class="special-card-image"></div>
+          <div class="special-info">
+            <div class="special-title">
+              <h4>Lorem Ipsum is simply dummy</h4>
+            </div>
+            <div class="special-time">
+              <span><i class="bi bi-clock-fill"></i> 15min</span>
+            </div>
+          </div>
+        </div>
+        <div class="special-card">
+          <div class="special-card-image"></div>
+          <div class="special-info">
+            <div class="special-title">
+              <h4>Lorem Ipsum is simply dummy</h4>
+            </div>
+            <div class="special-time">
+              <span><i class="bi bi-clock-fill"></i> 15min</span>
+            </div>
+          </div>
+        </div>
+        <div class="special-card">
+          <div class="special-card-image"></div>
+          <div class="special-info">
+            <div class="special-title">
+              <h4>Lorem Ipsum is simply dummy</h4>
+            </div>
+            <div class="special-time">
+              <span><i class="bi bi-clock-fill"></i> 15min</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div id="new-recipes">
       <div class="new-recipes container-wrapper">
         <h3>New recipes</h3>
-        <div class="new-recipe-card"></div>
-        <div class="new-recipe-card"></div>
-        <div class="new-recipe-card"></div>
-        <div class="new-recipe-card"></div>
-        <div class="new-recipe-card"></div>
-        <div class="new-recipe-card"></div>
-        <div class="new-recipe-card"></div>
-        <div class="new-recipe-card"></div>
-        <div class="new-recipe-card"></div>
-        <div class="new-recipe-card"></div>
-        <div class="new-recipe-card"></div>
-        <div class="new-recipe-card"></div>
+        <div class="recipe-card">
+          <div class="recipe-image"></div>
+          <div class="recipe-info">
+            <h4>Lorem Ipsum is simply dummy</h4>
+            <div class="recipe-time"><i class="bi bi-stopwatch"></i> 20min</div>
+            <span class="rating"><i class="bi bi-star-fill"></i> 4</span>
+          </div>
+        </div>
+        <div class="recipe-card">
+          <div class="recipe-image"></div>
+          <div class="recipe-info">
+            <h4>Lorem Ipsum is simply dummy</h4>
+            <div class="recipe-time"><i class="bi bi-stopwatch"></i> 20min</div>
+            <span class="rating"><i class="bi bi-star-fill"></i> 4</span>
+          </div>
+        </div>
+        <div class="recipe-card">
+          <div class="recipe-image"></div>
+          <div class="recipe-info">
+            <h4>Lorem Ipsum is simply dummy</h4>
+            <div class="recipe-time"><i class="bi bi-stopwatch"></i> 20min</div>
+            <span class="rating"><i class="bi bi-star-fill"></i> 4</span>
+          </div>
+        </div>
+        <div class="recipe-card">
+          <div class="recipe-image"></div>
+          <div class="recipe-info">
+            <h4>Lorem Ipsum is simply dummy</h4>
+            <div class="recipe-time"><i class="bi bi-stopwatch"></i> 20min</div>
+            <span class="rating"><i class="bi bi-star-fill"></i> 4</span>
+          </div>
+        </div>
+        <div class="recipe-card">
+          <div class="recipe-image"></div>
+          <div class="recipe-info">
+            <h4>Lorem Ipsum is simply dummy</h4>
+            <div class="recipe-time"><i class="bi bi-stopwatch"></i> 20min</div>
+            <span class="rating"><i class="bi bi-star-fill"></i> 4</span>
+          </div>
+        </div>
+        <div class="recipe-card">
+          <div class="recipe-image"></div>
+          <div class="recipe-info">
+            <h4>Lorem Ipsum is simply dummy</h4>
+            <div class="recipe-time"><i class="bi bi-stopwatch"></i> 20min</div>
+            <span class="rating"><i class="bi bi-star-fill"></i> 4</span>
+          </div>
+        </div>
+        <div class="recipe-card">
+          <div class="recipe-image"></div>
+          <div class="recipe-info">
+            <h4>Lorem Ipsum is simply dummy</h4>
+            <div class="recipe-time"><i class="bi bi-stopwatch"></i> 20min</div>
+            <span class="rating"><i class="bi bi-star-fill"></i> 4</span>
+          </div>
+        </div>
+        <div class="recipe-card">
+          <div class="recipe-image"></div>
+          <div class="recipe-info">
+            <h4>Lorem Ipsum is simply dummy</h4>
+            <div class="recipe-time"><i class="bi bi-stopwatch"></i> 20min</div>
+            <span class="rating"><i class="bi bi-star-fill"></i> 4</span>
+          </div>
+        </div>
+        <div class="recipe-card">
+          <div class="recipe-image"></div>
+          <div class="recipe-info">
+            <h4>Lorem Ipsum is simply dummy</h4>
+            <div class="recipe-time"><i class="bi bi-stopwatch"></i> 20min</div>
+            <span class="rating"><i class="bi bi-star-fill"></i> 4</span>
+          </div>
+        </div>
+        <div class="recipe-card">
+          <div class="recipe-image"></div>
+          <div class="recipe-info">
+            <h4>Lorem Ipsum is simply dummy</h4>
+            <div class="recipe-time"><i class="bi bi-stopwatch"></i> 20min</div>
+            <span class="rating"><i class="bi bi-star-fill"></i> 4</span>
+          </div>
+        </div>
+        <div class="recipe-card">
+          <div class="recipe-image"></div>
+          <div class="recipe-info">
+            <h4>Lorem Ipsum is simply dummy</h4>
+            <div class="recipe-time"><i class="bi bi-stopwatch"></i> 20min</div>
+            <span class="rating"><i class="bi bi-star-fill"></i> 4</span>
+          </div>
+        </div>
+        <div class="recipe-card">
+          <div class="recipe-image"></div>
+          <div class="recipe-info">
+            <h4>Lorem Ipsum is simply dummy</h4>
+            <div class="recipe-time"><i class="bi bi-stopwatch"></i> 20min</div>
+            <span class="rating"><i class="bi bi-star-fill"></i> 4</span>
+          </div>
+        </div>
       </div>
     </div>
     <footer id="footer">
       <div id="social-media">
-        <div class="logo">
-          <a href="<?= $BASE_URL ?>index.php"><span class="material-symbols-rounded">restaurant_menu</span> Recipes Of
-            The Day</a>
-        </div>
         <div class="social">
-          <a href="#" class="social-btn"></a>
-          <a href="#" class="social-btn"></a>
-          <a href="#" class="social-btn"></a>
-          <a href="#" class="social-btn"></a>
+          <div class="logo">
+            <a href="<?= $BASE_URL ?>index.php"><span class="material-symbols-rounded">restaurant_menu</span> Recipes Of
+              The Day</a>
+          </div>
+          <a href="#" class="social-btn">
+            <i class="bi bi-pinterest"></i>
+          </a>
+          <a href="#" class="social-btn">
+            <i class="bi bi-facebook"></i>
+          </a>
+          <a href="#" class="social-btn">
+            <i class="bi bi-instagram"></i>
+          </a>
+          <a href="#" class="social-btn">
+            <i class="bi bi-youtube"></i>
+          </a>
+        </div>
+        <div class="social-about">
+          <a href="#">who we are</a>
+          <a href="#">terms of use</a>
+          <a href="#">privacy</a>
+          <a href="#">contact</a>
         </div>
       </div>
-      <div id="reserved-rights"></div>
+      <div id="reserved-rights">
+        Made with <i class="bi bi-heart-fill"></i> by Adriano Miranda &copy; 2023
+      </div>
     </footer>
   </div>
 </body>

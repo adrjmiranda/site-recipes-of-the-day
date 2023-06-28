@@ -1,1 +1,0 @@
-<div class="new-recipe-card"></div>
