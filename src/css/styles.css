@@ -261,7 +261,7 @@ a {
 	animation-name: moveLeft4;
 }
 
-/* sections */
+/* sections and cards */
 
 .title {
 	color: var(--primary-color);
@@ -273,7 +273,6 @@ a {
 
 #most-searched-recipes,
 #top-rated,
-#special,
 #new-recipes {
 	margin-top: 3.5rem;
 }
@@ -287,17 +286,6 @@ a {
 	gap: 1em;
 	justify-content: space-between;
 }
-
-/* just in dev */
-
-.most-searched-recipes-card,
-.top-rated-card,
-.special-card,
-.recipe-card {
-	border: 1px solid #000;
-}
-
-/* just in dev */
 
 .most-searched-recipes-card,
 .top-rated-card,
@@ -313,7 +301,6 @@ a {
 .most-searched-image {
 	height: 70%;
 	position: relative;
-	background-color: #000;
 }
 
 .most-searched-time {
@@ -342,9 +329,22 @@ a {
 	color: var(--tertiary-color);
 }
 
+#top-rated,
+#special {
+	background-color: var(--bg-primary-color);
+}
+
+#top-rated {
+	padding-top: 3rem;
+	padding-bottom: 3rem;
+}
+
+#special {
+	padding-bottom: 6rem;
+}
+
 .top-rated-image {
 	position: relative;
-	background-color: #000;
 	height: 100%;
 	width: 100%;
 }
@@ -386,7 +386,6 @@ a {
 	border-radius: 50%;
 	left: 50%;
 	transform: translateX(-50%);
-	background-color: #000;
 	height: 12rem;
 	width: 12rem;
 	z-index: 99;
@@ -400,7 +399,6 @@ a {
 	padding: 30px 10px 20px;
 	border-radius: 5px;
 	width: 90%;
-	/* z-index: 999; */
 	background-color: var(--secundary-color);
 }
 
@@ -423,7 +421,6 @@ a {
 	position: relative;
 	height: 100%;
 	width: 100%;
-	background-color: #000;
 }
 
 .recipe-image h4,
