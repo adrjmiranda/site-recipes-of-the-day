@@ -20,10 +20,12 @@ require_once __DIR__ . '/utils/globals.php';
     rel="stylesheet">
   <!-- bootstrap icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <!-- scripts -->
+  <script src="<?= $BASE_URL ?>js/show-pass.js" defer></script>
 </head>
 
 <body>
-  <div class="container">
+  <div id="form-container">
     <form action="register.php" id="register-form" method="post">
       <h2>Create an account:</h2>
       <div class="input-field">
@@ -39,20 +41,20 @@ require_once __DIR__ . '/utils/globals.php';
       <div class="input-field">
         <label for="password">Password:</label>
         <input type="password" name="password" id="password" placeholder="Your password">
-        <div class="show-pass">
-          <i class="bi bi-lock-fill"></i>
+        <div class="show-pass" id="show-pass">
+          <i class="bi bi-lock-fill hidden"></i>
           <i class="bi bi-unlock-fill"></i>
         </div>
       </div>
       <div class="input-field">
         <label for="confirm_password">Confirm password:</label>
         <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm your password">
-        <div class="show-pass">
-          <i class="bi bi-lock-fill"></i>
+        <div class="show-pass" id="show-confirm-pass">
+          <i class="bi bi-lock-fill hidden"></i>
           <i class="bi bi-unlock-fill"></i>
         </div>
       </div>
-      <input type="submit" value="Register" class="btn">
+      <button type="submit" class="btn form-btn">Register</button>
     </form>
   </div>
 </body>

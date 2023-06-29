@@ -661,6 +661,79 @@ a {
 	font-style: italic;
 }
 
+/* register and login form */
+
+#form-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+}
+
+#register-form {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	background-color: var(--bg-primary-color);
+	border-radius: 8px;
+	padding: 20px;
+	width: 400px;
+}
+
+.input-field {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	position: relative;
+}
+
+.input-field label {
+	font-size: 1rem;
+	font-weight: 200;
+}
+
+.input-field input {
+	height: 35px;
+	padding-left: 1.8rem;
+	outline: none;
+	border: 1px solid var(--text-secundary-color);
+	border-radius: 3px;
+}
+
+.input-field input:focus {
+	border-color: var(--tertiary-color);
+}
+
+.input-field input[type='password'],
+.input-field:nth-child(4) input,
+.input-field:nth-child(5) input {
+	padding-left: 0.6rem;
+}
+
+.input-field .bi {
+	position: absolute;
+	top: 2.4rem;
+	color: var(--tertiary-color);
+}
+
+.bi-person-fill,
+.bi-envelope-fill {
+	left: 0.5rem;
+}
+
+.show-pass .bi {
+	right: 0.5rem;
+	cursor: pointer;
+}
+
+.form-btn {
+	border: none;
+	border-radius: 5px;
+	height: 40px;
+	cursor: pointer;
+	font-weight: 500;
+}
+
 /* footer */
 
 #footer {
@@ -715,4 +788,10 @@ a {
 
 #reserved-rights span {
 	font-weight: 600;
+}
+
+/* ultils */
+
+.hidden {
+	display: none;
 }
