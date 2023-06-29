@@ -2,8 +2,8 @@ USE `recipesoftheday`;
 
 CREATE TABLE IF NOT EXISTS `recipesoftheday`.`categories` (
   `id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `category_image` VARCHAR(255) NOT NULL,
-  `category` VARCHAR(255) NOT NULL
+  `category_image` VARCHAR(255) UNIQUE NOT NULL,
+  `category` VARCHAR(255) UNIQUE NOT NULL
 );
 
 INSERT INTO `categories` (`category_image`, `category`) VALUES ('rice_and_risotto.jpg', 'rice and risotto');
