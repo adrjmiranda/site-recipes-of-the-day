@@ -473,6 +473,194 @@ a {
 	color: var(--text-primary-color);
 }
 
+/* recipe page */
+
+#recipe-container {
+	display: flex;
+	gap: 3rem;
+}
+
+#recipe,
+#others-recipes {
+	margin-top: 4rem;
+}
+
+#recipe-image {
+	height: 550px;
+	flex: 1 0 100%;
+	border-radius: 10px;
+}
+
+.recipe-photo {
+	position: relative;
+	height: 80%;
+}
+
+.recipe-photo .title {
+	position: absolute;
+	bottom: 2rem;
+	left: 1rem;
+	color: var(--bg-primary-color);
+	text-shadow: 1px 2px 3px rgba(0, 0, 0, 0.3);
+}
+
+.recipe-photo .title h1 {
+	font-family: 'Pacifico', cursive;
+}
+
+#recipe-image .info {
+	background-color: var(--bg-primary-color);
+	height: 20%;
+	display: flex;
+	justify-content: space-between;
+	padding: 0 30px;
+	align-items: center;
+}
+
+#recipe-image .info .portions-and-time {
+	display: flex;
+	gap: 1.5rem;
+}
+
+#recipe-image .info .portions-and-time .bi {
+	color: var(--quaternary-color);
+	font-size: 1.5rem;
+}
+
+#recipe-image .info .portions-and-time div {
+	display: flex;
+	align-items: center;
+	gap: 0.8em;
+}
+
+#recipe-image .info .rating {
+	color: var(--primary-color);
+}
+
+#recipe-image .info .rating .bi {
+	font-size: 1.3rem;
+}
+
+#recipe-body {
+	margin-top: 3rem;
+	display: flex;
+	flex-direction: column;
+	gap: 2.5rem;
+}
+
+#ingredients ul {
+	list-style: none;
+	padding-left: 2rem;
+}
+
+#ingredients ul li {
+	display: flex;
+	gap: 1.5rem;
+	align-items: center;
+}
+
+#ingredients ul li .bi {
+	color: var(--quaternary-color);
+	font-size: 1.5rem;
+	text-shadow: 1px 2px 3px;
+}
+
+#method-of-preparation,
+#tips p {
+	text-align: justify;
+}
+
+#method-of-preparation p::first-letter,
+#tips p::first-letter {
+	margin-left: 1em;
+}
+
+#others-recipes .most-searched-recipes-card {
+	margin-top: 2rem;
+}
+
+/* comments */
+
+#comments-container {
+	margin-top: 5rem;
+}
+
+#comments-container h4 {
+	font-size: 1.3rem;
+	margin-bottom: 1rem;
+	font-weight: 500;
+}
+
+#comment-form {
+	display: flex;
+	flex-wrap: wrap;
+	padding: 0 20px;
+	justify-content: flex-end;
+}
+
+#comment-form label {
+	flex: 0 0 5%;
+	font-size: 2rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: var(--primary-color);
+}
+
+#comment-form input {
+	flex: 1 0 95%;
+	padding-left: 1rem;
+	outline: none;
+	background-color: var(--bg-primary-color);
+	border: 1px solid var(--text-secundary-color);
+	border-radius: 5px;
+}
+
+#comment-form button {
+	flex: 0 0 10%;
+	margin-top: 1.2rem;
+	border: none;
+	border-radius: 5px;
+	padding: 8px 25px;
+	cursor: pointer;
+}
+
+#comments {
+	padding: 0 20px;
+}
+
+#comments .comment {
+	background-color: var(--bg-primary-color);
+	width: 100%;
+	padding: 10px 20px 30px;
+	border-radius: 8px;
+	margin-top: 2rem;
+}
+
+#comments .user-profile {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+}
+
+#comments .user-profile .bi {
+	font-size: 2.5rem;
+	color: #fdca49;
+}
+
+#comments .user-profile .profile-name h5 {
+	font-family: 'Pacifico', cursive;
+	font-size: 1.3rem;
+}
+
+#comments .comment .user-comment {
+	color: var(--primary-color);
+	margin-top: 0.5rem;
+	padding-left: 2rem;
+	font-weight: 500;
+	font-style: italic;
+}
+
 /* footer */
 
 #footer {

@@ -28,20 +28,21 @@ require_once __DIR__ . '/templates/navbar.php';
     </div>
     <div id="recipe-body">
       <div id="ingredients">
-        <h4>Ingredients:</h4>
+        <h4 class="title">Ingredients:</h4>
         <ul>
-          <li>3 eggs</li>
-          <li>2 tea cups of wheat flour</li>
-          <li>2 tea cups of milk</li>
-          <li>1/2 tea cup of oil</li>
-          <li>1 tablespoon of butter</li>
-          <li>salt to taste</li>
-          <li>1 teaspoon baking soup</li>
-          <li>Shredded chicken seasoned to taste with corn, peas and curd cheese (for the filling)</li>
+          <li><i class="bi bi-check-lg"></i> 3 eggs</li>
+          <li><i class="bi bi-check-lg"></i> 2 tea cups of wheat flour</li>
+          <li><i class="bi bi-check-lg"></i> 2 tea cups of milk</li>
+          <li><i class="bi bi-check-lg"></i> 1/2 tea cup of oil</li>
+          <li><i class="bi bi-check-lg"></i> 1 tablespoon of butter</li>
+          <li><i class="bi bi-check-lg"></i> salt to taste</li>
+          <li><i class="bi bi-check-lg"></i> 1 teaspoon baking soup</li>
+          <li><i class="bi bi-check-lg"></i> Shredded chicken seasoned to taste with corn, peas and curd cheese (for the
+            filling)</li>
         </ul>
       </div>
       <div id="method-of-preparation">
-        <h4>Methods of preparation:</h4>
+        <h4 class="title">Methods of preparation:</h4>
         <p>
           Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
           standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to
@@ -50,7 +51,7 @@ require_once __DIR__ . '/templates/navbar.php';
         </p>
       </div>
       <div id="tips">
-        <h4>Tips:</h4>
+        <h4 class="title">Tips:</h4>
         <p>
           Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
           standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to
@@ -61,7 +62,7 @@ require_once __DIR__ . '/templates/navbar.php';
     </div>
   </div>
   <div id="others-recipes">
-    <h4>you might also like...</h4>
+    <h4 class="title">you might also like...</h4>
     <div class="others">
       <div class="most-searched-recipes-card">
         <div class="most-searched-image">
