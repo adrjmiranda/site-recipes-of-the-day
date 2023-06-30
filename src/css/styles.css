@@ -704,9 +704,8 @@ a {
 	border-color: var(--tertiary-color);
 }
 
-.input-field input[type='password'],
-.input-field:nth-child(4) input,
-.input-field:nth-child(5) input {
+#password,
+#confirm_password {
 	padding-left: 0.6rem;
 }
 
@@ -732,6 +731,20 @@ a {
 	height: 40px;
 	cursor: pointer;
 	font-weight: 500;
+}
+
+.error {
+	color: var(--tertiary-color);
+	font-size: 0.8rem;
+	font-weight: bold;
+	text-align: center;
+}
+
+.empty-fields p {
+	background-color: var(--tertiary-color);
+	color: var(--bg-primary-color);
+	padding: 10px 0;
+	border-radius: 3px;
 }
 
 /* footer */

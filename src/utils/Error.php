@@ -3,7 +3,7 @@ namespace utils;
 
 class Error
 {
-  static private $errorTypes = (object) array(
+  static public $ERROR_TYPES = [
     'ERR_EMPTY_NAME' => false,
     'ERR_EMPTY_EMAIL' => false,
     'ERR_EMPTY_PASSWORD' => false,
@@ -17,9 +17,9 @@ class Error
     'ERR_REGISTRATION_FAILED' => false,
     'ERR_LOGIN_FAILED' => false,
     'ERR_INCORRECT_EMAIL_OR_PASSWORD' => false
-  );
+  ];
 
-  static private $errorMessages = (object) array(
+  static public $ERROR_MSG = [
     'ERR_EMPTY_NAME' => 'The name cannot be empty.',
     'ERR_EMPTY_EMAIL' => 'The email cannot be empty.',
     'ERR_EMPTY_PASSWORD' => 'The password cannot be empty.',
@@ -33,15 +33,17 @@ class Error
     'ERR_REGISTRATION_FAILED' => 'Failed to register user.',
     'ERR_LOGIN_FAILED' => 'Login failed.',
     'ERR_INCORRECT_EMAIL_OR_PASSWORD' => 'Invalid email or password.'
-  );
+  ];
 
   static public function setError($errorType, $state)
   {
-    self::$errorTypes->$errorType = $state;
+    self::$ERROR_TYPES[$errorType] = $state;
   }
 
-  static public function getErrorMessage($errorType)
+  static public function clearErrors()
   {
-    return self::$errorMessages->$errorType;
+    foreach (self::$ERROR_TYPES as $error => $state) {
+      $state = false;
+    }
   }
 }
