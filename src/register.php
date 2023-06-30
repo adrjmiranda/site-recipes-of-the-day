@@ -67,8 +67,6 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['password'])
         Error::setError('ERR_INVALID_CONFIRM_PASSWORD', false);
 
         // register user
-        echo 'OK';
-        exit();
       }
     }
   }
@@ -107,6 +105,10 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['password'])
         <?php if (Error::$ERROR_TYPES['ERR_ALL_FIELDS_EMPTY']): ?>
           <p>
             <?= Error::$ERROR_MSG['ERR_ALL_FIELDS_EMPTY'] ?>
+          </p>
+        <?php elseif (Error::$ERROR_TYPES['ERR_REGISTRATION_FAILED']): ?>
+          <p>
+            <?= Error::$ERROR_MSG['ERR_REGISTRATION_FAILED'] ?>
           </p>
         <?php endif; ?>
       </div>
