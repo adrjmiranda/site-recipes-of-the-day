@@ -99,7 +99,7 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['password'])
 
 <body>
   <div id="form-container">
-    <form action="register.php" id="register-form" method="post">
+    <form action="login.php" id="register-form" method="post">
       <h2>Create an account:</h2>
       <div class="error empty-fields">
         <?php if (Error::$ERROR_TYPES['ERR_ALL_FIELDS_EMPTY']): ?>
@@ -111,23 +111,6 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['password'])
             <?= Error::$ERROR_MSG['ERR_REGISTRATION_FAILED'] ?>
           </p>
         <?php endif; ?>
-      </div>
-      <div class="input-field">
-        <label for="name">Name:</label>
-        <input type="text" name="name" id="name" placeholder="Your name"
-          value="<?= isset($_POST['name']) ? $name : '' ?>">
-        <i class="bi bi-person-fill"></i>
-        <div class="error">
-          <?php if (Error::$ERROR_TYPES['ERR_EMPTY_NAME']): ?>
-            <p>
-              <?= Error::$ERROR_MSG['ERR_EMPTY_NAME'] ?>
-            </p>
-          <?php elseif (Error::$ERROR_TYPES['ERR_INVALID_NAME']): ?>
-            <p>
-              <?= Error::$ERROR_MSG['ERR_INVALID_NAME'] ?>
-            </p>
-          <?php endif; ?>
-        </div>
       </div>
       <div class="input-field">
         <label for="email">E-mail:</label>
@@ -166,27 +149,7 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['password'])
           </div>
         </div>
       </div>
-      <div class="input-field">
-        <label for="confirm_password">Confirm password:</label>
-        <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm your password"
-          value="<?= isset($_POST['confirm_password']) ? $confirm_password : '' ?>">
-        <div class="show-pass" id="show-confirm-pass">
-          <i class="bi bi-lock-fill hidden"></i>
-          <i class="bi bi-unlock-fill"></i>
-          <div class="error">
-            <?php if (Error::$ERROR_TYPES['ERR_EMPTY_CONFIRM_PASSWORD']): ?>
-              <p>
-                <?= Error::$ERROR_MSG['ERR_EMPTY_CONFIRM_PASSWORD'] ?>
-              </p>
-            <?php elseif (Error::$ERROR_TYPES['ERR_INVALID_CONFIRM_PASSWORD']): ?>
-              <p>
-                <?= Error::$ERROR_MSG['ERR_INVALID_CONFIRM_PASSWORD'] ?>
-              </p>
-            <?php endif; ?>
-          </div>
-        </div>
-      </div>
-      <button type="submit" class="btn form-btn">Register</button>
+      <button type="submit" class="btn form-btn">Login</button>
     </form>
   </div>
 </body>
