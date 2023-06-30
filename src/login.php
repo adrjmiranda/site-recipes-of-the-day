@@ -5,20 +5,12 @@ require_once __DIR__ . '/utils/Error.php';
 
 use utils\Error;
 
-if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['password']) && isset($_POST['confirm_password'])) {
-  $name = filter_input(INPUT_POST, 'name');
+if (isset($_POST['email']) && isset($_POST['password'])) {
   $email = filter_input(INPUT_POST, 'email');
   $password = filter_input(INPUT_POST, 'password');
-  $confirm_password = filter_input(INPUT_POST, 'confirm_password');
 
-  if (isEmpty($name) || isEmpty($email) || isEmpty($password) || isEmpty($confirm_password)) {
+  if (isEmpty($email) || isEmpty($password)) {
     Error::setError('ERR_ALL_FIELDS_EMPTY', true);
-
-    if (isEmpty($name)) {
-      Error::setError('ERR_EMPTY_NAME', true);
-    } else {
-      Error::setError('ERR_EMPTY_NAME', false);
-    }
 
     if (isEmpty($email)) {
       Error::setError('ERR_EMPTY_EMAIL', true);
@@ -31,22 +23,10 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['password'])
     } else {
       Error::setError('ERR_EMPTY_PASSWORD', false);
     }
-
-    if (isEmpty($confirm_password)) {
-      Error::setError('ERR_EMPTY_CONFIRM_PASSWORD', true);
-    } else {
-      Error::setError('ERR_EMPTY_CONFIRM_PASSWORD', false);
-    }
   } else {
     Error::setError('ERR_ALL_FIELDS_EMPTY', false);
 
-    if (isInvalidName($name) || isInvalidEmail($email) || isInvalidPassword($password)) {
-      if (isInvalidName($name)) {
-        Error::setError('ERR_INVALID_NAME', true);
-      } else {
-        Error::setError('ERR_INVALID_NAME', false);
-      }
-
+    if (isInvalidEmail($email) || isInvalidPassword($password)) {
       if (isInvalidEmail($email)) {
         Error::setError('ERR_INVALID_EMAIL', true);
       } else {
@@ -61,17 +41,11 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['password'])
     } else {
       Error::clearErrors();
 
-      if (ifPasswordAndPasswordConfirmationDoNotMatch($password, $confirm_password)) {
-        Error::setError('ERR_INVALID_CONFIRM_PASSWORD', true);
-      } else {
-        Error::setError('ERR_INVALID_CONFIRM_PASSWORD', false);
-
-        // register user
-      }
+      // validate user
     }
   }
 } else {
-  Error::setError('ERR_REGISTRATION_FAILED', true);
+  Error::setError('ERR_LOGIN_FAILED', true);
 }
 ?>
 <!DOCTYPE html>
@@ -106,9 +80,9 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['password'])
           <p>
             <?= Error::$ERROR_MSG['ERR_ALL_FIELDS_EMPTY'] ?>
           </p>
-        <?php elseif (Error::$ERROR_TYPES['ERR_REGISTRATION_FAILED']): ?>
+        <?php elseif (Error::$ERROR_TYPES['ERR_LOGIN_FAILED']): ?>
           <p>
-            <?= Error::$ERROR_MSG['ERR_REGISTRATION_FAILED'] ?>
+            <?= Error::$ERROR_MSG['ERR_LOGIN_FAILED'] ?>
           </p>
         <?php endif; ?>
       </div>
