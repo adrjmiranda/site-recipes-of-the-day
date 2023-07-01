@@ -8,7 +8,7 @@
       <?= $newRecipe->getPreparationTime() ?>min
     </div>
     <span class="rating"><i class="bi bi-star-fill"></i>
-      <?= $newRecipe->getRating() ?>
+      <?= $newRecipe->getRating() === 0 ? '' : $newRecipe->getRating() ?>
     </span>
   </div>
 </a>

@@ -284,7 +284,7 @@ a {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 1em;
-	justify-content: space-between;
+	justify-content: flex-start;
 }
 
 .most-searched-recipes-card,
@@ -294,12 +294,13 @@ a {
 	height: 250px;
 	flex: 1 0 20%;
 	min-width: 250px;
-	max-width: calc(33% - 1em);
+	max-width: calc(25% - 1%);
 	border-radius: 8px;
 	text-decoration: none;
 }
 
-.recipe-card {
+.recipe-card,
+.top-rated-card {
 	overflow: hidden;
 }
 
@@ -352,6 +353,7 @@ a {
 	position: relative;
 	height: 100%;
 	width: 100%;
+	background-size: cover;
 }
 
 .top-rated-title,
@@ -376,6 +378,9 @@ a {
 	left: 50%;
 	transform: translateX(-50%);
 	color: var(--bg-primary-color);
+	font-size: 1.2rem;
+	text-shadow: 1px 2px 3px rgba(0, 0, 0, 0.8);
+	text-transform: capitalize;
 }
 
 .special-card {
@@ -391,10 +396,11 @@ a {
 	border-radius: 50%;
 	left: 50%;
 	transform: translateX(-50%);
-	height: 12rem;
-	width: 12rem;
+	height: 12.5rem;
+	width: 12.5rem;
 	z-index: 99;
 	background-size: cover;
+	box-shadow: 2px 2px 3px 2px rgba(0, 0, 0, 0.4);
 }
 
 .special-info {
@@ -413,7 +419,12 @@ a {
 	color: var(--primary-color);
 	margin-bottom: 0.5em;
 	color: var(--text-primary-color);
+	font-size: 1rem;
+}
+
+.special-title h4 {
 	font-weight: 300;
+	text-transform: capitalize;
 }
 
 .special-time .bi {
@@ -442,7 +453,8 @@ a {
 	left: 50%;
 	transform: translateX(-50%);
 	text-align: center;
-	color: var(--tertiary-color);
+	color: var(--bg-primary-color);
+	text-transform: capitalize;
 	font-family: 'Pacifico', cursive;
 	letter-spacing: 0.1em;
 	font-size: 1.4rem;

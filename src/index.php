@@ -9,8 +9,9 @@ use dao\RecipeDAO;
 
 $recipeDAO = new RecipeDAO($conn);
 
+$topRatedRecipes = $recipeDAO->findAll('rating', 4);
 $specialRecipes = $recipeDAO->findByCategory('special', 4);
-$newRecipes = $recipeDAO->findAll(12);
+$newRecipes = $recipeDAO->findAll('id', 12);
 
 $categoriesBg = [
   'rice_and_risotto.jpg',
@@ -78,38 +79,9 @@ $categoriesBg = [
 <div id="top-rated">
   <div class="top-rated container-wrapper">
     <h3 class="title">Top rated</h3>
-    <div class="top-rated-card">
-      <div class="top-rated-image">
-        <div class="top-rated-title">
-          <h4>Lorem Ipsum is simply dummy</h4>
-        </div>
-        <div class="top-rated-rating"><i class="bi bi-star-fill"></i> 5</div>
-      </div>
-    </div>
-    <div class="top-rated-card">
-      <div class="top-rated-image">
-        <div class="top-rated-title">
-          <h4>Lorem Ipsum is simply dummy</h4>
-        </div>
-        <div class="top-rated-rating"><i class="bi bi-star-fill"></i> 5</div>
-      </div>
-    </div>
-    <div class="top-rated-card">
-      <div class="top-rated-image">
-        <div class="top-rated-title">
-          <h4>Lorem Ipsum is simply dummy</h4>
-        </div>
-        <div class="top-rated-rating"><i class="bi bi-star-fill"></i> 5</div>
-      </div>
-    </div>
-    <div class="top-rated-card">
-      <div class="top-rated-image">
-        <div class="top-rated-title">
-          <h4>Lorem Ipsum is simply dummy</h4>
-        </div>
-        <div class="top-rated-rating"><i class="bi bi-star-fill"></i> 5</div>
-      </div>
-    </div>
+    <?php foreach ($topRatedRecipes as $topRatedRecipe): ?>
+      <?php require __DIR__ . '/templates/cards/top-rated-card.php' ?>
+    <?php endforeach; ?>
   </div>
 </div>
 <div id="special">

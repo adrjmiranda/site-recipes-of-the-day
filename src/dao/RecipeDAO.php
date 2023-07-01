@@ -82,17 +82,19 @@ class RecipeDAO implements RecipeDAOInterface
     $stmt->execute();
   }
 
-  public function findAll($limit = null)
+  public function findAll($orderBy, $limit = null)
   {
     $recipes = [];
 
 
     if ($limit) {
-      $stmt = $this->conn->prepare('SELECT * FROM recipes ORDER BY id DESC LIMIT :limit');
+      $stmt = $this->conn->prepare('SELECT * FROM recipes ORDER BY :orderBy DESC LIMIT :limit');
       $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
     } else {
-      $stmt = $this->conn->prepare('SELECT * FROM recipes ORDER BY id DESC');
+      $stmt = $this->conn->prepare('SELECT * FROM recipes ORDER BY :orderBy DESC');
     }
+
+    $stmt->bindParam(':orderBy', $orderBy, PDO::PARAM_STR);
 
     $stmt->execute();
 
