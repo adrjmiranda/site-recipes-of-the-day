@@ -85,7 +85,7 @@ class RecipeDAO
   {
     $recipes = null;
 
-    $stmt = $this->conn->prepare('SELECT * FROM recipes');
+    $stmt = $this->conn->prepare('SELECT * FROM recipes ORDER BY id DESC');
 
     $stmt->execute();
 
