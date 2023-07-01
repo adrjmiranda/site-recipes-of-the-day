@@ -1,6 +1,8 @@
 <?php
 require_once __DIR__ . '/utils/globals.php';
 
+require_once __DIR__ . '/connection/conn.php';
+
 $categoriesBg = [
   'rice_and_risotto.jpg',
   'birds.jpg',
