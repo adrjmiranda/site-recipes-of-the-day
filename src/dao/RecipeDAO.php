@@ -5,9 +5,10 @@ namespace dao;
 require_once __DIR__ . '/../models/Recipe.php';
 
 use models\Recipe;
+use models\RecipeDAOInterface;
 use PDO;
 
-class RecipeDAO
+class RecipeDAO implements RecipeDAOInterface
 {
   private $conn;
 
