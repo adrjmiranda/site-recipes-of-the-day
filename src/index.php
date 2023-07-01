@@ -25,7 +25,6 @@ $categoriesBg = [
   'breads.jpg',
   'fishes_and_sea_food.jpg',
   'drinks.jpg',
-  'sauces_and_pâtés.jpg',
   'soups_and_broths.jpg',
   'special.jpg'
 ];

@@ -7,4 +7,4 @@ CREATE TABLE IF NOT EXISTS `recipesoftheday`.`comments` (
   `recipe_id` INT(11) UNSIGNED NOT NULL,
   FOREIGN KEY (`user_id`) REFERENCES `recipesoftheday`.`users` (`id`),
   FOREIGN KEY (`recipe_id`) REFERENCES `recipesoftheday`.`recipes` (`id`)
-);
+) CHARACTER SET utf8 COLLATE utf8_general_ci;
