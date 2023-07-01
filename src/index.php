@@ -9,6 +9,7 @@ use dao\RecipeDAO;
 
 $recipeDAO = new RecipeDAO($conn);
 
+$mostSearchedRecipes = $recipeDAO->findAll('rating', 4);
 $topRatedRecipes = $recipeDAO->findAll('rating', 4);
 $specialRecipes = $recipeDAO->findByCategory('special', 4);
 $newRecipes = $recipeDAO->findAll('id', 12);
@@ -42,38 +43,9 @@ $categoriesBg = [
 <div id="most-searched-recipes">
   <div class="most-searched-recipes container-wrapper">
     <h3 class="title">Most searched recipes</h3>
-    <div class="most-searched-recipes-card">
-      <div class="most-searched-image">
-        <div class="most-searched-time"><i class="bi bi-clock"></i> 20min</div>
-      </div>
-      <div class="most-searched-title">
-        <h4>Lorem Ipsum is simply dummy</h4>
-      </div>
-    </div>
-    <div class="most-searched-recipes-card">
-      <div class="most-searched-image">
-        <div class="most-searched-time"><i class="bi bi-clock"></i> 20min</div>
-      </div>
-      <div class="most-searched-title">
-        <h4>Lorem Ipsum is simply dummy</h4>
-      </div>
-    </div>
-    <div class="most-searched-recipes-card">
-      <div class="most-searched-image">
-        <div class="most-searched-time"><i class="bi bi-clock"></i> 20min</div>
-      </div>
-      <div class="most-searched-title">
-        <h4>Lorem Ipsum is simply dummy</h4>
-      </div>
-    </div>
-    <div class="most-searched-recipes-card">
-      <div class="most-searched-image">
-        <div class="most-searched-time"><i class="bi bi-clock"></i> 20min</div>
-      </div>
-      <div class="most-searched-title">
-        <h4>Lorem Ipsum is simply dummy</h4>
-      </div>
-    </div>
+    <?php foreach ($mostSearchedRecipes as $mostSearchedRecipe): ?>
+      <?php require __DIR__ . '/templates/cards/most-searched-recipes-card.php' ?>
+    <?php endforeach; ?>
   </div>
 </div>
 <div id="top-rated">

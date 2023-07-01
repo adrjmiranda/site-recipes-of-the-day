@@ -1,8 +1,14 @@
 <a href="#" class="most-searched-recipes-card">
-  <div class="most-searched-image">
-    <div class="most-searched-time"><i class="bi bi-clock"></i> 20min</div>
+  <div class="most-searched-image"
+    style="background-image: url('<?= $mostSearchedRecipe->getRecipeImage() === '' ? $BASE_URL . 'assets/imgs/categories/' . str_replace(' ', '_', $mostSearchedRecipe->getCategory()) . '.jpg' : $BASE_URL . 'images/recipes/' . $mostSearchedRecipe->getId() . '/' . $mostSearchedRecipe->getRecipeImage() ?>');">
+    >
+    <div class="most-searched-time"><i class="bi bi-clock"></i>
+      <?= $mostSearchedRecipe->getPreparationTime() ?>min
+    </div>
   </div>
   <div class="most-searched-title">
-    <h4>Lorem Ipsum is simply dummy</h4>
+    <h4>
+      <?= $mostSearchedRecipe->getTitle() ?>
+    </h4>
   </div>
 </a>

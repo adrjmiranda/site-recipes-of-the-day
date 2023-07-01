@@ -283,7 +283,7 @@ a {
 .new-recipes {
 	display: flex;
 	flex-wrap: wrap;
-	gap: 1em;
+	gap: 1.5em;
 	justify-content: flex-start;
 }
 
@@ -300,20 +300,25 @@ a {
 }
 
 .recipe-card,
-.top-rated-card {
+.top-rated-card,
+.most-searched-recipes-card {
 	overflow: hidden;
 }
 
 .most-searched-image {
 	height: 70%;
 	position: relative;
+	background-size: cover;
 }
 
 .most-searched-time {
 	position: absolute;
 	right: 0.8em;
 	top: 0.8em;
-	color: var(--text-secundary-color);
+	color: var(--bg-primary-color);
+	font-size: 1.2rem;
+	font-weight: 600;
+	text-shadow: 1px 2px 3px rgba(0, 0, 0, 0.3);
 }
 
 .most-searched-time .bi {
@@ -327,10 +332,11 @@ a {
 	height: 30%;
 	background-color: var(--bg-primary-color);
 	padding: 10px;
+	text-transform: capitalize;
 }
 
 .most-searched-title h4 {
-	font-weight: 600;
+	font-weight: 300;
 	font-size: 1rem;
 	color: var(--tertiary-color);
 }
