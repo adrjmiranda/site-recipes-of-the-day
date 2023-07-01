@@ -82,11 +82,17 @@ class RecipeDAO implements RecipeDAOInterface
     $stmt->execute();
   }
 
-  public function findAll()
+  public function findAll($limit = null)
   {
-    $recipes = null;
+    $recipes = [];
 
-    $stmt = $this->conn->prepare('SELECT * FROM recipes ORDER BY id DESC');
+
+    if ($limit) {
+      $stmt = $this->conn->prepare('SELECT * FROM recipes ORDER BY id DESC LIMIT :limit');
+      $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+    } else {
+      $stmt = $this->conn->prepare('SELECT * FROM recipes ORDER BY id DESC');
+    }
 
     $stmt->execute();
 
@@ -105,7 +111,7 @@ class RecipeDAO implements RecipeDAOInterface
 
   public function findById($id)
   {
-    $recipe = null;
+    $recipe = [];
 
     $stmt = $this->conn->prepare('SELECT * FROM recipes WHERE id = :id LIMIT 1');
 
@@ -122,11 +128,17 @@ class RecipeDAO implements RecipeDAOInterface
     return $recipe;
   }
 
-  public function findByTitle($title)
+  public function findByTitle($title, $limit = null)
   {
-    $recipes = null;
+    $recipes = [];
 
-    $stmt = $this->conn->prepare('SELECT * FROM recipes WHERE title = :title');
+
+    if ($limit) {
+      $stmt = $this->conn->prepare('SELECT * FROM recipes WHERE title = :title LIMIT :limit');
+      $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+    } else {
+      $stmt = $this->conn->prepare('SELECT * FROM recipes WHERE title = :title');
+    }
 
     $stmt->bindParam(':title', $title);
 
@@ -145,11 +157,16 @@ class RecipeDAO implements RecipeDAOInterface
     return $recipes;
   }
 
-  public function findByCategory($category)
+  public function findByCategory($category, $limit = null)
   {
-    $recipes = null;
+    $recipes = [];
 
-    $stmt = $this->conn->prepare('SELECT * FROM recipes WHERE category = :category');
+    if ($limit) {
+      $stmt = $this->conn->prepare('SELECT * FROM recipes WHERE category = :category LIMIT :limit');
+      $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+    } else {
+      $stmt = $this->conn->prepare('SELECT * FROM recipes WHERE category = :category');
+    }
 
     $stmt->bindParam(':category', $category);
 

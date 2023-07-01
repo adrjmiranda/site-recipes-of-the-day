@@ -120,10 +120,10 @@ interface RecipeDAOInterface
 {
   public function buildRecipe($data);
   public function createRecipe(Recipe $recipe);
-  public function findAll();
+  public function findAll($limit = null);
   public function findById($id);
-  public function findByTitle($title);
-  public function findByCategory($category);
+  public function findByTitle($title, $limit = null);
+  public function findByCategory($category, $limit = null);
   public function update(Recipe $recipe);
   public function delete($id);
 }

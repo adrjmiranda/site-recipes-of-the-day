@@ -1,4 +1,4 @@
-<div class="special-card">
+<a href="#" class="special-card">
   <div class="special-card-image"></div>
   <div class="special-info">
     <div class="special-title">
@@ -8,4 +8,4 @@
       <span><i class="bi bi-clock-fill"></i> 15min</span>
     </div>
   </div>
-</div>
+</a>
