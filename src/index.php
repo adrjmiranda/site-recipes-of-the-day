@@ -9,6 +9,9 @@ use dao\RecipeDAO;
 
 $recipeDAO = new RecipeDAO($conn);
 
+$specialRecipes = $recipeDAO->findByCategory('special', 4);
+$newRecipes = $recipeDAO->findAll(12);
+
 $categoriesBg = [
   'rice_and_risotto.jpg',
   'birds.jpg',
@@ -162,90 +165,9 @@ $categoriesBg = [
 <div id="new-recipes">
   <div class="new-recipes container-wrapper">
     <h3 class="title">New recipes</h3>
-    <div class="recipe-card">
-      <div class="recipe-image">
-        <h4>Lorem Ipsum is simply dummy</h4>
-        <div class="recipe-time"><i class="bi bi-stopwatch"></i> 20min</div>
-        <span class="rating"><i class="bi bi-star-fill"></i> 4</span>
-      </div>
-    </div>
-    <div class="recipe-card">
-      <div class="recipe-image">
-        <h4>Lorem Ipsum is simply dummy</h4>
-        <div class="recipe-time"><i class="bi bi-stopwatch"></i> 20min</div>
-        <span class="rating"><i class="bi bi-star-fill"></i> 4</span>
-      </div>
-    </div>
-    <div class="recipe-card">
-      <div class="recipe-image">
-        <h4>Lorem Ipsum is simply dummy</h4>
-        <div class="recipe-time"><i class="bi bi-stopwatch"></i> 20min</div>
-        <span class="rating"><i class="bi bi-star-fill"></i> 4</span>
-      </div>
-    </div>
-    <div class="recipe-card">
-      <div class="recipe-image">
-        <h4>Lorem Ipsum is simply dummy</h4>
-        <div class="recipe-time"><i class="bi bi-stopwatch"></i> 20min</div>
-        <span class="rating"><i class="bi bi-star-fill"></i> 4</span>
-      </div>
-    </div>
-    <div class="recipe-card">
-      <div class="recipe-image">
-        <h4>Lorem Ipsum is simply dummy</h4>
-        <div class="recipe-time"><i class="bi bi-stopwatch"></i> 20min</div>
-        <span class="rating"><i class="bi bi-star-fill"></i> 4</span>
-      </div>
-    </div>
-    <div class="recipe-card">
-      <div class="recipe-image">
-        <h4>Lorem Ipsum is simply dummy</h4>
-        <div class="recipe-time"><i class="bi bi-stopwatch"></i> 20min</div>
-        <span class="rating"><i class="bi bi-star-fill"></i> 4</span>
-      </div>
-    </div>
-    <div class="recipe-card">
-      <div class="recipe-image">
-        <h4>Lorem Ipsum is simply dummy</h4>
-        <div class="recipe-time"><i class="bi bi-stopwatch"></i> 20min</div>
-        <span class="rating"><i class="bi bi-star-fill"></i> 4</span>
-      </div>
-    </div>
-    <div class="recipe-card">
-      <div class="recipe-image">
-        <h4>Lorem Ipsum is simply dummy</h4>
-        <div class="recipe-time"><i class="bi bi-stopwatch"></i> 20min</div>
-        <span class="rating"><i class="bi bi-star-fill"></i> 4</span>
-      </div>
-    </div>
-    <div class="recipe-card">
-      <div class="recipe-image">
-        <h4>Lorem Ipsum is simply dummy</h4>
-        <div class="recipe-time"><i class="bi bi-stopwatch"></i> 20min</div>
-        <span class="rating"><i class="bi bi-star-fill"></i> 4</span>
-      </div>
-    </div>
-    <div class="recipe-card">
-      <div class="recipe-image">
-        <h4>Lorem Ipsum is simply dummy</h4>
-        <div class="recipe-time"><i class="bi bi-stopwatch"></i> 20min</div>
-        <span class="rating"><i class="bi bi-star-fill"></i> 4</span>
-      </div>
-    </div>
-    <div class="recipe-card">
-      <div class="recipe-image">
-        <h4>Lorem Ipsum is simply dummy</h4>
-        <div class="recipe-time"><i class="bi bi-stopwatch"></i> 20min</div>
-        <span class="rating"><i class="bi bi-star-fill"></i> 4</span>
-      </div>
-    </div>
-    <div class="recipe-card">
-      <div class="recipe-image">
-        <h4>Lorem Ipsum is simply dummy</h4>
-        <div class="recipe-time"><i class="bi bi-stopwatch"></i> 20min</div>
-        <span class="rating"><i class="bi bi-star-fill"></i> 4</span>
-      </div>
-    </div>
+    <?php foreach ($newRecipes as $newRecipe): ?>
+      <?php require __DIR__ . '/templates/cards/recipe-card.php' ?>
+    <?php endforeach; ?>
   </div>
 </div>
 <?php require_once __DIR__ . '/templates/footer.php' ?>

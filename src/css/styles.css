@@ -298,6 +298,10 @@ a {
 	border-radius: 8px;
 }
 
+.recipe-card {
+	overflow: hidden;
+}
+
 .most-searched-image {
 	height: 70%;
 	position: relative;
@@ -421,6 +425,7 @@ a {
 	position: relative;
 	height: 100%;
 	width: 100%;
+	background-size: cover;
 }
 
 .recipe-image h4,
@@ -437,8 +442,9 @@ a {
 	color: var(--tertiary-color);
 	font-family: 'Pacifico', cursive;
 	letter-spacing: 0.1em;
-	font-size: 1.2rem;
+	font-size: 1.4rem;
 	width: 95%;
+	text-shadow: 1px 2px 3px rgba(0, 0, 0, 0.8);
 }
 
 .recipe-image .recipe-time,
