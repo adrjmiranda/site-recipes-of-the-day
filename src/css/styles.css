@@ -296,6 +296,7 @@ a {
 	min-width: 250px;
 	max-width: calc(33% - 1em);
 	border-radius: 8px;
+	text-decoration: none;
 }
 
 .recipe-card {
@@ -393,9 +394,11 @@ a {
 	height: 12rem;
 	width: 12rem;
 	z-index: 99;
+	background-size: cover;
 }
 
 .special-info {
+	height: 120px;
 	bottom: -3.2em;
 	left: 50%;
 	transform: translateX(-50%);
