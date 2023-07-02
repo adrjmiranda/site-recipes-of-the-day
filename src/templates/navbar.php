@@ -27,7 +27,8 @@
       <nav id="navbar">
         <div class="nav container-wrapper">
           <div class="logo">
-            <a href="<?= $BASE_URL ?>index.php"><img src="<?= $BASE_URL ?>assets/recipesoftheday_logo.svg" alt="">
+            <a href="<?= $BASE_URL ?>index.php"><img src="<?= $BASE_URL ?>assets/recipesoftheday_logo.svg"
+                alt="Logo - Recipes Of The Day">
               Recipes Of The Day</a>
           </div>
           <div id="menu">
@@ -55,6 +56,6 @@
               <button type="submit"><i class="bi bi-search"></i></button>
             </form>
           </div>
-          <a href="#" class="btn login"><i class="bi bi-person-fill"></i> enter</a>
+          <a href="<?= $BASE_URL ?>login.php" class="btn login"><i class="bi bi-person-fill"></i> enter</a>
         </div>
       </nav>

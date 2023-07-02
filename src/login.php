@@ -5,47 +5,49 @@ require_once __DIR__ . '/utils/Error.php';
 
 use utils\Error;
 
-if (isset($_POST['email']) && isset($_POST['password'])) {
-  $email = filter_input(INPUT_POST, 'email');
-  $password = filter_input(INPUT_POST, 'password');
+if (!empty($_POST)) {
+  if (isset($_POST['email']) && isset($_POST['password'])) {
+    $email = filter_input(INPUT_POST, 'email');
+    $password = filter_input(INPUT_POST, 'password');
 
-  if (isEmpty($email) || isEmpty($password)) {
-    Error::setError('ERR_ALL_FIELDS_EMPTY', true);
+    if (isEmpty($email) || isEmpty($password)) {
+      Error::setError('ERR_ALL_FIELDS_EMPTY', true);
 
-    if (isEmpty($email)) {
-      Error::setError('ERR_EMPTY_EMAIL', true);
+      if (isEmpty($email)) {
+        Error::setError('ERR_EMPTY_EMAIL', true);
+      } else {
+        Error::setError('ERR_EMPTY_EMAIL', false);
+      }
+
+      if (isEmpty($password)) {
+        Error::setError('ERR_EMPTY_PASSWORD', true);
+      } else {
+        Error::setError('ERR_EMPTY_PASSWORD', false);
+      }
     } else {
-      Error::setError('ERR_EMPTY_EMAIL', false);
-    }
+      Error::setError('ERR_ALL_FIELDS_EMPTY', false);
 
-    if (isEmpty($password)) {
-      Error::setError('ERR_EMPTY_PASSWORD', true);
-    } else {
-      Error::setError('ERR_EMPTY_PASSWORD', false);
+      if (isInvalidEmail($email) || isInvalidPassword($password)) {
+        if (isInvalidEmail($email)) {
+          Error::setError('ERR_INVALID_EMAIL', true);
+        } else {
+          Error::setError('ERR_INVALID_EMAIL', false);
+        }
+
+        if (isInvalidPassword($password)) {
+          Error::setError('ERR_INVALID_PASSWORD', true);
+        } else {
+          Error::setError('ERR_INVALID_PASSWORD', false);
+        }
+      } else {
+        Error::clearErrors();
+
+        // validate user
+      }
     }
   } else {
-    Error::setError('ERR_ALL_FIELDS_EMPTY', false);
-
-    if (isInvalidEmail($email) || isInvalidPassword($password)) {
-      if (isInvalidEmail($email)) {
-        Error::setError('ERR_INVALID_EMAIL', true);
-      } else {
-        Error::setError('ERR_INVALID_EMAIL', false);
-      }
-
-      if (isInvalidPassword($password)) {
-        Error::setError('ERR_INVALID_PASSWORD', true);
-      } else {
-        Error::setError('ERR_INVALID_PASSWORD', false);
-      }
-    } else {
-      Error::clearErrors();
-
-      // validate user
-    }
+    Error::setError('ERR_LOGIN_FAILED', true);
   }
-} else {
-  Error::setError('ERR_LOGIN_FAILED', true);
 }
 ?>
 <!DOCTYPE html>
@@ -74,7 +76,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
 <body>
   <div id="form-container">
     <form action="login.php" id="register-form" method="post">
-      <h2>Create an account:</h2>
+      <h2>Login:</h2>
       <div class="error empty-fields">
         <?php if (Error::$ERROR_TYPES['ERR_ALL_FIELDS_EMPTY']): ?>
           <p>
@@ -124,6 +126,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
         </div>
       </div>
       <button type="submit" class="btn form-btn">Login</button>
+      <p class="change-form">You don't have an account yet. <a href="<?= $BASE_URL ?>register.php">Register</a>.</p>
     </form>
   </div>
 </body>

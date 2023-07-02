@@ -309,7 +309,6 @@ a {
 	min-width: 250px;
 	max-width: calc(25% - 1%);
 	border-radius: 8px;
-	text-decoration: none;
 }
 
 .recipe-card,
@@ -717,6 +716,23 @@ a {
 	justify-content: center;
 	align-items: center;
 	height: 100vh;
+}
+
+#form-container .change-form {
+	color: var(--text-secundary-color);
+	text-align: center;
+	font-weight: 300;
+	font-size: 0.9rem;
+}
+
+#form-container .change-form a {
+	color: var(--primary-color);
+	font-weight: bold;
+	transition: 0.3s;
+}
+
+#form-container .change-form a:hover {
+	color: var(--quaternary-color);
 }
 
 #register-form {
