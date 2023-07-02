@@ -1,21 +1,47 @@
 <?php
 require_once __DIR__ . '/utils/globals.php';
+
+require_once __DIR__ . '/connection/conn.php';
+
+require_once __DIR__ . '/dao/RecipeDAO.php';
+
+use dao\RecipeDAO;
+
+$recipeDAO = new RecipeDAO($conn);
+
+$id = filter_input(INPUT_GET, 'id');
+
+$recipe = $recipeDAO->findById($id);
+
+if (!$recipe) {
+  header('location: index.php');
+}
+
+$mostSearchedRecipes = $recipeDAO->findAll('id', 5);
 ?>
 <?php
 require_once __DIR__ . '/templates/navbar.php';
 ?>
+</header>
 <div id="recipe-container" class="container-wrapper">
   <div id="recipe">
     <div id="recipe-image">
-      <div class="recipe-photo">
+      <div class="recipe-photo"
+        style="background-image: url('<?= $recipe->getRecipeImage() === '' ? $BASE_URL . 'assets/imgs/categories/' . str_replace(' ', '_', $recipe->getCategory()) . '.jpg' : $BASE_URL . 'images/recipes/' . $recipe->getId() . '/' . $recipe->getRecipeImage() ?>');">
         <div class="title">
-          <h1>Lorem ipsum</h1>
+          <h1>
+            <?= $recipe->getTitle() ?>
+          </h1>
         </div>
       </div>
       <div class="info">
         <div class="portions-and-time">
-          <div class="portions"><i class="bi bi-circle-half"></i> 4 portions</div>
-          <div class="time"><i class="bi bi-clock-fill"></i> 20min</div>
+          <div class="portions"><i class="bi bi-circle-half"></i>
+            <?= $recipe->getPortions() ?> portions
+          </div>
+          <div class="time"><i class="bi bi-clock-fill"></i>
+            <?= $recipe->getPreparationTime() ?>min
+          </div>
         </div>
         <div class="rating">
           <i class="bi bi-star-fill"></i>
@@ -30,33 +56,24 @@ require_once __DIR__ . '/templates/navbar.php';
       <div id="ingredients">
         <h4 class="title">Ingredients:</h4>
         <ul>
-          <li><i class="bi bi-check-lg"></i> 3 eggs</li>
-          <li><i class="bi bi-check-lg"></i> 2 tea cups of wheat flour</li>
-          <li><i class="bi bi-check-lg"></i> 2 tea cups of milk</li>
-          <li><i class="bi bi-check-lg"></i> 1/2 tea cup of oil</li>
-          <li><i class="bi bi-check-lg"></i> 1 tablespoon of butter</li>
-          <li><i class="bi bi-check-lg"></i> salt to taste</li>
-          <li><i class="bi bi-check-lg"></i> 1 teaspoon baking soup</li>
-          <li><i class="bi bi-check-lg"></i> Shredded chicken seasoned to taste with corn, peas and curd cheese (for the
-            filling)</li>
+          <?php foreach (json_decode($recipe->getIngredients(), true) as $ingredient): ?>
+            <li>
+              <i class="bi bi-check-lg"></i>
+              <?= $ingredient ?>
+            </li>
+          <?php endforeach; ?>
         </ul>
       </div>
       <div id="method-of-preparation">
         <h4 class="title">Methods of preparation:</h4>
         <p>
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
-          standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to
-          make a type specimen book. It has survived not only five centuries, but also the leap into electronic
-          typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset
+          <?= $recipe->getMethodOfPreparation() ?>
         </p>
       </div>
       <div id="tips">
         <h4 class="title">Tips:</h4>
         <p>
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
-          standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to
-          make a type specimen book. It has survived not only five centuries, but also the leap into electronic
-          typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset
+          <?= $recipe->getTips() ?>
         </p>
       </div>
     </div>
@@ -64,46 +81,9 @@ require_once __DIR__ . '/templates/navbar.php';
   <div id="others-recipes">
     <h4 class="title">you might also like...</h4>
     <div class="others">
-      <div class="most-searched-recipes-card">
-        <div class="most-searched-image">
-          <div class="most-searched-time"><i class="bi bi-clock"></i> 20min</div>
-        </div>
-        <div class="most-searched-title">
-          <h4>Lorem Ipsum is simply dummy</h4>
-        </div>
-      </div>
-      <div class="most-searched-recipes-card">
-        <div class="most-searched-image">
-          <div class="most-searched-time"><i class="bi bi-clock"></i> 20min</div>
-        </div>
-        <div class="most-searched-title">
-          <h4>Lorem Ipsum is simply dummy</h4>
-        </div>
-      </div>
-      <div class="most-searched-recipes-card">
-        <div class="most-searched-image">
-          <div class="most-searched-time"><i class="bi bi-clock"></i> 20min</div>
-        </div>
-        <div class="most-searched-title">
-          <h4>Lorem Ipsum is simply dummy</h4>
-        </div>
-      </div>
-      <div class="most-searched-recipes-card">
-        <div class="most-searched-image">
-          <div class="most-searched-time"><i class="bi bi-clock"></i> 20min</div>
-        </div>
-        <div class="most-searched-title">
-          <h4>Lorem Ipsum is simply dummy</h4>
-        </div>
-      </div>
-      <div class="most-searched-recipes-card">
-        <div class="most-searched-image">
-          <div class="most-searched-time"><i class="bi bi-clock"></i> 20min</div>
-        </div>
-        <div class="most-searched-title">
-          <h4>Lorem Ipsum is simply dummy</h4>
-        </div>
-      </div>
+      <?php foreach ($mostSearchedRecipes as $mostSearchedRecipe): ?>
+        <?php require __DIR__ . '/templates/cards/most-searched-recipes-card.php' ?>
+      <?php endforeach; ?>
     </div>
   </div>
 </div>

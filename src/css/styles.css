@@ -525,15 +525,26 @@ a {
 	margin-top: 4rem;
 }
 
+#recipe {
+	max-width: 70%;
+}
+
+#others-recipes {
+	max-width: 30%;
+	flex-grow: 1;
+}
+
 #recipe-image {
 	height: 550px;
 	flex: 1 0 100%;
 	border-radius: 10px;
+	overflow: hidden;
 }
 
 .recipe-photo {
 	position: relative;
 	height: 80%;
+	background-size: cover;
 }
 
 .recipe-photo .title {
@@ -617,6 +628,8 @@ a {
 
 #others-recipes .most-searched-recipes-card {
 	margin-top: 2rem;
+	display: block;
+	max-width: 100%;
 }
 
 /* comments */
@@ -663,10 +676,6 @@ a {
 	border-radius: 5px;
 	padding: 8px 25px;
 	cursor: pointer;
-}
-
-#comments {
-	padding: 0 20px;
 }
 
 #comments .comment {
