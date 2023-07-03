@@ -1,2 +1,4 @@
 src/.env
 db/env/db.env
+src/images/users/*
+src/images/recipes/*

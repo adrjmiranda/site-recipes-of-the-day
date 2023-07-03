@@ -13,12 +13,10 @@ use utils\Error;
 class UserDAO implements UserDAOInterface
 {
   private $conn;
-  private $url;
 
-  public function __construct(PDO $conn, $url)
+  public function __construct(PDO $conn)
   {
     $this->conn = $conn;
-    $this->url = $url;
   }
 
   public function buildUser($data)
@@ -57,14 +55,9 @@ class UserDAO implements UserDAOInterface
 
     try {
       $stmt->execute();
-
-      Error::setError('ERR_REGISTRATION_FAILED', false);
-
-      header('location: ' . $this->url . 'login.php');
+      return true;
     } catch (\PDOException $error) {
-      Error::setError('ERR_REGISTRATION_FAILED', true);
-
-      header('location: ' . $_SERVER['HTTP_REFERER']);
+      return false;
     }
   }
 

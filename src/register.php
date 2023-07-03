@@ -1,12 +1,19 @@
 <?php
 require_once __DIR__ . '/utils/globals.php';
+require_once __DIR__ . '/connection/conn.php';
 require_once __DIR__ . '/utils/validations.php';
+require_once __DIR__ . '/utils/format_input.php';
 require_once __DIR__ . '/utils/Error.php';
 
 require_once __DIR__ . '/dao/UserDAO.php';
+require_once __DIR__ . '/models/User.php';
 
 use utils\Error;
 use dao\UserDAO;
+use models\User;
+
+$user = new User();
+$userDAO = new UserDAO($conn);
 
 if (!empty($_POST)) {
   if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['password']) && isset($_POST['confirm_password'])) {
@@ -70,7 +77,21 @@ if (!empty($_POST)) {
         } else {
           Error::setError('ERR_INVALID_CONFIRM_PASSWORD', false);
 
-          // register user
+          $name = removeUnnecessarySpaces($name);
+
+          $user->setName($name);
+          $user->setEmail($email);
+
+          $finalPassword = $user->generatePasswordHash($password);
+
+          $user->setPassword($finalPassword);
+
+          if ($userDAO->create($user)) {
+            Error::setError('ERR_REGISTRATION_FAILED', false);
+            header('location: login.php');
+          } else {
+            Error::setError('ERR_REGISTRATION_FAILED', true);
+          }
         }
       }
     }
@@ -120,7 +141,7 @@ if (!empty($_POST)) {
       <div class="input-field">
         <label for="name">Name:</label>
         <input type="text" name="name" id="name" placeholder="Your name"
-          value="<?= isset($_POST['name']) ? $name : '' ?>">
+          value="<?= isset($_POST['name']) ? $name : '' ?>" required>
         <i class="bi bi-person-fill"></i>
         <div class="error">
           <?php if (Error::$ERROR_TYPES['ERR_EMPTY_NAME']): ?>
@@ -137,7 +158,7 @@ if (!empty($_POST)) {
       <div class="input-field">
         <label for="email">E-mail:</label>
         <input type="email" name="email" id="email" placeholder="Your e-mail"
-          value="<?= isset($_POST['email']) ? $email : '' ?>">
+          value="<?= isset($_POST['email']) ? $email : '' ?>" required>
         <i class="bi bi-envelope-fill"></i>
         <div class="error">
           <?php if (Error::$ERROR_TYPES['ERR_EMPTY_EMAIL']): ?>
@@ -154,7 +175,7 @@ if (!empty($_POST)) {
       <div class="input-field">
         <label for="password">Password:</label>
         <input type="password" name="password" id="password" placeholder="Your password"
-          value="<?= isset($_POST['password']) ? $password : '' ?>">
+          value="<?= isset($_POST['password']) ? $password : '' ?>" required minlength="8">
         <div class="show-pass" id="show-pass">
           <i class="bi bi-lock-fill hidden"></i>
           <i class="bi bi-unlock-fill"></i>
@@ -174,7 +195,7 @@ if (!empty($_POST)) {
       <div class="input-field">
         <label for="confirm_password">Confirm password:</label>
         <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm your password"
-          value="<?= isset($_POST['confirm_password']) ? $confirm_password : '' ?>">
+          value="<?= isset($_POST['confirm_password']) ? $confirm_password : '' ?>" required>
         <div class="show-pass" id="show-confirm-pass">
           <i class="bi bi-lock-fill hidden"></i>
           <i class="bi bi-unlock-fill"></i>
