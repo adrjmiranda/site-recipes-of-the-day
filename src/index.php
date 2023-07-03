@@ -5,10 +5,13 @@ require_once __DIR__ . '/connection/conn.php';
 
 require_once __DIR__ . '/dao/CategoryDAO.php';
 require_once __DIR__ . '/dao/RecipeDAO.php';
+require_once __DIR__ . '/dao/UserDAO.php';
 
 use dao\CategoryDAO;
 use dao\RecipeDAO;
+use dao\UserDAO;
 
+$userDAO = new UserDAO($conn);
 $categoryDAO = new CategoryDAO($conn);
 $recipeDAO = new RecipeDAO($conn);
 
@@ -19,6 +22,13 @@ $topRatedRecipes = $recipeDAO->findAll('rating', 4);
 $specialRecipes = $recipeDAO->findByCategory('special', 4);
 $newRecipes = $recipeDAO->findAll('id', 12);
 
+$user = null;
+
+if (isset($_SESSION['token'])) {
+  $token = $_SESSION['token'];
+
+  $user = $userDAO->findByToken($token);
+}
 ?>
 <?php require_once __DIR__ . '/templates/navbar.php' ?>
 <div id="banner">

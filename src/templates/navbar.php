@@ -56,6 +56,10 @@
               <button type="submit"><i class="bi bi-search"></i></button>
             </form>
           </div>
-          <a href="<?= $BASE_URL ?>login.php" class="btn login"><i class="bi bi-person-fill"></i> enter</a>
+          <?php if ($user): ?>
+            <a href="<?= $BASE_URL ?>logout.php" class="btn login"><i class="bi bi-box-arrow-left"></i> logout</a>
+          <? else: ?>
+            <a href="<?= $BASE_URL ?>login.php" class="btn login"><i class="bi bi-person-fill"></i> enter</a>
+          <?php endif; ?>
         </div>
       </nav>

@@ -98,5 +98,5 @@ interface UserDAOInterface
   public function update(User $user);
   public function delete($id);
   public function validatePassword($password, $hash);
-  public function setTokenToSession($token);
+  public function destroyToken(User $user);
 }

@@ -122,6 +122,10 @@ class UserDAO implements UserDAOInterface
 
   public function findByToken($token)
   {
+    if (!$token) {
+      return null;
+    }
+
     $user = null;
 
     $stmt = $this->conn->prepare('SELECT * FROM users WHERE token = :token LIMIT 1');
@@ -189,5 +193,12 @@ class UserDAO implements UserDAOInterface
   public function setTokenToSession($token)
   {
     $_SESSION['token'] = $token;
+  }
+
+  public function destroyToken(User $user)
+  {
+    $user->setToken(null);
+
+    $this->update($user);
   }
 }
