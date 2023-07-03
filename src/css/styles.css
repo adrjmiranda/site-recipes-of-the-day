@@ -615,6 +615,11 @@ a {
 	text-shadow: 1px 2px 3px;
 }
 
+#method-of-preparation p,
+#tips p {
+	line-height: 2em;
+}
+
 #method-of-preparation,
 #tips p {
 	text-align: justify;
@@ -635,6 +640,19 @@ a {
 
 #comments-container {
 	margin-top: 5rem;
+}
+
+.not-authorized {
+	text-align: center;
+	padding: 10px 0;
+	margin-bottom: 30px;
+	border-radius: 3px;
+	font-weight: 300;
+	font-size: 1.2rem;
+	font-style: italic;
+	background-color: var(--text-secundary-color);
+	color: var(--bg-primary-color);
+	opacity: 0.5;
 }
 
 #comments-container h4 {
@@ -659,7 +677,7 @@ a {
 	color: var(--primary-color);
 }
 
-#comment-form input {
+#comment-form input[type='text'] {
 	flex: 1 0 95%;
 	padding-left: 1rem;
 	outline: none;
@@ -668,7 +686,8 @@ a {
 	border-radius: 5px;
 }
 
-#comment-form button {
+#comment-form button,
+#comment-form input[type='submit'] {
 	flex: 0 0 10%;
 	margin-top: 1.2rem;
 	border: none;

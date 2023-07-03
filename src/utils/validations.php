@@ -24,3 +24,8 @@ function ifPasswordAndPasswordConfirmationDoNotMatch($password, $confirm_passwor
 {
   return !($password === $confirm_password) || isInvalidPassword($password);
 }
+
+function isInvalidComment($comment)
+{
+  return !$comment || !is_string($comment);
+}
