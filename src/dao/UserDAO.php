@@ -166,13 +166,9 @@ class UserDAO implements UserDAOInterface
     try {
       $stmt->execute();
 
-      Error::setError('ERROR_UPDATING_USER', false);
-
-      header('location: ' . $_SERVER['HTTP_REFERER']);
+      return true;
     } catch (\PDOException $error) {
-      Error::setError('ERROR_UPDATING_USER', true);
-
-      header('location: ' . $_SERVER['HTTP_REFERER']);
+      return false;
     }
   }
 
@@ -183,5 +179,15 @@ class UserDAO implements UserDAOInterface
     $stmt->bindParam(':id', $id);
 
     $stmt->execute();
+  }
+
+  public function validatePassword($password, $hash)
+  {
+    return password_verify($password, $hash);
+  }
+
+  public function setTokenToSession($token)
+  {
+    $_SESSION['token'] = $token;
   }
 }

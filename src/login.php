@@ -1,9 +1,18 @@
 <?php
 require_once __DIR__ . '/utils/globals.php';
+require_once __DIR__ . '/connection/conn.php';
 require_once __DIR__ . '/utils/validations.php';
 require_once __DIR__ . '/utils/Error.php';
 
+require_once __DIR__ . '/dao/UserDAO.php';
+require_once __DIR__ . '/models/User.php';
+
+use dao\UserDAO;
 use utils\Error;
+use models\User;
+
+$user = new User();
+$userDAO = new UserDAO($conn);
 
 if (!empty($_POST)) {
   if (isset($_POST['email']) && isset($_POST['password'])) {
@@ -42,7 +51,34 @@ if (!empty($_POST)) {
       } else {
         Error::clearErrors();
 
-        // validate user
+        $userByEmail = $userDAO->findByEmail($email);
+
+        if ($userByEmail) {
+          $hash = $userByEmail->getPassword();
+
+          if ($userDAO->validatePassword($password, $hash)) {
+            Error::setError('ERR_INCORRECT_EMAIL_OR_PASSWORD', false);
+
+            $token = $user->generateToken();
+
+            $userByEmail->setToken($token);
+
+            if ($userDAO->update($userByEmail)) {
+              $userDAO->setTokenToSession($token);
+
+              Error::setError('ERR_LOGIN_FAILED', false);
+
+              header('location: index.php');
+            } else {
+              Error::setError('ERR_LOGIN_FAILED', true);
+            }
+
+          } else {
+            Error::setError('ERR_INCORRECT_EMAIL_OR_PASSWORD', true);
+          }
+        } else {
+          Error::setError('ERR_INCORRECT_EMAIL_OR_PASSWORD', true);
+        }
       }
     }
   } else {
