@@ -72,25 +72,33 @@ if (!empty($_POST)) {
       } else {
         Error::clearErrors();
 
-        if (ifPasswordAndPasswordConfirmationDoNotMatch($password, $confirm_password)) {
-          Error::setError('ERR_INVALID_CONFIRM_PASSWORD', true);
+        $userByEmail = $userDAO->findByEmail($email);
+
+        if ($userByEmail) {
+          Error::setError('ERR_EMAIL_ALREADY_REGISTERED', true);
         } else {
-          Error::setError('ERR_INVALID_CONFIRM_PASSWORD', false);
+          Error::setError('ERR_EMAIL_ALREADY_REGISTERED', false);
 
-          $name = removeUnnecessarySpaces($name);
-
-          $user->setName($name);
-          $user->setEmail($email);
-
-          $finalPassword = $user->generatePasswordHash($password);
-
-          $user->setPassword($finalPassword);
-
-          if ($userDAO->create($user)) {
-            Error::setError('ERR_REGISTRATION_FAILED', false);
-            header('location: login.php');
+          if (ifPasswordAndPasswordConfirmationDoNotMatch($password, $confirm_password)) {
+            Error::setError('ERR_INVALID_CONFIRM_PASSWORD', true);
           } else {
-            Error::setError('ERR_REGISTRATION_FAILED', true);
+            Error::setError('ERR_INVALID_CONFIRM_PASSWORD', false);
+
+            $name = removeUnnecessarySpaces($name);
+
+            $user->setName($name);
+            $user->setEmail($email);
+
+            $finalPassword = $user->generatePasswordHash($password);
+
+            $user->setPassword($finalPassword);
+
+            if ($userDAO->create($user)) {
+              Error::setError('ERR_REGISTRATION_FAILED', false);
+              header('location: login.php');
+            } else {
+              Error::setError('ERR_REGISTRATION_FAILED', true);
+            }
           }
         }
       }
@@ -131,6 +139,10 @@ if (!empty($_POST)) {
         <?php if (Error::$ERROR_TYPES['ERR_ALL_FIELDS_EMPTY']): ?>
           <p>
             <?= Error::$ERROR_MSG['ERR_ALL_FIELDS_EMPTY'] ?>
+          </p>
+        <?php elseif (Error::$ERROR_TYPES['ERR_EMAIL_ALREADY_REGISTERED']): ?>
+          <p>
+            <?= Error::$ERROR_MSG['ERR_EMAIL_ALREADY_REGISTERED'] ?>
           </p>
         <?php elseif (Error::$ERROR_TYPES['ERR_REGISTRATION_FAILED']): ?>
           <p>
