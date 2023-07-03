@@ -81,9 +81,13 @@ require_once __DIR__ . '/templates/navbar.php';
   <div id="others-recipes">
     <h4 class="title">you might also like...</h4>
     <div class="others">
-      <?php foreach ($mostSearchedRecipes as $mostSearchedRecipe): ?>
-        <?php require __DIR__ . '/templates/cards/most-searched-recipes-card.php' ?>
-      <?php endforeach; ?>
+      <?php if (!empty($mostSearchedRecipes)): ?>
+        <?php foreach ($mostSearchedRecipes as $mostSearchedRecipe): ?>
+          <?php require __DIR__ . '/templates/cards/most-searched-recipes-card.php' ?>
+        <?php endforeach; ?>
+      <?php else: ?>
+        <p class="no-recipe">No recipe registered.</p>
+      <?php endif; ?>
     </div>
   </div>
 </div>

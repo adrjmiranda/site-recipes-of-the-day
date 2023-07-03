@@ -3,7 +3,10 @@ require_once __DIR__ . '/utils/globals.php';
 require_once __DIR__ . '/utils/validations.php';
 require_once __DIR__ . '/utils/Error.php';
 
+require_once __DIR__ . '/dao/UserDAO.php';
+
 use utils\Error;
+use dao\UserDAO;
 
 if (!empty($_POST)) {
   if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['password']) && isset($_POST['confirm_password'])) {
