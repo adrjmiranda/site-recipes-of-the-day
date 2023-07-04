@@ -54,7 +54,7 @@ interface RatingDAOInterface
 {
   public function buildRating($data);
   public function create(Rating $rating);
-  public function findByUserId($user_id);
+  public function findByUserIdAndRecipeId($user_id, $recipe_id);
   public function averageOfRates($recipe_id);
   public function update(Rating $rating);
 }

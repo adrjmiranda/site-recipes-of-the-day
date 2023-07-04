@@ -123,6 +123,11 @@ if (!empty($_POST)) {
             <?= Error::$ERROR_MSG['ERR_LOGIN_FAILED'] ?>
           </p>
         <?php endif; ?>
+        <?php if (Error::$ERROR_TYPES['ERR_INCORRECT_EMAIL_OR_PASSWORD']): ?>
+          <p>
+            <?= Error::$ERROR_MSG['ERR_INCORRECT_EMAIL_OR_PASSWORD'] ?>
+          </p>
+        <?php endif; ?>
       </div>
       <div class="input-field">
         <label for="email">E-mail:</label>

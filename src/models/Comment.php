@@ -3,8 +3,10 @@
 namespace models;
 
 require_once __DIR__ . '/User.php';
+require_once __DIR__ . '/Recipe.php';
 
 use models\User;
+use models\Recipe;
 
 class Comment
 {
@@ -64,5 +66,5 @@ interface CommentDAOInterface
   public function findByRecipeId($recipe_id);
   public function update(Comment $comment);
   public function delete($id);
-  public function checkIfUserHasAlreadyCommented(User $user);
+  public function checkIfUserHasAlreadyCommented(User $user, Recipe $recipe);
 }

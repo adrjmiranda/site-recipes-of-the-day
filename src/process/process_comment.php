@@ -27,12 +27,14 @@ if (!empty($_POST)) {
     $user = $userDAO->findById($user_id);
     $recipe = $recipeDAO->findById($recipe_id);
 
+    $alreadyCommented = $commentDAO->checkIfUserHasAlreadyCommented($user, $recipe);
+
     if ($user && $recipe && !$alreadyCommented) {
       if (!isInvalidComment($comm)) {
         $comment = new Comment();
 
         $comment->setUserId($user_id);
-        $comment->setRecipeId($user_id);
+        $comment->setRecipeId($recipe_id);
         $comment->setComment($comm);
 
         $commentDAO->create($comment);

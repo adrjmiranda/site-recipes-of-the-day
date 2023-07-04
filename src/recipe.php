@@ -25,7 +25,7 @@ if (!$recipe) {
 
 $mostSearchedRecipes = $recipeDAO->findAll('id', 5);
 
-$comments = $commentDAO->findAll();
+$comments = $commentDAO->findByRecipeId($recipe->getId());
 
 $user = null;
 $alreadyCommented = null;
@@ -34,8 +34,7 @@ if (isset($_SESSION['token'])) {
   $token = $_SESSION['token'];
 
   $user = $userDAO->findByToken($token);
-
-  $alreadyCommented = $commentDAO->checkIfUserHasAlreadyCommented($user);
+  $alreadyCommented = $commentDAO->checkIfUserHasAlreadyCommented($user, $recipe);
 }
 ?>
 <?php
@@ -63,11 +62,21 @@ require_once __DIR__ . '/templates/navbar.php';
           </div>
         </div>
         <div class="rating">
-          <a href="<?= $BASE_URL ?>process/process_rating.php?rating=1"><i class="bi bi-star" data-star=1></i></a>
-          <a href="<?= $BASE_URL ?>process/process_rating.php?rating=2"><i class="bi bi-star" data-star=2></i></a>
-          <a href="<?= $BASE_URL ?>process/process_rating.php?rating=3"><i class="bi bi-star" data-star=3></i></a>
-          <a href="<?= $BASE_URL ?>process/process_rating.php?rating=4"><i class="bi bi-star" data-star=4></i></a>
-          <a href="<?= $BASE_URL ?>process/process_rating.php?rating=5"><i class="bi bi-star" data-star=5></i></a>
+          <a
+            href="<?= $BASE_URL ?>process/process_rating.php?rating=1&user_id=<?= $user->getId() ?>&recipe_id=<?= $recipe->getId() ?>"><i
+              class="bi bi-star" data-star=1></i></a>
+          <a
+            href="<?= $BASE_URL ?>process/process_rating.php?rating=2&user_id=<?= $user->getId() ?>&recipe_id=<?= $recipe->getId() ?>"><i
+              class="bi bi-star" data-star=2></i></a>
+          <a
+            href="<?= $BASE_URL ?>process/process_rating.php?rating=3&user_id=<?= $user->getId() ?>&recipe_id=<?= $recipe->getId() ?>"><i
+              class="bi bi-star" data-star=3></i></a>
+          <a
+            href="<?= $BASE_URL ?>process/process_rating.php?rating=4&user_id=<?= $user->getId() ?>&recipe_id=<?= $recipe->getId() ?>"><i
+              class="bi bi-star" data-star=4></i></a>
+          <a
+            href="<?= $BASE_URL ?>process/process_rating.php?rating=5&user_id=<?= $user->getId() ?>&recipe_id=<?= $recipe->getId() ?>"><i
+              class="bi bi-star" data-star=5></i></a>
         </div>
       </div>
     </div>

@@ -12,8 +12,6 @@ if (isset($_SESSION['token'])) {
   $token = $_SESSION['token'];
 
   $user = $userDAO->findByToken($token);
-
-  $userDAO->destroyToken($user);
 }
 
 $_SESSION = array();
