@@ -22,18 +22,18 @@ if (!empty($_POST)) {
   if (isset($_POST['user_id']) && isset($_POST['recipe_id']) && isset($_POST['comment'])) {
     $user_id = filter_input(INPUT_POST, 'user_id');
     $recipe_id = filter_input(INPUT_POST, 'recipe_id');
-    $comment = filter_input(INPUT_POST, 'comment');
+    $comm = filter_input(INPUT_POST, 'comment');
 
     $user = $userDAO->findById($user_id);
     $recipe = $recipeDAO->findById($recipe_id);
 
-    if ($user && $recipe) {
-      if (!isInvalidComment($comment)) {
+    if ($user && $recipe && !$alreadyCommented) {
+      if (!isInvalidComment($comm)) {
         $comment = new Comment();
 
         $comment->setUserId($user_id);
         $comment->setRecipeId($user_id);
-        $comment->setComment($comment);
+        $comment->setComment($comm);
 
         $commentDAO->create($comment);
 

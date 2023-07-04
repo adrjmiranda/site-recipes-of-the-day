@@ -1,14 +1,26 @@
+<?php
+$user = $userDAO->findById($comment->getUserId());
+?>
 <div class="comment">
   <div class="user-profile">
-    <div class="profile-image">
-      <i class="bi bi-person-circle"></i>
-    </div>
+    <?php if ($user->getProfileImage() == ''): ?>
+      <div class="profile-image">
+        <i class="bi bi-person-circle"></i>
+      </div>
+    <?php else: ?>
+      <div class="profile-image"
+        style="background-image: url('<?= $BASE_URL ?>images/users/<?= $user->getId() ?>/<?= $user->getProfileImage() ?>');">
+      </div>
+    <?php endif; ?>
     <div class="profile-name">
-      <h5>User name</h5>
+      <h5>
+        <?= $user->getName() ?>
+      </h5>
     </div>
   </div>
   <div class="user-comment">
-    <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking
-      at its layout. The poin.</p>
+    <p>
+      <?= $comment->getComment() ?>
+    </p>
   </div>
 </div>

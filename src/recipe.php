@@ -28,11 +28,14 @@ $mostSearchedRecipes = $recipeDAO->findAll('id', 5);
 $comments = $commentDAO->findAll();
 
 $user = null;
+$alreadyCommented = null;
 
 if (isset($_SESSION['token'])) {
   $token = $_SESSION['token'];
 
   $user = $userDAO->findByToken($token);
+
+  $alreadyCommented = $commentDAO->checkIfUserHasAlreadyCommented($user);
 }
 ?>
 <?php
@@ -114,21 +117,23 @@ require_once __DIR__ . '/templates/navbar.php';
     </div>
   <?php endif; ?>
   <h4>Comments:</h4>
-  <form action="<?= $BASE_URL ?>process/process_comment.php" id="comment-form" method="post">
-    <label for="comment">
-      <i class="bi bi-chat-text-fill"></i>
-    </label>
-    <?php if ($user): ?>
-      <input type="hidden" name="recipe_id" value="<?= $recipe->getId() ?>">
-      <input type="hidden" name="user_id" value="<?= $user->getId() ?>">
-      <input type="text" name="comment" id="comment" placeholder="What did you think of this recipe?">
-      <button class="btn">comment</button>
-    <?php else: ?>
-      <input type="text" name="comment" id="comment" placeholder="What did you think of this recipe?" disabled>
-      <!-- <button class="btn">comment</button> -->
-      <input type="submit" value="comment" class="btn" disabled>
-    <?php endif; ?>
-  </form>
+  <?php if (!$alreadyCommented): ?>
+    <form action="<?= $BASE_URL ?>process/process_comment.php" id="comment-form" method="post">
+      <label for="comment">
+        <i class="bi bi-chat-text-fill"></i>
+      </label>
+      <?php if ($user): ?>
+        <input type="hidden" name="recipe_id" value="<?= $recipe->getId() ?>">
+        <input type="hidden" name="user_id" value="<?= $user->getId() ?>">
+        <input type="text" name="comment" id="comment" placeholder="What did you think of this recipe?" required>
+        <button class="btn">comment</button>
+      <?php else: ?>
+        <input type="text" name="comment" id="comment" placeholder="What did you think of this recipe?" disabled>
+        <!-- <button class="btn">comment</button> -->
+        <input type="submit" value="comment" class="btn" disabled>
+      <?php endif; ?>
+    </form>
+  <?php endif; ?>
   <div id="comments">
     <?php if (isset($comments)): ?>
       <?php foreach ($comments as $comment): ?>

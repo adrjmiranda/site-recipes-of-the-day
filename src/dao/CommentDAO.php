@@ -3,7 +3,9 @@
 namespace dao;
 
 require_once __DIR__ . '/../models/Comment.php';
+require_once __DIR__ . '/../models/User.php';
 
+use models\User;
 use models\CommentDAOInterface;
 use models\Comment;
 use PDO;
@@ -144,5 +146,26 @@ class CommentDAO implements CommentDAOInterface
     $stmt->bindParam(':id', $id);
 
     $stmt->execute();
+  }
+
+  public function checkIfUserHasAlreadyCommented(User $user)
+  {
+    $comment = null;
+
+    $user_id = $user->getId();
+
+    $stmt = $this->conn->prepare('SELECT * FROM comments WHERE user_id = :user_id LIMIT 1');
+
+    $stmt->bindParam(':user_id', $user_id);
+
+    $stmt->execute();
+
+    if ($stmt->rowCount() > 0) {
+      $data = $stmt->fetch();
+
+      $comment = $this->buildComment($data);
+    }
+
+    return $comment;
   }
 }
