@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
   <!-- js scipts -->
   <script src="<?= $BASE_URL ?>js/scripts.js" defer></script>
+  <script src="<?= $BASE_URL ?>js/selected-rate.js" defer></script>
 </head>
 
 <body>

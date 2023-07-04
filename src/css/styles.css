@@ -583,12 +583,13 @@ a {
 	gap: 0.8em;
 }
 
-#recipe-image .info .rating {
+#recipe-image .info .rating a {
 	color: var(--primary-color);
 }
 
-#recipe-image .info .rating .bi {
+#recipe-image .info .rating a .bi {
 	font-size: 1.3rem;
+	cursor: pointer;
 }
 
 #recipe-body {

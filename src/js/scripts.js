@@ -1,47 +1,50 @@
 let banner = document.querySelector('#banner');
-const categoryBackground = document.querySelectorAll('.category-bg');
 
-const timeStart = new Date().getTime();
+if (banner) {
+	const categoryBackground = document.querySelectorAll('.category-bg');
 
-const animationTime = 2;
-const timeToStarAnimation = 5;
-const timeToRestartTheAnimation = 8;
+	const timeStart = new Date().getTime();
 
-categoryBackground.forEach((item) => {
-	item.style.animationDuration = animationTime + 's';
-});
+	const animationTime = 2;
+	const timeToStarAnimation = 5;
+	const timeToRestartTheAnimation = 8;
 
-const startAnimation = () => {
-	for (let index = 0; index < 4; index++) {
-		banner.children[index].classList.add('move-left-' + (index + 1));
-	}
-};
+	categoryBackground.forEach((item) => {
+		item.style.animationDuration = animationTime + 's';
+	});
 
-const endAnimation = () => {
-	for (let index = 0; index < 4; index++) {
-		banner.children[index].classList.remove('move-left-' + (index + 1));
-	}
-};
+	const startAnimation = () => {
+		for (let index = 0; index < 4; index++) {
+			banner.children[index].classList.add('move-left-' + (index + 1));
+		}
+	};
 
-const resetAnimation = () => {
-	banner = document.querySelector('#banner');
+	const endAnimation = () => {
+		for (let index = 0; index < 4; index++) {
+			banner.children[index].classList.remove('move-left-' + (index + 1));
+		}
+	};
 
-	let first = banner.children[0];
+	const resetAnimation = () => {
+		banner = document.querySelector('#banner');
 
-	banner.removeChild(banner.children[0]);
-	banner.appendChild(first);
-};
+		let first = banner.children[0];
 
-setInterval(async () => {
-	let time = new Date().getTime();
-	let interval = Math.round((time - timeStart) / 1000);
+		banner.removeChild(banner.children[0]);
+		banner.appendChild(first);
+	};
 
-	if (interval % timeToStarAnimation == 0) {
-		startAnimation();
-	}
-}, 1000);
+	setInterval(async () => {
+		let time = new Date().getTime();
+		let interval = Math.round((time - timeStart) / 1000);
 
-setInterval(() => {
-	endAnimation();
-	resetAnimation();
-}, timeToRestartTheAnimation * 1000);
+		if (interval % timeToStarAnimation == 0) {
+			startAnimation();
+		}
+	}, 1000);
+
+	setInterval(() => {
+		endAnimation();
+		resetAnimation();
+	}, timeToRestartTheAnimation * 1000);
+}

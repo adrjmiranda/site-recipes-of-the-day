@@ -63,11 +63,11 @@ require_once __DIR__ . '/templates/navbar.php';
           </div>
         </div>
         <div class="rating">
-          <i class="bi bi-star-fill"></i>
-          <i class="bi bi-star-fill"></i>
-          <i class="bi bi-star-fill"></i>
-          <i class="bi bi-star-fill"></i>
-          <i class="bi bi-star"></i>
+          <a href="<?= $BASE_URL ?>process/process_rating.php?rating=1"><i class="bi bi-star" data-star=1></i></a>
+          <a href="<?= $BASE_URL ?>process/process_rating.php?rating=2"><i class="bi bi-star" data-star=2></i></a>
+          <a href="<?= $BASE_URL ?>process/process_rating.php?rating=3"><i class="bi bi-star" data-star=3></i></a>
+          <a href="<?= $BASE_URL ?>process/process_rating.php?rating=4"><i class="bi bi-star" data-star=4></i></a>
+          <a href="<?= $BASE_URL ?>process/process_rating.php?rating=5"><i class="bi bi-star" data-star=5></i></a>
         </div>
       </div>
     </div>
