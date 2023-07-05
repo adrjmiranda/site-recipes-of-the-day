@@ -50,9 +50,24 @@ if (!empty($_GET)) {
 
           if ($alreadyRate) {
             $alreadyRate->setRating($rate);
-            $ratingDAO->update($alreadyRate);
+
+            if ($ratingDAO->update($alreadyRate)) {
+              $averageRating = $ratingDAO->averageOfRates($recipe_id);
+              $averageRating = intval($averageRating);
+
+              $recipe->setRating($averageRating);
+
+              $recipeDAO->update($recipe);
+            }
           } else {
-            $ratingDAO->create($rating);
+            if ($ratingDAO->create($rating)) {
+              $averageRating = $ratingDAO->averageOfRates($recipe_id);
+              $averageRating = intval($averageRating);
+
+              $recipe->setRating($averageRating);
+
+              $recipeDAO->update($recipe);
+            }
           }
         }
       }

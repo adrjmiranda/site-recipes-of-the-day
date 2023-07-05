@@ -384,10 +384,14 @@ a {
 	top: 0.8em;
 	font-size: 1.5em;
 	color: var(--bg-primary-color);
+	text-shadow: 1px 2px 3px rgba(0, 0, 0, 0.5);
+	font-weight: 600;
+	font-family: 'Pacifico', cursive;
 }
 
 .top-rated-rating .bi {
-	color: var(--primary-color);
+	color: var(--secundary-color);
+	text-shadow: 1px 2px 3px rgba(0, 0, 0, 0.3);
 }
 
 .top-rated-title {
@@ -494,11 +498,13 @@ a {
 }
 
 .recipe-image .rating {
-	color: var(--text-secundary-color);
+	color: var(--bg-primary-color);
+	font-family: 'Pacifico', cursive;
 }
 
 .recipe-image .rating .bi {
-	color: var(--primary-color);
+	color: var(--secundary-color);
+	text-shadow: 2px 3px 4px rgba(0, 0, 0, 0.3);
 }
 
 .recipe-image .recipe-time {
@@ -581,6 +587,31 @@ a {
 	display: flex;
 	align-items: center;
 	gap: 0.8em;
+}
+
+#recipe-image .info-rate {
+	display: flex;
+	align-items: center;
+	gap: 2rem;
+}
+
+#recipe-image .info-rate .average-rating {
+	display: flex;
+	align-items: center;
+	gap: 1em;
+}
+
+#recipe-image .info-rate .average-rating .bi {
+	color: var(--secundary-color);
+	font-size: 2.5rem;
+}
+
+#recipe-image .info-rate .average-rating span {
+	font-size: 1.1rem;
+}
+
+#recipe-image .info-rate .average-rating span {
+	font-size: 1.4rem;
 }
 
 #recipe-image .info .rating a {

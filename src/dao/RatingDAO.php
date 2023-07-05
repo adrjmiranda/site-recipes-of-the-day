@@ -41,7 +41,13 @@ class RatingDAO implements RatingDAOInterface
     $stmt->bindParam(':user_id', $user_id);
     $stmt->bindParam(':recipe_id', $recipe_id);
 
-    $stmt->execute();
+    try {
+      $stmt->execute();
+
+      return true;
+    } catch (\PDOException $e) {
+      return false;
+    }
   }
 
   public function findByUserIdAndRecipeId($user_id, $recipe_id)
@@ -76,6 +82,8 @@ class RatingDAO implements RatingDAOInterface
 
     if ($stmt->rowCount() > 0) {
       $average = $stmt->fetch();
+
+      $average = ceil(floatval($average['AVG(rating)']));
     }
 
     return $average;
@@ -95,6 +103,12 @@ class RatingDAO implements RatingDAOInterface
     $stmt->bindParam(':user_id', $user_id);
     $stmt->bindParam(':recipe_id', $recipe_id);
 
-    $stmt->execute();
+    try {
+      $stmt->execute();
+
+      return true;
+    } catch (\PDOException $th) {
+      return false;
+    }
   }
 }

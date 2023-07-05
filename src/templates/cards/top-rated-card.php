@@ -7,7 +7,7 @@
         <?= $topRatedRecipe->getTitle() ?>
       </h4>
     </div>
-    <div class="top-rated-rating"><i class="bi bi-star-fill"></i>
+    <div class="top-rated-rating"><i class="bi bi-star-half"></i>
       <?= $topRatedRecipe->getRating() === 0 ? '' : $topRatedRecipe->getRating() ?>
     </div>
   </div>

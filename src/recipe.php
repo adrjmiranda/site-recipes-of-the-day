@@ -26,6 +26,8 @@ if (!$recipe) {
   header('location: index.php');
 }
 
+$averageRating = $recipe->getRating();
+
 $mostSearchedRecipes = $recipeDAO->findAll('id', 5);
 
 $comments = $commentDAO->findByRecipeId($recipe->getId());
@@ -37,7 +39,7 @@ if (isset($_SESSION['token'])) {
   $token = $_SESSION['token'];
 
   $user = $userDAO->findByToken($token);
-  $user_rating = $ratingDAO->findByUserIdAndRecipeId($user->getId(), $recipe->getId());
+  $userRating = $ratingDAO->findByUserIdAndRecipeId($user->getId(), $recipe->getId());
 
   $alreadyCommented = $commentDAO->checkIfUserHasAlreadyCommented($user, $recipe);
 }
@@ -66,17 +68,36 @@ require_once __DIR__ . '/templates/navbar.php';
             <?= $recipe->getPreparationTime() ?>min
           </div>
         </div>
-        <div class="rating" data-rating="<?= isset($user_rating) ? $user_rating->getRating() : 0 ?>">
-          <a href="<?= $BASE_URL ?>process/process_rating.php?rating=1&recipe_id=<?= $recipe->getId() ?>"><i
-              class="bi bi-star" data-star=1></i></a>
-          <a href="<?= $BASE_URL ?>process/process_rating.php?rating=2&recipe_id=<?= $recipe->getId() ?>"><i
-              class="bi bi-star" data-star=2></i></a>
-          <a href="<?= $BASE_URL ?>process/process_rating.php?rating=3&recipe_id=<?= $recipe->getId() ?>"><i
-              class="bi bi-star" data-star=3></i></a>
-          <a href="<?= $BASE_URL ?>process/process_rating.php?rating=4&recipe_id=<?= $recipe->getId() ?>"><i
-              class="bi bi-star" data-star=4></i></a>
-          <a href="<?= $BASE_URL ?>process/process_rating.php?rating=5&recipe_id=<?= $recipe->getId() ?>"><i
-              class="bi bi-star" data-star=5></i></a>
+        <div class="info-rate">
+          <div class="average-rating">
+            <i class="bi bi-star-half"></i> <span>
+              <b>
+                <?= isset($averageRating) ? $averageRating == 0 ? '-' : $averageRating : '-' ?>
+              </b> / 5
+            </span>
+          </div>
+          <?php if (!$user): ?>
+            <div class="rating" data-rating="<?= isset($userRating) ? $userRating->getRating() : 0 ?>">
+              <a><i class="bi bi-star"></i></a>
+              <a><i class="bi bi-star"></i></a>
+              <a><i class="bi bi-star"></i></a>
+              <a><i class="bi bi-star"></i></a>
+              <a><i class="bi bi-star"></i></a>
+            </div>
+          <?php else: ?>
+            <div class="rating" data-rating="<?= isset($userRating) ? $userRating->getRating() : 0 ?>">
+              <a href="<?= $BASE_URL ?>process/process_rating.php?rating=1&recipe_id=<?= $recipe->getId() ?>"><i
+                  class="bi bi-star" data-star=1></i></a>
+              <a href="<?= $BASE_URL ?>process/process_rating.php?rating=2&recipe_id=<?= $recipe->getId() ?>"><i
+                  class="bi bi-star" data-star=2></i></a>
+              <a href="<?= $BASE_URL ?>process/process_rating.php?rating=3&recipe_id=<?= $recipe->getId() ?>"><i
+                  class="bi bi-star" data-star=3></i></a>
+              <a href="<?= $BASE_URL ?>process/process_rating.php?rating=4&recipe_id=<?= $recipe->getId() ?>"><i
+                  class="bi bi-star" data-star=4></i></a>
+              <a href="<?= $BASE_URL ?>process/process_rating.php?rating=5&recipe_id=<?= $recipe->getId() ?>"><i
+                  class="bi bi-star" data-star=5></i></a>
+            </div>
+          <?php endif; ?>
         </div>
       </div>
     </div>
