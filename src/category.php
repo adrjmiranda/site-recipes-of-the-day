@@ -52,7 +52,9 @@ require_once __DIR__ . '/templates/navbar.php';
         <?= count($recipesByCategoryAll) ?>
       </span> <span>recipes</span>
     </div>
-    <div class="category-simbol"></div>
+    <div class="category-simbol">
+      <img src="<?= $BASE_URL ?>assets/imgs/category_simbol.svg" alt="Category Simbol">
+    </div>
   </div>
   <div id="category-recipes">
     <?php if (count($recipesByCategory) > 0): ?>
