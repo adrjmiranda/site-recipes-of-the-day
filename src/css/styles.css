@@ -129,10 +129,43 @@ a {
 	color: var(--primary-color);
 	font-size: 1.1rem;
 	transition: 0.3s;
+	padding: 5px 8px;
+	border-radius: 5px;
 }
 
 #menu ul li a:hover {
-	color: var(--tertiary-color);
+	color: var(--bg-primary-color);
+	background-color: var(--primary-color);
+}
+
+.more-recipes {
+	position: relative;
+}
+
+.drop-more {
+	position: absolute;
+	top: 4rem;
+	background-color: #fdca49;
+	height: auto;
+	width: auto;
+	z-index: 99;
+	padding: 15px;
+	border-radius: 5px;
+	gap: 0.8em;
+	display: none;
+}
+
+.drop-more ul {
+	display: flex;
+	flex-direction: column;
+}
+
+.drop-more li {
+	width: 100%;
+}
+
+li.more:hover .drop-more {
+	display: block;
 }
 
 #search form {
@@ -296,7 +329,8 @@ a {
 .new-recipes {
 	display: flex;
 	flex-wrap: wrap;
-	gap: 1.5em;
+	row-gap: 2rem;
+	column-gap: 26px;
 	justify-content: flex-start;
 }
 
@@ -307,7 +341,7 @@ a {
 	height: 250px;
 	flex: 1 0 20%;
 	min-width: 250px;
-	max-width: calc(25% - 1%);
+	max-width: 280px;
 	border-radius: 8px;
 }
 
@@ -666,6 +700,61 @@ a {
 	margin-top: 2rem;
 	display: block;
 	max-width: 100%;
+}
+
+/* category page */
+
+#category-banner {
+	height: 80vh;
+	width: 100%;
+	margin: 3rem 0;
+	border-radius: 10px;
+	box-shadow: 2px 1px 2px 1px rgba(0, 0, 0, 0.4);
+	position: relative;
+}
+
+#category-banner h1 {
+	font-size: 5rem;
+	font-family: 'Pacifico', cursive;
+	text-align: center;
+	position: absolute;
+	left: 50%;
+	top: 30%;
+	transform: translateX(-50%);
+	text-transform: uppercase;
+	color: var(--tertiary-color);
+	text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4);
+}
+
+#category-banner #category-qtd {
+	position: absolute;
+	left: 30px;
+	bottom: 30px;
+	font-size: 3rem;
+	font-style: italic;
+}
+
+#category-banner #category-qtd span {
+	font-family: 'Pacifico', cursive;
+	color: var(--secundary-color);
+}
+
+#category-banner #category-qtd #qtd {
+	color: var(--primary-color);
+	text-shadow: 2px 2px 1px rgba(255, 255, 255, 0.3);
+}
+
+#category-recipes {
+	display: flex;
+	flex-wrap: wrap;
+	column-gap: 26px;
+	row-gap: 2rem;
+	min-height: calc(100vh - 80px);
+	justify-content: flex-start;
+}
+
+#category-recipes .recipe-card {
+	max-width: 280px;
 }
 
 /* comments */

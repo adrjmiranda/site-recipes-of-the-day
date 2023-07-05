@@ -1,3 +1,6 @@
+<?php
+$categories = $categoryDao->findAll();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,20 +37,26 @@
           </div>
           <div id="menu">
             <ul>
-              <li>
-                <a href="#">birds</a>
-              </li>
-              <li>
-                <a href="#">meat</a>
-              </li>
-              <li>
-                <a href="#">pastas</a>
-              </li>
-              <li>
-                <a href="#">cakes</a>
-              </li>
-              <li>
-                <a href="#">more <i class="bi bi-caret-down-fill"></i></a>
+              <?php foreach (array_slice($categories, 0, 4) as $category): ?>
+                <li>
+                  <a href="<?= $BASE_URL ?>category.php?id=<?= $category->getId() ?>">
+                    <?= $category->getCategoryName() ?>
+                  </a>
+                </li>
+              <?php endforeach; ?>
+              <li class="more">
+                <a href="#" class="more-recipes">more <i class="bi bi-caret-down-fill"></i></a>
+                <div class="drop-more">
+                  <ul>
+                    <?php foreach (array_slice($categories, 4) as $category): ?>
+                      <li>
+                        <a href="<?= $BASE_URL ?>category.php?id=<?= $category->getId() ?>">
+                          <?= $category->getCategoryName() ?>
+                        </a>
+                      </li>
+                    <?php endforeach; ?>
+                  </ul>
+                </div>
               </li>
             </ul>
           </div>

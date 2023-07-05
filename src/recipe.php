@@ -7,11 +7,15 @@ require_once __DIR__ . '/dao/RecipeDAO.php';
 require_once __DIR__ . '/dao/RatingDAO.php';
 require_once __DIR__ . '/dao/CommentDAO.php';
 require_once __DIR__ . '/dao/UserDAO.php';
+require_once __DIR__ . '/dao/CategoryDAO.php';
 
 use dao\RecipeDAO;
 use dao\RatingDAO;
 use dao\CommentDAO;
 use dao\UserDAO;
+use dao\CategoryDAO;
+
+$categoryDao = new CategoryDAO($conn);
 
 $recipeDAO = new RecipeDAO($conn);
 $commentDAO = new CommentDAO($conn);
