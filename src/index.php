@@ -12,10 +12,10 @@ use dao\RecipeDAO;
 use dao\UserDAO;
 
 $userDAO = new UserDAO($conn);
-$categoryDao = new CategoryDao($conn);
+$categoryDAO = new CategoryDAO($conn);
 $recipeDAO = new RecipeDAO($conn);
 
-$categoriesBg = $categoryDao->findAll();
+$categoriesBg = $categoryDAO->findAll();
 
 $mostSearchedRecipes = $recipeDAO->findAll('rating', 4);
 $topRatedRecipes = $recipeDAO->findAll('rating', 4);

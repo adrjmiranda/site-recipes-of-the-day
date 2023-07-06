@@ -962,6 +962,117 @@ li.more:hover .drop-more {
 	border-radius: 3px;
 }
 
+/* user profile */
+
+#user-profile {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: calc(80vh - 80px);
+}
+
+#user-profile .profile-container {
+	width: 400px;
+	display: flex;
+	flex-direction: column;
+	row-gap: 1rem;
+	align-items: center;
+}
+
+#user-profile .profile-container .profile-image {
+	width: 250px;
+	height: 250px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: 5px solid var(--secundary-color);
+	border-radius: 50%;
+	background-size: cover;
+}
+
+#user-profile .profile-container .profile-name h2 {
+	font-family: 'Pacifico', cursive;
+}
+
+#user-profile .profile-container .profile-email p {
+	font-style: italic;
+}
+
+#user-profile .profile-container .profile-email span {
+	font-weight: 600;
+	color: var(--primary-color);
+	font-size: 0.9rem;
+	font-style: normal;
+}
+
+#user-profile .profile-container .btn {
+	padding: 10px 38px;
+	border-radius: 5px;
+}
+
+/* user edit profile */
+
+#user-edit-profile {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: calc(100vh - 200px);
+}
+
+#user-edit-profile form {
+	width: 450px;
+	display: flex;
+	flex-direction: column;
+	row-gap: 1rem;
+}
+
+#user-edit-profile form .profile-image {
+	height: 150px;
+	width: 150px;
+	background-size: cover;
+	margin: 0 auto;
+}
+
+#user-edit-profile form .input-field input {
+	padding: 8px;
+}
+
+#user-edit-profile form .input-field p {
+	font-weight: 200;
+}
+
+#user-edit-profile form .input-field #label-profile-image {
+	background-color: var(--secundary-color);
+	width: 100%;
+	border-radius: 3px;
+	height: 30px;
+	text-align: center;
+	color: var(--bg-primary-color);
+	font-weight: 500;
+	line-height: 30px;
+	transition: 0.3s;
+	cursor: pointer;
+}
+
+#user-edit-profile form .input-field #label-profile-image:hover {
+	background-color: var(--primary-color);
+}
+
+#user-edit-profile form input[type='file'] {
+	display: none;
+}
+
+#user-edit-profile form input[type='email'] {
+	background-color: var(--bg-primary-color);
+}
+
+#user-edit-profile form input[type='submit'] {
+	border: none;
+	border-radius: 3px;
+	height: 40px;
+	cursor: pointer;
+}
+
 /* footer */
 
 #footer {

@@ -1,5 +1,5 @@
 <?php
-$categories = $categoryDao->findAll();
+$categories = $categoryDAO->findAll();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -68,6 +68,7 @@ $categories = $categoryDao->findAll();
           </div>
           <?php if ($user): ?>
             <a href="<?= $BASE_URL ?>logout.php" class="btn login"><i class="bi bi-box-arrow-left"></i> logout</a>
+            <a href="<?= $BASE_URL ?>user_profile.php" class="btn login"><i class="bi bi-person-square"></i></a>
           <? else: ?>
             <a href="<?= $BASE_URL ?>login.php" class="btn login"><i class="bi bi-person-fill"></i> enter</a>
           <?php endif; ?>

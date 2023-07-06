@@ -15,7 +15,7 @@ use dao\CommentDAO;
 use dao\UserDAO;
 use dao\CategoryDAO;
 
-$categoryDao = new CategoryDAO($conn);
+$categoryDAO = new CategoryDAO($conn);
 
 $recipeDAO = new RecipeDAO($conn);
 $commentDAO = new CommentDAO($conn);
