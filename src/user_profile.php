@@ -28,7 +28,7 @@ require_once __DIR__ . '/templates/navbar.php';
 <div id="user-profile" class="container-wrapper">
   <div class="profile-container">
     <div class="profile-image"
-      style="background-image: url('<?= $user->getProfileImage() == '' ? $BASE_URL . 'images/users/default_user.png' : $BASE_URL . 'images/users/' . $user->getProfileImage() ?>');">
+      style="background-image: url('<?= $user->getProfileImage() == '' ? $BASE_URL . 'images/users/default_user.png' : $BASE_URL . 'images/users/' . $user->getId() . '/' . $user->getProfileImage() ?>');">
     </div>
     <div class="profile-name">
       <h2>

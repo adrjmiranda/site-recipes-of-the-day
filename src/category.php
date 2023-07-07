@@ -11,7 +11,7 @@ use dao\RecipeDAO;
 use dao\UserDAO;
 
 $userDAO = new UserDAO($conn);
-$categoryDao = new CategoryDAO($conn);
+$categoryDAO = new CategoryDAO($conn);
 $recipeDAO = new RecipeDAO($conn);
 
 $user = null;
@@ -26,7 +26,7 @@ if (!empty($_GET)) {
   if (isset($_GET['id'])) {
     $id = filter_input(INPUT_GET, 'id');
 
-    $categ = $categoryDao->findById($id);
+    $categ = $categoryDAO->findById($id);
   }
 }
 

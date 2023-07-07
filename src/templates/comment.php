@@ -3,15 +3,9 @@ $user = $userDAO->findById($comment->getUserId());
 ?>
 <div class="comment">
   <div class="user-profile">
-    <?php if ($user->getProfileImage() == ''): ?>
-      <div class="profile-image">
-        <i class="bi bi-person-circle"></i>
-      </div>
-    <?php else: ?>
-      <div class="profile-image"
-        style="background-image: url('<?= $BASE_URL ?>images/users/<?= $user->getId() ?>/<?= $user->getProfileImage() ?>');">
-      </div>
-    <?php endif; ?>
+    <div class="profile-image"
+      style="background-image: url('<?= $user->getProfileImage() == '' ? $BASE_URL . 'images/users/default_user.png' : $BASE_URL . 'images/users/' . $user->getId() . '/' . $user->getProfileImage() ?>');">
+    </div>
     <div class="profile-name">
       <h5>
         <?= $user->getName() ?>

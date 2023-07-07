@@ -81,7 +81,7 @@ class User
     return bin2hex(random_bytes(60)) . uniqid('', true);
   }
 
-  public function generateImageName($profile_image)
+  public function generateImageName()
   {
     return bin2hex(random_bytes(60)) . '.jpeg';
   }
