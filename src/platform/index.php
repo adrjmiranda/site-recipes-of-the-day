@@ -1,3 +1,24 @@
+<?php
+require_once __DIR__ . '/../utils/globals.php';
+require_once __DIR__ . '/../connection/conn.php';
+require_once __DIR__ . '/../dao/AdminDAO.php';
+
+use dao\AdminDAO;
+
+$adminDAO = new AdminDAO($conn);
+
+$admin = null;
+
+if (isset($_SESSION['token'])) {
+  $token = $_SESSION['token'];
+
+  $admin = $adminDAO->findByToken($token);
+}
+
+if (!$admin) {
+  header('location: login.php');
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 

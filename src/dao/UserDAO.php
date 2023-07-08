@@ -194,11 +194,4 @@ class UserDAO implements UserDAOInterface
   {
     $_SESSION['token'] = $token;
   }
-
-  public function destroyToken(User $user)
-  {
-    $user->setToken(null);
-
-    $this->update($user);
-  }
 }

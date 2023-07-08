@@ -2,13 +2,12 @@
 
 namespace models;
 
-class User
+class Admin
 {
   private $id;
   private $name;
   private $email;
   private $password;
-  private $profile_image;
   private $token;
 
   public function setId($id)
@@ -51,16 +50,6 @@ class User
     return $this->password;
   }
 
-  public function setProfileImage($profile_image)
-  {
-    $this->profile_image = $profile_image;
-  }
-
-  public function getProfileImage()
-  {
-    return $this->profile_image;
-  }
-
   public function setToken($token)
   {
     $this->token = $token;
@@ -71,32 +60,23 @@ class User
     return $this->token;
   }
 
-  public function generatePasswordHash($password)
-  {
-    return password_hash($password, PASSWORD_DEFAULT);
-  }
-
   public function generateToken()
   {
     return bin2hex(random_bytes(60)) . uniqid('', true);
   }
 
-  public function generateImageName()
+  public function generatePasswordHash($password)
   {
-    return bin2hex(random_bytes(60)) . '.jpeg';
+    return password_hash($password, PASSWORD_DEFAULT);
   }
 }
 
-interface UserDAOInterface
+interface AdminDAOInterface
 {
-  public function buildUser($data);
-  public function create(User $user);
-  public function findAll();
-  public function findById($id);
-  public function findByEmail($email);
+  public function buildAdmin($data);
   public function findByToken($token);
-  public function update(User $user);
-  public function delete($id);
+  public function findByEmail($email);
+  public function update(Admin $admin);
   public function validatePassword($password, $hash);
   public function setTokenToSession($token);
 }

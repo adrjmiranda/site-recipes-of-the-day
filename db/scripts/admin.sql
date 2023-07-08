@@ -9,4 +9,4 @@ CREATE TABLE IF NOT EXISTS `recipesoftheday`.`admin` (
   `token` VARCHAR(255)
 ) CHARACTER SET utf8 COLLATE utf8_general_ci;
 
-INSERT INTO `admin` (`name`, `email`, `password`) VALUES ('admin', 'admin@admin.com', '$2y$10$h126IwyA0.aifLu8FBpre.hVf93aLDktsEenHBPGqW7zwYIR9Zk2C');
+INSERT INTO `admin` (`name`, `email`, `password`) VALUES ('admin', 'admin@admin.com', '$2y$10$wHI30YuicBK/HI86HzX0s.TPP9Lr/GN2bwtOOqymKqfIqbshI.idW');

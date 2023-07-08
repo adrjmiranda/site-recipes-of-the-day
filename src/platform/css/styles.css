@@ -101,3 +101,19 @@ input {
 	background-color: var(--btn-secundary-color);
 	color: var(--text-tertiary-color);
 }
+
+form .error {
+	color: var(--tertiary-color);
+	text-align: center;
+	font-size: 0.9rem;
+	font-weight: 300;
+}
+
+form .general-error p {
+	color: var(--text-tertiary-color);
+	font-weight: 300;
+	text-align: center;
+	background-color: var(--tertiary-color);
+	border-radius: 5px;
+	padding: 10px;
+}
