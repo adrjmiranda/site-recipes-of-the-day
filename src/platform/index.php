@@ -27,6 +27,7 @@ if (!$admin) {
   <meta http-equiv="X-UA-Compatible" content="IE=7">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>without bootstrap</title>
+  <link rel="stylesheet" href="<?= $BASE_URL ?>/../platform/css/styles.css">
   <!-- summernote -->
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
     integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
@@ -37,10 +38,11 @@ if (!$admin) {
   <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.css" />
   <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.js"></script>
   <!-- bootstrap icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 </head>
 
 <body>
-  <div class="container">
+  <div class="home">
     <div id="more-options" class="hide">
       <div class="profile">
         <div class="profile-image"></div>
@@ -57,16 +59,14 @@ if (!$admin) {
         </ul>
       </div>
     </div>
-    <div class="content">
-      <nav>
-        <div id="nav-options">
-          <button id="more">
-            <i class="bi bi-list"></i>
-          </button>
-          <div id="nav-actions">
-            <button class="btn logout"><i class="bi bi-box-arrow-right"></i></button>
-            <button class="btn add"><i class="bi bi-plus-lg"></i> Add Recipe</button>
-          </div>
+    <div id="content">
+      <nav id="navbar">
+        <button id="more" class="btn">
+          <i class="bi bi-list"></i>
+        </button>
+        <div id="nav-actions">
+          <button class="btn add"><i class="bi bi-plus-lg"></i> Add Recipe</button>
+          <button class="btn logout"><i class="bi bi-box-arrow-right"></i></button>
         </div>
       </nav>
       <div id="recipes-list">
@@ -78,7 +78,6 @@ if (!$admin) {
                 <th>Title</th>
                 <th>Category</th>
                 <th>Rating</th>
-                <th>Age</th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -87,19 +86,9 @@ if (!$admin) {
                 <td>Tiger Nixon</td>
                 <td>System Architect</td>
                 <td>Edinburgh</td>
-                <td>61</td>
                 <td>2011-04-25</td>
               </tr>
             </tbody>
-            <tfoot>
-              <tr>
-                <th>Title</th>
-                <th>Category</th>
-                <th>Rating</th>
-                <th>Age</th>
-                <th>Actions</th>
-              </tr>
-            </tfoot>
           </table>
         </div>
       </div>
