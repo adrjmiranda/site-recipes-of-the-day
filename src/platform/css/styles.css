@@ -128,11 +128,13 @@ form .general-error p {
 
 #more-options {
 	flex: 1 0 20%;
+	padding: 0 20px;
+	background-color: rgba(108, 243, 213, 0.1);
 }
 
 #content {
 	flex: 1 0 80%;
-	padding: 0 30px;
+	padding: 0 30px 40px;
 }
 
 /* content */
@@ -173,6 +175,101 @@ form .general-error p {
 }
 
 #recipes {
+	border: 2px solid var(--btn-secundary-color);
+	padding: 18px;
+	border-radius: 5px;
+}
+
+#recipes-table_length,
+#recipes-table_filter {
+	margin-bottom: 30px;
+}
+
+#recipes-table {
+	background-color: rgba(108, 243, 213, 0.1);
+	border-radius: 5px;
+	overflow: hidden;
+	margin-bottom: 30px;
+}
+
+#recipes-table th {
+	background-color: var(--btn-secundary-color);
+	color: var(--text-tertiary-color);
+}
+
+#recipes-table th,
+#recipes-table td {
+	padding: 8px;
+}
+
+.td-actions {
+	display: flex;
+	gap: 1rem;
+}
+
+.td-actions button {
+	flex: 1 1 50%;
+	cursor: pointer;
+	border: none;
+	border-radius: 3px;
+	color: var(--text-tertiary-color);
+	height: 30px;
+	opacity: 0.8;
+	transition: 0.3s ease;
+}
+
+.td-actions button:hover {
+	opacity: 1;
+}
+
+.edit-recipe {
+	background-color: var(--quaternary-color);
+}
+
+.delete-recipe {
+	background-color: var(--tertiary-color);
 }
 
 /* more options */
+
+#more-options .profile {
+	display: flex;
+	border-bottom: 2px solid var(--btn-secundary-color);
+	padding: 25.3px 0;
+	gap: 1rem;
+	align-items: center;
+	margin-bottom: 30px;
+}
+
+#more-options .profile .profile-image {
+	background-image: url('../assets/profile_image_default.svg');
+	background-size: cover;
+	width: 80px;
+	height: 80px;
+}
+
+#more-options .options li {
+	background-color: var(--btn-primary-color);
+	margin-bottom: 2rem;
+	border-radius: 5px;
+	list-style: none;
+	transition: 0.3s;
+}
+
+#more-options .options li a {
+	color: var(--text-tertiary-color);
+	padding: 10px;
+	display: block;
+}
+
+#more-options .options li:hover {
+	background-color: var(--btn-secundary-color);
+}
+
+#more-options .options li:hover a {
+	color: #fff;
+}
+
+.hide {
+	display: none;
+}

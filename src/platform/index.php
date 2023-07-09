@@ -2,10 +2,13 @@
 require_once __DIR__ . '/../utils/globals.php';
 require_once __DIR__ . '/../connection/conn.php';
 require_once __DIR__ . '/../dao/AdminDAO.php';
+require_once __DIR__ . '/../dao/RecipeDAO.php';
 
 use dao\AdminDAO;
+use dao\RecipeDAO;
 
 $adminDAO = new AdminDAO($conn);
+$recipeDAO = new RecipeDAO($conn);
 
 $admin = null;
 
@@ -18,6 +21,8 @@ if (isset($_SESSION['token'])) {
 if (!$admin) {
   header('location: login.php');
 }
+
+$recipes = $recipeDAO->findAll('id');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,6 +44,8 @@ if (!$admin) {
   <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.js"></script>
   <!-- bootstrap icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <!-- scripts -->
+  <script src="<?= $BASE_URL ?>/../platform/js/scripts.js" defer></script>
 </head>
 
 <body>
@@ -46,7 +53,7 @@ if (!$admin) {
     <div id="more-options" class="hide">
       <div class="profile">
         <div class="profile-image"></div>
-        <h4 class="profile-name"></h4>
+        <h4 class="profile-name">Admin Name</h4>
       </div>
       <div class="options">
         <ul>
@@ -82,12 +89,21 @@ if (!$admin) {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>Tiger Nixon</td>
-                <td>System Architect</td>
-                <td>Edinburgh</td>
-                <td>2011-04-25</td>
-              </tr>
+              <?php if ($recipes): ?>
+                <?php foreach ($recipes as $recipe): ?>
+                  <?php require __DIR__ . '/templates/tr-recipe.php' ?>
+                <?php endforeach; ?>
+              <?php else: ?>
+                <tr>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td class="td-actions">
+                    <button class="edit-recipe"><i class="bi bi-pencil-square"></i></button>
+                    <button class="delete-recipe"><i class="bi bi-trash"></i></button>
+                  </td>
+                </tr>
+              <?php endif; ?>
             </tbody>
           </table>
         </div>

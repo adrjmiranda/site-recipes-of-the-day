@@ -1,7 +1,15 @@
 <tr>
-  <td>Tiger Nixon</td>
-  <td>System Architect</td>
-  <td>Edinburgh</td>
-  <td>61</td>
-  <td>2011-04-25</td>
+  <td>
+    <?= $recipe->getTitle() ?>
+  </td>
+  <td>
+    <?= $recipe->getCategory() ?>
+  </td>
+  <td>
+    <?= $recipe->getRating() ?>
+  </td>
+  <td class="td-actions">
+    <button class="edit-recipe"><i class="bi bi-pencil-square"></i></button>
+    <button class="delete-recipe"><i class="bi bi-trash"></i></button>
+  </td>
 </tr>
