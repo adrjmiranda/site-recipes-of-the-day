@@ -19,6 +19,10 @@
 	font-family: 'Poppins', sans-serif;
 }
 
+body {
+	position: relative;
+}
+
 a {
 	text-decoration: none;
 }
@@ -272,4 +276,16 @@ form .general-error p {
 
 .hide {
 	display: none;
+}
+
+/* add recipe */
+
+#add-recipe {
+	min-height: 100vh;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 99;
+	background-color: var(--bg-secundary-color);
 }
