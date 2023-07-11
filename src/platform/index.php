@@ -117,25 +117,30 @@ $categories = $categoryDAO->findAll();
   </div>
   <div id="add-recipe" class="hide">
     <form action="#" method="post" enctype="multipart/form-data">
+      <h3>Add a new recipe:</h3>
       <div class="form-left">
-        <div class="recipe-image">
+        <div class="recipe-image input-field">
           <div class="image"></div>
           <label for="recipe_image">Add an Image</label>
           <input type="file" name="recipe_image" id="recipe_image" class="hide">
         </div>
-        <div class="title-and-portions">
-          <div class="recipe-title">
+        <div class="title-and-portions-and-time">
+          <div class="recipe-title input-field">
             <label for="title">Title:</label>
             <input type="text" name="title" id="title">
           </div>
-          <div class="recipe-portion">
+          <div class="recipe-portion input-field">
             <label for="portions">Portions:</label>
             <input type="number" name="portions" id="portions" min="1">
+          </div>
+          <div class="recipe-portion input-field">
+            <label for="preparation_time">Preparation Time:</label>
+            <input type="number" name="preparation_time" id="preparation_time" min="1">
           </div>
         </div>
       </div>
       <div class="form-right">
-        <div class="recipe-category">
+        <div class="recipe-category input-field">
           <label for="category">Category</label>
           <select name="category" id="category">
             <option value="">Choice a category</option>
@@ -146,31 +151,33 @@ $categories = $categoryDAO->findAll();
             <?php endforeach; ?>
           </select>
         </div>
-        <div class="recipe-ingredients">
+        <div class="recipe-ingredients input-field">
           <label for="ingredient">Ingredients:</label>
           <input type="text" name="ingredient">
-          <div class="ingredients"></div>
+          <p id="ingredients-area">Ingredients: <span></span></p>
         </div>
-        <div class="recipe-method-of-preparation">
-          <label for="method">Method of Preparation:</label>
-          <textarea id="method"></textarea>
+        <div class="recipe-method-of-preparation input-field">
+          <label for="method_of_preparation">Method of Preparation:</label>
+          <textarea id="method_of_preparation" name="method_of_preparation"></textarea>
         </div>
-        <div class="recipe-tips">
+        <div class="recipe-tips input-field">
           <label for="tips">Tips:</label>
-          <textarea id="tips"></textarea>
+          <textarea id="tips" name="tips"></textarea>
         </div>
       </div>
-      <button type="button" id="cancel-add-recipe">Cancel</button>
-      <button type="submit">Add Recipe</button>
+      <div class="form-actions">
+        <button type="button" id="cancel-add-recipe">Cancel</button>
+        <button type="submit">Add Recipe</button>
+      </div>
     </form>
   </div>
 
   <!-- init -->
   <script>
-    $('#method').summernote({
-      placeholder: 'Hello stand alone ui',
+    $('#method_of_preparation').summernote({
+      placeholder: 'Add recipe preparation methods.',
       tabsize: 2,
-      height: 120,
+      height: 154,
       toolbar: [
         ['style', ['style']],
         ['font', ['bold', 'underline', 'clear']],
@@ -183,9 +190,9 @@ $categories = $categoryDAO->findAll();
     });
 
     $('#tips').summernote({
-      placeholder: 'Hello stand alone ui',
+      placeholder: 'Give recipe preparation tips.',
       tabsize: 2,
-      height: 120,
+      height: 154,
       toolbar: [
         ['style', ['style']],
         ['font', ['bold', 'underline', 'clear']],
