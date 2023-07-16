@@ -405,3 +405,22 @@ form .general-error p {
 #ingredients-area span {
 	font-style: normal;
 }
+
+.recipe-ingredients {
+	position: relative;
+}
+
+.recipe-ingredients .bi {
+	position: absolute;
+	right: 0.5rem;
+	top: 1.8rem;
+	font-size: 1.7rem;
+	cursor: pointer;
+	color: var(--btn-primary-color);
+	z-index: 99;
+	transition: 0.3s;
+}
+
+.recipe-ingredients .bi:hover {
+	color: var(--btn-secundary-color);
+}

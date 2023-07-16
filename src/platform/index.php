@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/../utils/globals.php';
 require_once __DIR__ . '/../connection/conn.php';
+require_once __DIR__ . '/../utils/Error.php';
 require_once __DIR__ . '/../dao/AdminDAO.php';
 require_once __DIR__ . '/../dao/RecipeDAO.php';
 require_once __DIR__ . '/../dao/CategoryDAO.php';
@@ -8,6 +9,7 @@ require_once __DIR__ . '/../dao/CategoryDAO.php';
 use dao\AdminDAO;
 use dao\RecipeDAO;
 use dao\CategoryDAO;
+use utils\Error;
 
 $adminDAO = new AdminDAO($conn);
 $recipeDAO = new RecipeDAO($conn);
@@ -27,6 +29,22 @@ if (!$admin) {
 
 $recipes = $recipeDAO->findAll('id');
 $categories = $categoryDAO->findAll();
+
+// try add recipe
+
+if (isset($_POST)) {
+  if (
+    isset($_POST['title'])
+    && isset($_POST['ingredients'])
+    && isset($_POST['method_of_preparation'])
+    && isset($_POST['tips'])
+    && isset($_POST['portions'])
+    && isset($_POST['preparation_time'])
+    && isset($_POST['category'])
+  ) {
+  } else {
+  }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -51,6 +69,7 @@ $categories = $categoryDAO->findAll();
   <!-- scripts -->
   <script src="<?= $BASE_URL ?>/../platform/js/scripts.js" defer></script>
   <script src="<?= $BASE_URL ?>/../platform/js/show-add-recipe.js" defer></script>
+  <script src="<?= $BASE_URL ?>/../platform/js/add-recipe.js" defer></script>
 </head>
 
 <body>
@@ -116,7 +135,7 @@ $categories = $categoryDAO->findAll();
     </div>
   </div>
   <div id="add-recipe" class="hide">
-    <form action="#" method="post" enctype="multipart/form-data">
+    <form action="index.php" method="post" enctype="multipart/form-data">
       <h3>Add a new recipe:</h3>
       <div class="form-left">
         <div class="recipe-image input-field">
@@ -153,7 +172,8 @@ $categories = $categoryDAO->findAll();
         </div>
         <div class="recipe-ingredients input-field">
           <label for="ingredient">Ingredients:</label>
-          <input type="text" name="ingredient">
+          <input type="text" name="ingredient" id="ingredient">
+          <i class="bi bi-plus-square-fill" data-add-recipe></i>
           <p id="ingredients-area">Ingredients: <span></span></p>
         </div>
         <div class="recipe-method-of-preparation input-field">
