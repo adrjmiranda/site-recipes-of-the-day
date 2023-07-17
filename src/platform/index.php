@@ -174,7 +174,8 @@ if (isset($_POST)) {
           <label for="ingredient">Ingredients:</label>
           <input type="text" name="ingredient" id="ingredient">
           <i class="bi bi-plus-square-fill" data-add-recipe></i>
-          <p id="ingredients-area">Ingredients: <span></span></p>
+          <ul id="ingredients-area"></ul>
+          <div id="ingredients"></div>
         </div>
         <div class="recipe-method-of-preparation input-field">
           <label for="method_of_preparation">Method of Preparation:</label>
