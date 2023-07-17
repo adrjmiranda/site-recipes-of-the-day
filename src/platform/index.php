@@ -131,7 +131,7 @@ if (isset($_POST)) {
       } else {
         Error::clearErrors();
 
-        // try add recipe
+        //TODO: try add recipe
       }
     }
   } else {
@@ -163,7 +163,7 @@ if (isset($_POST)) {
   <!-- scripts -->
   <script src="<?= $BASE_URL ?>/../platform/js/scripts.js" defer></script>
   <script src="<?= $BASE_URL ?>/../platform/js/show-add-recipe.js" defer></script>
-  <script src="<?= $BASE_URL ?>/../platform/js/add-recipe.js" defer></script>
+  <script src="<?= $BASE_URL ?>/../platform/js/add-ingredient.js" defer></script>
 </head>
 
 <body>
