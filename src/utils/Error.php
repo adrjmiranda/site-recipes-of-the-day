@@ -29,7 +29,13 @@ class Error
     'ERR_EMPTY_METHOD_PREPARATION' => false,
     'ERR_EMPTY_TIPS' => false,
     'ERR_TOO_LARGE_IMAGE' => false,
-    'ERR_FILURE_TO_ADD_RECIPE' => false
+    'ERR_FILURE_TO_ADD_RECIPE' => false,
+    'ERR_INVALID_TITLE' => false,
+    'ERR_INVALID_PORTIONS' => false,
+    'ERR_INVALID_PREPARATION_TIME' => false,
+    'ERR_INVALID_CATEGORY' => false,
+    'ERR_INVALID_INGREDIENTS' => false,
+    'ERR_INVALID_IMAGE' => false
   ];
 
   static public $ERROR_MSG = [
@@ -58,7 +64,13 @@ class Error
     'ERR_EMPTY_METHOD_PREPARATION' => 'You need to add a brewing method.',
     'ERR_EMPTY_TIPS' => 'You need to add the preparation tips.',
     'ERR_TOO_LARGE_IMAGE' => 'The image must be a maximum of 2MB in size.',
-    'ERR_FILURE_TO_ADD_RECIPE' => 'It was not possible to add the recipe to the bank, check the data and try again.'
+    'ERR_FILURE_TO_ADD_RECIPE' => 'It was not possible to add the recipe to the bank, check the data and try again.',
+    'ERR_INVALID_TITLE' => 'Only letters and spaces.',
+    'ERR_INVALID_PORTIONS' => 'Only positive integers.',
+    'ERR_INVALID_PREPARATION_TIME' => 'Only positive integers.',
+    'ERR_INVALID_CATEGORY' => 'Invalid category entered.',
+    'ERR_INVALID_INGREDIENTS' => 'Only letters and numbers.',
+    'ERR_INVALID_IMAGE' => 'Only jpeg, jpg or png images.'
   ];
 
   static public function setError($errorType, $state)
