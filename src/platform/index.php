@@ -2,6 +2,7 @@
 require_once __DIR__ . '/../utils/globals.php';
 require_once __DIR__ . '/../connection/conn.php';
 require_once __DIR__ . '/../utils/Error.php';
+require_once __DIR__ . '/utils/validations.php';
 require_once __DIR__ . '/../dao/AdminDAO.php';
 require_once __DIR__ . '/../dao/RecipeDAO.php';
 require_once __DIR__ . '/../dao/CategoryDAO.php';
@@ -42,7 +43,99 @@ if (isset($_POST)) {
     && isset($_POST['preparation_time'])
     && isset($_POST['category'])
   ) {
+    $title = filter_input(INPUT_POST, 'title');
+    $ingredients = filter_input(INPUT_POST, 'ingredients');
+    $method_of_preparation = filter_input(INPUT_POST, 'method_of_preparation');
+    $tips = filter_input(INPUT_POST, 'tips');
+    $portions = filter_input(INPUT_POST, 'portions');
+    $preparation_time = filter_input(INPUT_POST, 'preparation_time');
+    $category = filter_input(INPUT_POST, 'category');
+
+    if (
+      isEmpty($title) ||
+      isEmpty($ingredients) ||
+      isEmpty($method_of_preparation) ||
+      isEmpty($tips) ||
+      isEmpty($portions) ||
+      isEmpty($preparation_time) ||
+      isEmpty($category)
+    ) {
+      if (isEmpty($title)) {
+        Error::setError('ERR_EMPTY_TITLE', true);
+      } else {
+        Error::setError('ERR_EMPTY_TITLE', false);
+      }
+
+      if (isEmpty($ingredients)) {
+        Error::setError('ERR_EMPTY_INGREDIENTS', true);
+      } else {
+        Error::setError('ERR_EMPTY_INGREDIENTS', false);
+      }
+
+      if (isEmpty($method_of_preparation)) {
+        Error::setError('ERR_EMPTY_METHOD_PREPARATION', true);
+      } else {
+        Error::setError('ERR_EMPTY_METHOD_PREPARATION', false);
+      }
+
+      if (isEmpty($tips)) {
+        Error::setError('ERR_EMPTY_TIPS', true);
+      } else {
+        Error::setError('ERR_EMPTY_TIPS', false);
+      }
+
+      if (isEmpty($portions)) {
+        Error::setError('ERR_EMPTY_PORTIONS', true);
+      } else {
+        Error::setError('ERR_EMPTY_PORTIONS', false);
+      }
+
+      if (isEmpty($preparation_time)) {
+        Error::setError('ERR_EMPTY_PREPARATION_TIME', true);
+      } else {
+        Error::setError('ERR_EMPTY_PREPARATION_TIME', false);
+      }
+
+      if (isEmpty($category)) {
+        Error::setError('ERR_EMPTY_CATEGORY', true);
+      } else {
+        Error::setError('ERR_EMPTY_CATEGORY', false);
+      }
+    } else {
+      Error::clearErrors();
+
+      if (isInvalidTitle($title) || isInvalidPortions($portions) || isInvalidPreparationTime($preparation_time) || isInvalidCategory($category)) {
+        if (isInvalidTitle($title)) {
+          Error::setError('ERR_INVALID_TITLE', true);
+        } else {
+          Error::setError('ERR_INVALID_TITLE', false);
+        }
+
+        if (isInvalidPortions($portions)) {
+          Error::setError('ERR_INVALID_TITLE', true);
+        } else {
+          Error::setError('ERR_INVALID_TITLE', false);
+        }
+
+        if (isInvalidPreparationTime($preparation_time)) {
+          Error::setError('ERR_INVALID_TITLE', true);
+        } else {
+          Error::setError('ERR_INVALID_TITLE', false);
+        }
+
+        if (isInvalidCategory($category)) {
+          Error::setError('ERR_INVALID_TITLE', true);
+        } else {
+          Error::setError('ERR_INVALID_TITLE', false);
+        }
+      } else {
+        Error::clearErrors();
+
+        // try add recipe
+      }
+    }
   } else {
+    Error::setError('ERR_FILURE_TO_ADD_RECIPE', true);
   }
 }
 ?>
@@ -154,7 +247,7 @@ if (isset($_POST)) {
             <input type="number" name="portions" id="portions" min="1">
           </div>
           <div class="recipe-portion input-field">
-            <label for="preparation_time">Preparation Time:</label>
+            <label for="preparation_time">Preparation Time (in minutes):</label>
             <input type="number" name="preparation_time" id="preparation_time" min="1">
           </div>
         </div>

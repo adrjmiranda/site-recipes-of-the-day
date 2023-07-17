@@ -34,7 +34,6 @@ class Error
     'ERR_INVALID_PORTIONS' => false,
     'ERR_INVALID_PREPARATION_TIME' => false,
     'ERR_INVALID_CATEGORY' => false,
-    'ERR_INVALID_INGREDIENTS' => false,
     'ERR_INVALID_IMAGE' => false
   ];
 
@@ -69,7 +68,6 @@ class Error
     'ERR_INVALID_PORTIONS' => 'Only positive integers.',
     'ERR_INVALID_PREPARATION_TIME' => 'Only positive integers.',
     'ERR_INVALID_CATEGORY' => 'Invalid category entered.',
-    'ERR_INVALID_INGREDIENTS' => 'Only letters and numbers.',
     'ERR_INVALID_IMAGE' => 'Only jpeg, jpg or png images.'
   ];
 
