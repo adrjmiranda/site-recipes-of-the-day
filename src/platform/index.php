@@ -53,7 +53,8 @@ if (isset($_POST)) {
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=7">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>without bootstrap</title>
+  <link rel="shortcut icon" href="<?= $BASE_URL ?>/../platform/assets/profile_image_default.svg" type="image/x-icon">
+  <title>Platform - Recipes Of The Day</title>
   <link rel="stylesheet" href="<?= $BASE_URL ?>/../platform/css/styles.css">
   <!-- summernote -->
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
@@ -175,7 +176,7 @@ if (isset($_POST)) {
           <input type="text" name="ingredient" id="ingredient">
           <i class="bi bi-plus-square-fill" data-add-recipe></i>
           <ul id="ingredients-area"></ul>
-          <div id="ingredients"></div>
+          <div id="ingredients" class="hide"></div>
         </div>
         <div class="recipe-method-of-preparation input-field">
           <label for="method_of_preparation">Method of Preparation:</label>

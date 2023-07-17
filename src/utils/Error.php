@@ -19,7 +19,17 @@ class Error
     'ERR_INCORRECT_EMAIL_OR_PASSWORD' => false,
     'ERROR_UPDATING_USER' => false,
     'ERR_UPDATE_PROFILE_IMAGE' => false,
-    'ERR_INVALID_IMAGE_TYPE' => false
+    'ERR_INVALID_IMAGE_TYPE' => false,
+    // add recipe form
+    'ERR_EMPTY_TITLE' => false,
+    'ERR_EMPTY_PORTIONS' => false,
+    'ERR_EMPTY_PREPARATION_TIME' => false,
+    'ERR_EMPTY_CATEGORY' => false,
+    'ERR_EMPTY_INGREDIENTS' => false,
+    'ERR_EMPTY_METHOD_PREPARATION' => false,
+    'ERR_EMPTY_TIPS' => false,
+    'ERR_TOO_LARGE_IMAGE' => false,
+    'ERR_FILURE_TO_ADD_RECIPE' => false
   ];
 
   static public $ERROR_MSG = [
@@ -38,7 +48,17 @@ class Error
     'ERR_INCORRECT_EMAIL_OR_PASSWORD' => 'Invalid email or password.',
     'ERROR_UPDATING_USER' => 'Error updating profile.',
     'ERR_UPDATE_PROFILE_IMAGE' => 'Error updating image.',
-    'ERR_INVALID_IMAGE_TYPE' => 'Only jpeg, jpg or png images allowed.'
+    'ERR_INVALID_IMAGE_TYPE' => 'Only jpeg, jpg or png images allowed.',
+    // add recipe form
+    'ERR_EMPTY_TITLE' => 'The title cannot be empty.',
+    'ERR_EMPTY_PORTIONS' => 'Portions cannot be empty.',
+    'ERR_EMPTY_PREPARATION_TIME' => 'The preparation time cannot be empty.',
+    'ERR_EMPTY_CATEGORY' => 'The preparation time cannot be empty.',
+    'ERR_EMPTY_INGREDIENTS' => 'Ingredients cannot be empty.',
+    'ERR_EMPTY_METHOD_PREPARATION' => 'You need to add a brewing method.',
+    'ERR_EMPTY_TIPS' => 'You need to add the preparation tips.',
+    'ERR_TOO_LARGE_IMAGE' => 'The image must be a maximum of 2MB in size.',
+    'ERR_FILURE_TO_ADD_RECIPE' => 'It was not possible to add the recipe to the bank, check the data and try again.'
   ];
 
   static public function setError($errorType, $state)

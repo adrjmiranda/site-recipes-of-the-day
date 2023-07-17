@@ -44,6 +44,7 @@ buttonAddRecipe.addEventListener('click', () => {
 			'data-order',
 			!newItemsMinus.length ? 0 : newItemsMinus.length
 		);
+		ingredient.setAttribute('checked', 'checked');
 
 		ingredients.appendChild(ingredient);
 
