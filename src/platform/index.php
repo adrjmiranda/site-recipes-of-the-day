@@ -3,6 +3,7 @@ require_once __DIR__ . '/../utils/globals.php';
 require_once __DIR__ . '/../connection/conn.php';
 require_once __DIR__ . '/../utils/Error.php';
 require_once __DIR__ . '/utils/validations.php';
+require_once __DIR__ . '/../models/Recipe.php';
 require_once __DIR__ . '/../dao/AdminDAO.php';
 require_once __DIR__ . '/../dao/RecipeDAO.php';
 require_once __DIR__ . '/../dao/CategoryDAO.php';
@@ -11,6 +12,7 @@ use dao\AdminDAO;
 use dao\RecipeDAO;
 use dao\CategoryDAO;
 use utils\Error;
+use models\Recipe;
 
 $adminDAO = new AdminDAO($conn);
 $recipeDAO = new RecipeDAO($conn);
@@ -36,7 +38,6 @@ $categories = $categoryDAO->findAll();
 if (isset($_POST)) {
   if (
     isset($_POST['title'])
-    && isset($_POST['ingredients'])
     && isset($_POST['method_of_preparation'])
     && isset($_POST['tips'])
     && isset($_POST['portions'])
@@ -44,12 +45,17 @@ if (isset($_POST)) {
     && isset($_POST['category'])
   ) {
     $title = filter_input(INPUT_POST, 'title');
-    $ingredients = filter_input(INPUT_POST, 'ingredients');
     $method_of_preparation = filter_input(INPUT_POST, 'method_of_preparation');
     $tips = filter_input(INPUT_POST, 'tips');
     $portions = filter_input(INPUT_POST, 'portions');
     $preparation_time = filter_input(INPUT_POST, 'preparation_time');
     $category = filter_input(INPUT_POST, 'category');
+
+    if (isset($_POST['ingredients'])) {
+      $ingredients = $_POST['ingredients'];
+    } else {
+      $ingredients = [];
+    }
 
     if (
       isEmpty($title) ||
@@ -112,30 +118,54 @@ if (isset($_POST)) {
         }
 
         if (isInvalidPortions($portions)) {
-          Error::setError('ERR_INVALID_TITLE', true);
+          Error::setError('ERR_INVALID_PORTIONS', true);
         } else {
-          Error::setError('ERR_INVALID_TITLE', false);
+          Error::setError('ERR_INVALID_PORTIONS', false);
         }
 
         if (isInvalidPreparationTime($preparation_time)) {
-          Error::setError('ERR_INVALID_TITLE', true);
+          Error::setError('ERR_INVALID_PREPARATION_TIME', true);
         } else {
-          Error::setError('ERR_INVALID_TITLE', false);
+          Error::setError('ERR_INVALID_PREPARATION_TIME', false);
         }
 
         if (isInvalidCategory($category)) {
-          Error::setError('ERR_INVALID_TITLE', true);
+          Error::setError('ERR_INVALID_CATEGORY', true);
         } else {
-          Error::setError('ERR_INVALID_TITLE', false);
+          Error::setError('ERR_INVALID_CATEGORY', false);
         }
       } else {
         Error::clearErrors();
 
-        //TODO: try add recipe
+        $title = removeUnnecessarySpaces($title);
+        $ing = json_encode($ingredients);
+        $rating = 0;
+
+        $recipe_image = '';
+
+        $recipe = new Recipe();
+
+        $recipe->setTitle($title);
+        $recipe->setIngredients($ing);
+        $recipe->setMethodOfPreparation($method_of_preparation);
+        $recipe->setTips($tips);
+        $recipe->setPortions($portions);
+        $recipe->setPreparationTime($preparation_time);
+        $recipe->setRating($rating);
+        $recipe->setRecipeImage($recipe_image);
+        $recipe->setCategory($category);
+
+        if ($recipeDAO->createRecipe($recipe)) {
+          Error::clearErrors();
+          unset($_POST);
+          header('location: index.php');
+        } else {
+          Error::setError('ERR_FILURE_TO_ADD_RECIPE', true);
+          unset($_POST);
+        }
+
       }
     }
-  } else {
-    Error::setError('ERR_FILURE_TO_ADD_RECIPE', true);
   }
 }
 ?>
@@ -176,7 +206,7 @@ if (isset($_POST)) {
       <div class="options">
         <ul>
           <li>
-            <a href="#">Recipes</a>
+            <a href="index.php">Recipes</a>
           </li>
           <li>
             <a href="#">Categories</a>
@@ -195,11 +225,19 @@ if (isset($_POST)) {
         </div>
       </nav>
       <div id="recipes-list">
+        <?php if (Error::$ERROR_TYPES['ERR_FILURE_TO_ADD_RECIPE']): ?>
+          <div class="error">
+            <p>
+              <?= Error::$ERROR_MSG['ERR_FILURE_TO_ADD_RECIPE'] ?>
+            </p>
+          </div>
+        <?php endif; ?>
         <h2>Recipes Added:</h2>
         <div id="recipes">
           <table id="recipes-table" class="display compact" style="width:100%">
             <thead>
               <tr>
+                <th class="hide">Id</th>
                 <th>Title</th>
                 <th>Category</th>
                 <th>Rating</th>
@@ -213,6 +251,7 @@ if (isset($_POST)) {
                 <?php endforeach; ?>
               <?php else: ?>
                 <tr>
+                  <td class="hide">-</td>
                   <td>-</td>
                   <td>-</td>
                   <td>-</td>
@@ -228,6 +267,7 @@ if (isset($_POST)) {
       </div>
     </div>
   </div>
+  <!-- add recipe form -->
   <div id="add-recipe" class="hide">
     <form action="index.php" method="post" enctype="multipart/form-data">
       <h3>Add a new recipe:</h3>
@@ -240,15 +280,59 @@ if (isset($_POST)) {
         <div class="title-and-portions-and-time">
           <div class="recipe-title input-field">
             <label for="title">Title:</label>
-            <input type="text" name="title" id="title">
+            <input type="text" name="title" id="title" value="<?= isset($_POST['title']) ? $title : '' ?>">
+            <?php if (Error::$ERROR_TYPES['ERR_INVALID_TITLE']): ?>
+              <div class="error">
+                <p>
+                  <?= Error::$ERROR_MSG['ERR_INVALID_TITLE'] ?>
+                </p>
+              </div>
+            <?php endif; ?>
+            <?php if (Error::$ERROR_TYPES['ERR_EMPTY_TITLE']): ?>
+              <div class="error">
+                <p>
+                  <?= Error::$ERROR_MSG['ERR_EMPTY_TITLE'] ?>
+                </p>
+              </div>
+            <?php endif; ?>
           </div>
           <div class="recipe-portion input-field">
             <label for="portions">Portions:</label>
-            <input type="number" name="portions" id="portions" min="1">
+            <input type="number" name="portions" id="portions" min="1"
+              value="<?= isset($_POST['portions']) ? $portions : '' ?>">
+            <?php if (Error::$ERROR_TYPES['ERR_INVALID_PORTIONS']): ?>
+              <div class="error">
+                <p>
+                  <?= Error::$ERROR_MSG['ERR_INVALID_PORTIONS'] ?>
+                </p>
+              </div>
+            <?php endif; ?>
+            <?php if (Error::$ERROR_TYPES['ERR_EMPTY_PORTIONS']): ?>
+              <div class="error">
+                <p>
+                  <?= Error::$ERROR_MSG['ERR_EMPTY_PORTIONS'] ?>
+                </p>
+              </div>
+            <?php endif; ?>
           </div>
           <div class="recipe-portion input-field">
             <label for="preparation_time">Preparation Time (in minutes):</label>
-            <input type="number" name="preparation_time" id="preparation_time" min="1">
+            <input type="number" name="preparation_time" id="preparation_time" min="1"
+              value="<?= isset($_POST['preparation_time']) ? $preparation_time : '' ?>">
+            <?php if (Error::$ERROR_TYPES['ERR_INVALID_PREPARATION_TIME']): ?>
+              <div class="error">
+                <p>
+                  <?= Error::$ERROR_MSG['ERR_INVALID_PREPARATION_TIME'] ?>
+                </p>
+              </div>
+            <?php endif; ?>
+            <?php if (Error::$ERROR_TYPES['ERR_EMPTY_PREPARATION_TIME']): ?>
+              <div class="error">
+                <p>
+                  <?= Error::$ERROR_MSG['ERR_EMPTY_PREPARATION_TIME'] ?>
+                </p>
+              </div>
+            <?php endif; ?>
           </div>
         </div>
       </div>
@@ -257,27 +341,78 @@ if (isset($_POST)) {
           <label for="category">Category</label>
           <select name="category" id="category">
             <option value="">Choice a category</option>
-            <?php foreach ($categories as $category): ?>
-              <option value="<?= $category->getCategoryName() ?>">
-                <?= $category->getCategoryName() ?>
+            <?php foreach ($categories as $cat): ?>
+              <option value="<?= $cat->getCategoryName() ?>" <?= isset($_POST['$category']) ? $category == $cat->getCategoryName() ? 'selected' : '' : '' ?>>
+                <?= $cat->getCategoryName() ?>
               </option>
             <?php endforeach; ?>
           </select>
+          <?php if (Error::$ERROR_TYPES['ERR_INVALID_CATEGORY']): ?>
+            <div class="error">
+              <p>
+                <?= Error::$ERROR_MSG['ERR_INVALID_CATEGORY'] ?>
+              </p>
+            </div>
+          <?php endif; ?>
+          <?php if (Error::$ERROR_TYPES['ERR_EMPTY_CATEGORY']): ?>
+            <div class="error">
+              <p>
+                <?= Error::$ERROR_MSG['ERR_EMPTY_CATEGORY'] ?>
+              </p>
+            </div>
+          <?php endif; ?>
         </div>
         <div class="recipe-ingredients input-field">
           <label for="ingredient">Ingredients:</label>
           <input type="text" name="ingredient" id="ingredient">
+          <?php if (Error::$ERROR_TYPES['ERR_EMPTY_INGREDIENTS']): ?>
+            <div class="error">
+              <p>
+                <?= Error::$ERROR_MSG['ERR_EMPTY_INGREDIENTS'] ?>
+              </p>
+            </div>
+          <?php endif; ?>
           <i class="bi bi-plus-square-fill" data-add-recipe></i>
-          <ul id="ingredients-area"></ul>
-          <div id="ingredients" class="hide"></div>
+          <ul id="ingredients-area">
+            <?php if (isset($_POST['ingredients'])): ?>
+              <?php foreach ($ingredients as $key => $ingredient): ?>
+                <li>
+                  <?= $ingredient ?> <i class="bi bi-dash-square-fill" data-order="<?= $key ?>"></i>
+                </li>
+              <?php endforeach; ?>
+            <?php endif; ?>
+          </ul>
+          <div id="ingredients" class="hide">
+            <?php if (isset($ingredients)): ?>
+              <?php foreach ($ingredients as $key => $ingredient): ?>
+                <input type="checkbox" name="ingredients[]" value="<?= $ingredient ?>" checked="checked"
+                  data-order="<?= $key ?>">
+              <?php endforeach; ?>
+            <?php endif; ?>
+          </div>
         </div>
         <div class="recipe-method-of-preparation input-field">
           <label for="method_of_preparation">Method of Preparation:</label>
-          <textarea id="method_of_preparation" name="method_of_preparation"></textarea>
+          <textarea id="method_of_preparation"
+            name="method_of_preparation"><?= isset($_POST['method_of_preparation']) ? $method_of_preparation : '' ?></textarea>
+          <?php if (Error::$ERROR_TYPES['ERR_EMPTY_METHOD_PREPARATION']): ?>
+            <div class="error">
+              <p>
+                <?= Error::$ERROR_MSG['ERR_EMPTY_METHOD_PREPARATION'] ?>
+              </p>
+            </div>
+          <?php endif; ?>
         </div>
         <div class="recipe-tips input-field">
           <label for="tips">Tips:</label>
-          <textarea id="tips" name="tips"></textarea>
+          <textarea id="tips" name="tips"><?= isset($_POST['tips']) ? $tips : '' ?></textarea>
+          <?php if (Error::$ERROR_TYPES['ERR_EMPTY_TIPS']): ?>
+            <div class="error">
+              <p>
+                <?= Error::$ERROR_MSG['ERR_EMPTY_TIPS'] ?>
+              </p>
+            </div>
+          <?php endif; ?>
         </div>
       </div>
       <div class="form-actions">
@@ -320,7 +455,9 @@ if (isset($_POST)) {
     });
 
     $(document).ready(function () {
-      $('#recipes-table').DataTable();
+      $('#recipes-table').DataTable({
+        "order": [0, "DESC"]
+      });
     });
   </script>
 </body>

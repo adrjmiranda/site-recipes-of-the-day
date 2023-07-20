@@ -38,7 +38,7 @@ buttonAddRecipe.addEventListener('click', () => {
 
 		let ingredient = document.createElement('input');
 		ingredient.setAttribute('type', 'checkbox');
-		ingredient.setAttribute('name', 'ingredients');
+		ingredient.setAttribute('name', 'ingredients[]');
 		ingredient.setAttribute('value', newIngredient);
 		ingredient.setAttribute(
 			'data-order',
@@ -53,7 +53,7 @@ buttonAddRecipe.addEventListener('click', () => {
 
 		itemsField = document.querySelectorAll('#ingredients input');
 
-		newItemsMinus.forEach((item, index) => {
+		newItemsMinus.forEach((item) => {
 			item.addEventListener('click', (e) => {
 				newItems = document.querySelectorAll('#ingredients-area li');
 				newItemsMinus = document.querySelectorAll('#ingredients-area li .bi');
@@ -73,7 +73,54 @@ buttonAddRecipe.addEventListener('click', () => {
 						item.parentNode.removeChild(item);
 					}
 				});
+
+				newItemsMinus = document.querySelectorAll('#ingredients-area li .bi');
+				itemsField = document.querySelectorAll('#ingredients input');
+
+				for (let i = 0; i < newItemsMinus.length; i++) {
+					newItemsMinus[i].setAttribute('data-order', i);
+				}
+
+				for (let i = 0; i < itemsField.length; i++) {
+					itemsField[i].setAttribute('data-order', i);
+				}
 			});
 		});
 	}
 });
+
+if (newItemsMinus) {
+	newItemsMinus.forEach((item) => {
+		item.addEventListener('click', (e) => {
+			newItems = document.querySelectorAll('#ingredients-area li');
+			newItemsMinus = document.querySelectorAll('#ingredients-area li .bi');
+
+			itemsField = document.querySelectorAll('#ingredients input');
+
+			let order = parseInt(e.target.dataset.order);
+
+			newItemsMinus.forEach((minus) => {
+				if (parseInt(minus.getAttribute('data-order')) == order) {
+					minus.parentNode.parentNode.removeChild(minus.parentNode);
+				}
+			});
+
+			itemsField.forEach((item) => {
+				if (parseInt(item.getAttribute('data-order')) == order) {
+					item.parentNode.removeChild(item);
+				}
+			});
+
+			newItemsMinus = document.querySelectorAll('#ingredients-area li .bi');
+			itemsField = document.querySelectorAll('#ingredients input');
+
+			for (let i = 0; i < newItemsMinus.length; i++) {
+				newItemsMinus[i].setAttribute('data-order', i);
+			}
+
+			for (let i = 0; i < itemsField.length; i++) {
+				itemsField[i].setAttribute('data-order', i);
+			}
+		});
+	});
+}

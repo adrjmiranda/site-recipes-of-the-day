@@ -1,4 +1,7 @@
 <tr>
+  <td class="hide">
+    <?= $recipe->getId() ?>
+  </td>
   <td>
     <?= $recipe->getTitle() ?>
   </td>

@@ -274,10 +274,6 @@ form .general-error p {
 	color: #fff;
 }
 
-.hide {
-	display: none;
-}
-
 /* add recipe */
 
 #add-recipe {
@@ -437,4 +433,21 @@ form .general-error p {
 
 .recipe-ingredients .bi-plus-square-fill:hover {
 	color: var(--btn-secundary-color);
+}
+
+/* utils */
+
+.error {
+	text-align: center;
+	color: var(--tertiary-color);
+	font-weight: 300;
+	font-size: 0.9rem;
+	height: 45px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.hide {
+	display: none;
 }

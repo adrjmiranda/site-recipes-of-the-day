@@ -17,7 +17,7 @@ class Error
     'ERR_REGISTRATION_FAILED' => false,
     'ERR_LOGIN_FAILED' => false,
     'ERR_INCORRECT_EMAIL_OR_PASSWORD' => false,
-    'ERROR_UPDATING_USER' => false,
+    'ERR_UPDATING_USER' => false,
     'ERR_UPDATE_PROFILE_IMAGE' => false,
     'ERR_INVALID_IMAGE_TYPE' => false,
     // add recipe form
@@ -51,7 +51,7 @@ class Error
     'ERR_REGISTRATION_FAILED' => 'Failed to register user.',
     'ERR_LOGIN_FAILED' => 'Login failed.',
     'ERR_INCORRECT_EMAIL_OR_PASSWORD' => 'Invalid email or password.',
-    'ERROR_UPDATING_USER' => 'Error updating profile.',
+    'ERR_UPDATING_USER' => 'Error updating profile.',
     'ERR_UPDATE_PROFILE_IMAGE' => 'Error updating image.',
     'ERR_INVALID_IMAGE_TYPE' => 'Only jpeg, jpg or png images allowed.',
     // add recipe form

@@ -79,7 +79,12 @@ class RecipeDAO implements RecipeDAOInterface
     $stmt->bindParam(':recipe_image', $recipe_image);
     $stmt->bindParam(':category', $category);
 
-    $stmt->execute();
+    try {
+      $stmt->execute();
+      return true;
+    } catch (\PDOException $e) {
+      return false;
+    }
   }
 
   public function findAll($orderBy, $limit = null)

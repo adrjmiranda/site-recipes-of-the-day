@@ -115,14 +115,14 @@ if (!empty($_POST)) {
 
         // update user
         if ($userDAO->update($newUserData)) {
-          Error::setError('ERROR_UPDATING_USER', false);
+          Error::setError('ERR_UPDATING_USER', false);
         } else {
-          Error::setError('ERROR_UPDATING_USER', true);
+          Error::setError('ERR_UPDATING_USER', true);
         }
       }
     }
   } else {
-    Error::setError('ERROR_UPDATING_USER', true);
+    Error::setError('ERR_UPDATING_USER', true);
   }
 }
 ?>
@@ -132,9 +132,9 @@ require_once __DIR__ . '/templates/navbar.php';
 <div id="user-edit-profile" class="container-wrapper">
   <form action="user_edit_profile.php" id="edit-profile-form" method="post" enctype="multipart/form-data">
     <div class="error empty-fields">
-      <?php if (Error::$ERROR_TYPES['ERROR_UPDATING_USER']): ?>
+      <?php if (Error::$ERROR_TYPES['ERR_UPDATING_USER']): ?>
         <p>
-          <?= Error::$ERROR_MSG['ERROR_UPDATING_USER'] ?>
+          <?= Error::$ERROR_MSG['ERR_UPDATING_USER'] ?>
         </p>
       <?php endif; ?>
     </div>
