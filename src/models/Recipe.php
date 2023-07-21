@@ -114,6 +114,11 @@ class Recipe
   {
     return $this->category;
   }
+
+  public function generateImageName()
+  {
+    return bin2hex(random_bytes(60)) . '.jpeg';
+  }
 }
 
 interface RecipeDAOInterface

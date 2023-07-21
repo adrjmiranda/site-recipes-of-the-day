@@ -1,6 +1,6 @@
 <a href="<?= $BASE_URL . 'recipe.php?id=' . $topRatedRecipe->getId() ?>" class="top-rated-card">
   <div class="top-rated-image"
-    style="background-image: url('<?= $topRatedRecipe->getRecipeImage() === '' ? $BASE_URL . 'assets/imgs/categories/' . str_replace(' ', '_', $topRatedRecipe->getCategory()) . '.jpg' : $BASE_URL . 'images/recipes/' . $topRatedRecipe->getId() . '/' . $topRatedRecipe->getRecipeImage() ?>');">
+    style="background-image: url('<?= $topRatedRecipe->getRecipeImage() === '' ? $BASE_URL . 'assets/imgs/categories/' . str_replace(' ', '_', $topRatedRecipe->getCategory()) . '.jpg' : $BASE_URL . 'images/recipes/' . $topRatedRecipe->getRecipeImage() ?>');">
     >
     <div class="top-rated-title">
       <h4>

@@ -43,9 +43,11 @@ if (isset($_SESSION['token'])) {
   $token = $_SESSION['token'];
 
   $user = $userDAO->findByToken($token);
-  $userRating = $ratingDAO->findByUserIdAndRecipeId($user->getId(), $recipe->getId());
+  if ($user) {
+    $userRating = $ratingDAO->findByUserIdAndRecipeId($user->getId(), $recipe->getId());
 
-  $alreadyCommented = $commentDAO->checkIfUserHasAlreadyCommented($user, $recipe);
+    $alreadyCommented = $commentDAO->checkIfUserHasAlreadyCommented($user, $recipe);
+  }
 }
 ?>
 <?php
@@ -56,7 +58,7 @@ require_once __DIR__ . '/templates/navbar.php';
   <div id="recipe">
     <div id="recipe-image">
       <div class="recipe-photo"
-        style="background-image: url('<?= $recipe->getRecipeImage() === '' ? $BASE_URL . 'assets/imgs/categories/' . str_replace(' ', '_', $recipe->getCategory()) . '.jpg' : $BASE_URL . 'images/recipes/' . $recipe->getId() . '/' . $recipe->getRecipeImage() ?>');">
+        style="background-image: url('<?= $recipe->getRecipeImage() === '' ? $BASE_URL . 'assets/imgs/categories/' . str_replace(' ', '_', $recipe->getCategory()) . '.jpg' : $BASE_URL . 'images/recipes/' . $recipe->getRecipeImage() ?>');">
         <div class="title">
           <h1>
             <?= $recipe->getTitle() ?>

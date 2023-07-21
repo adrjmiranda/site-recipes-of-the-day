@@ -91,15 +91,30 @@ class RecipeDAO implements RecipeDAOInterface
   {
     $recipes = [];
 
+    $query = 'SELECT * FROM recipes ORDER BY replace_name DESC LIMIT';
 
-    if ($limit) {
-      $stmt = $this->conn->prepare('SELECT * FROM recipes ORDER BY :orderBy DESC LIMIT :limit');
-      $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
-    } else {
-      $stmt = $this->conn->prepare('SELECT * FROM recipes ORDER BY :orderBy DESC');
+    switch ($orderBy) {
+      case 'title':
+        $query = str_replace('replace_name', $orderBy, $query);
+        break;
+      case 'rating':
+        $query = str_replace('replace_name', $orderBy, $query);
+        break;
+      case 'category':
+        $query = str_replace('replace_name', $orderBy, $query);
+        break;
+      default:
+        $query = str_replace('replace_name', $orderBy, $query);
+        break;
     }
 
-    $stmt->bindParam(':orderBy', $orderBy, PDO::PARAM_STR);
+    if ($limit) {
+      $query = $query . ' ' . ':limit';
+      $stmt = $this->conn->prepare($query);
+      $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+    } else {
+      $stmt = $this->conn->prepare($query);
+    }
 
     $stmt->execute();
 
@@ -169,10 +184,10 @@ class RecipeDAO implements RecipeDAOInterface
     $recipes = [];
 
     if ($limit) {
-      $stmt = $this->conn->prepare('SELECT * FROM recipes WHERE category = :category LIMIT :limit');
+      $stmt = $this->conn->prepare('SELECT * FROM recipes WHERE category = :category ORDER BY id DESC LIMIT :limit');
       $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
     } else {
-      $stmt = $this->conn->prepare('SELECT * FROM recipes WHERE category = :category');
+      $stmt = $this->conn->prepare('SELECT * FROM recipes WHERE category = :category ORDER BY id DESC');
     }
 
     $stmt->bindParam(':category', $category);

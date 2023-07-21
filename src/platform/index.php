@@ -137,13 +137,46 @@ if (isset($_POST)) {
       } else {
         Error::clearErrors();
 
+        $recipe = new Recipe();
+
         $title = removeUnnecessarySpaces($title);
         $ing = json_encode($ingredients);
         $rating = 0;
 
+        // TODO: try insert image
         $recipe_image = '';
 
-        $recipe = new Recipe();
+        if (isset($_FILES['recipe_image']) && isset($_FILES['recipe_image']['tmp_name'])) {
+          $size = intval($_FILES['recipe_image']['size']);
+
+          if ($size > 2000000) {
+            Error::setError('ERR_TOO_LARGE_IMAGE', true);
+          } else {
+            Error::setError('ERR_TOO_LARGE_IMAGE', false);
+
+            $enableTypes = ['image/jpg', 'image/jpeg', 'image/png'];
+            $jpgTypes = ['image/jpg', 'image/jpeg'];
+
+            if (in_array($_FILES['recipe_image']['type'], $enableTypes)) {
+              Error::setError('ERR_INVALID_IMAGE', false);
+
+              if (in_array($_FILES['recipe_image']['type'], $jpgTypes)) {
+                $imageFile = imagecreatefromjpeg($_FILES['recipe_image']['tmp_name']);
+              } else {
+                $imageFile = imagecreatefrompng($_FILES['recipe_image']['tmp_name']);
+              }
+
+              $imageName = $recipe->generateImageName();
+
+              if (imagejpeg($imageFile, '../images/recipes/' . $imageName, 100)) {
+                $recipe_image = $imageName;
+              }
+            }
+          }
+        } else {
+          Error::setError('ERR_INVALID_IMAGE', true);
+        }
+
 
         $recipe->setTitle($title);
         $recipe->setIngredients($ing);
@@ -194,6 +227,7 @@ if (isset($_POST)) {
   <script src="<?= $BASE_URL ?>/../platform/js/scripts.js" defer></script>
   <script src="<?= $BASE_URL ?>/../platform/js/show-add-recipe.js" defer></script>
   <script src="<?= $BASE_URL ?>/../platform/js/add-ingredient.js" defer></script>
+  <script src="<?= $BASE_URL ?>/../platform/js/image-preview.js" defer></script>
 </head>
 
 <body>
@@ -273,7 +307,9 @@ if (isset($_POST)) {
       <h3>Add a new recipe:</h3>
       <div class="form-left">
         <div class="recipe-image input-field">
-          <div class="image"></div>
+          <div class="image">
+            <img src="" id="recipe_image_preview">
+          </div>
           <label for="recipe_image">Add an Image</label>
           <input type="file" name="recipe_image" id="recipe_image" class="hide">
         </div>

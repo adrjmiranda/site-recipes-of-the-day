@@ -1,6 +1,6 @@
 <a href="<?= $BASE_URL . 'recipe.php?id=' . $specialRecipe->getId() ?>" class="special-card">
   <div class="special-card-image"
-    style="background-image: url('<?= $specialRecipe->getRecipeImage() === '' ? $BASE_URL . 'assets/imgs/categories/' . str_replace(' ', '_', $specialRecipe->getCategory()) . '.jpg' : $BASE_URL . 'images/recipes/' . $specialRecipe->getId() . '/' . $specialRecipe->getRecipeImage() ?>');">
+    style="background-image: url('<?= $specialRecipe->getRecipeImage() === '' ? $BASE_URL . 'assets/imgs/categories/' . str_replace(' ', '_', $specialRecipe->getCategory()) . '.jpg' : $BASE_URL . 'images/recipes/' . $specialRecipe->getRecipeImage() ?>');">
     ></div>
   <div class="special-info">
     <div class="special-title">
