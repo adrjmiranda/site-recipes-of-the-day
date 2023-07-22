@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/utils/globals.php';
+require_once __DIR__ . '/../utils/globals.php';
 
 $_SESSION = array();
 
@@ -16,4 +16,4 @@ if (ini_get("session.use_cookies")) {
 
 session_destroy();
 
-header('location: index.php');
+header('location: login.php');

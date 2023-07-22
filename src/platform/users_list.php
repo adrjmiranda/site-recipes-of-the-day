@@ -73,8 +73,7 @@ $users = $userDAO->findAll();
           <i class="bi bi-list"></i>
         </button>
         <div id="nav-actions">
-          <button class="btn add"><i class="bi bi-plus-lg"></i> Add Recipe</button>
-          <button class="btn"><i class="bi bi-box-arrow-right"></i></button>
+          <a href="logout.php" class="btn"><i class="bi bi-box-arrow-right"></i></a>
         </div>
       </nav>
       <div id="recipes-list">
