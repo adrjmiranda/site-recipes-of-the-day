@@ -33,8 +33,6 @@ if (!$admin) {
 $recipes = $recipeDAO->findAll('id');
 $categories = $categoryDAO->findAll();
 
-// try add recipe
-
 if (isset($_POST)) {
   if (
     isset($_POST['title'])
@@ -290,8 +288,8 @@ if (isset($_POST)) {
                   <td>-</td>
                   <td>-</td>
                   <td class="td-actions">
-                    <button class="edit-recipe"><i class="bi bi-pencil-square"></i></button>
-                    <button class="delete-recipe"><i class="bi bi-trash"></i></button>
+                    <a class="edit-recipe"><i class="bi bi-pencil-square"></i></a>
+                    <a class="delete-recipe"><i class="bi bi-trash"></i></a>
                   </td>
                 </tr>
               <?php endif; ?>

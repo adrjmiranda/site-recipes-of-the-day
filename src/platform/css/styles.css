@@ -232,8 +232,14 @@ form .general-error p {
 	background-color: var(--quaternary-color);
 }
 
-.delete-recipe {
+.delete-recipe,
+.delete-user {
 	background-color: var(--tertiary-color);
+}
+
+.delete-user {
+	max-width: 50%;
+	margin: 0 auto;
 }
 
 /* more options */
