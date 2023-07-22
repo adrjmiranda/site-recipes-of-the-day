@@ -35,7 +35,7 @@ class RecipeDAO implements RecipeDAOInterface
     return $recipe;
   }
 
-  public function createRecipe(Recipe $recipe)
+  public function create(Recipe $recipe)
   {
     $stmt = $this->conn->prepare('INSERT INTO recipes (
       title,
@@ -243,7 +243,12 @@ class RecipeDAO implements RecipeDAOInterface
     $stmt->bindParam(':recipe_image', $recipe_image);
     $stmt->bindParam(':category', $category);
 
-    $stmt->execute();
+    try {
+      $stmt->execute();
+      return true;
+    } catch (\PDOException $e) {
+      return false;
+    }
   }
 
   public function delete($id)

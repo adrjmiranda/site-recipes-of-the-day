@@ -66,6 +66,8 @@ if (isset($_POST)) {
       isEmpty($preparation_time) ||
       isEmpty($category)
     ) {
+      Error::setError('ERR_FILURE_TO_ADD_RECIPE', true);
+
       if (isEmpty($title)) {
         Error::setError('ERR_EMPTY_TITLE', true);
       } else {
@@ -143,7 +145,6 @@ if (isset($_POST)) {
         $ing = json_encode($ingredients);
         $rating = 0;
 
-        // TODO: try insert image
         $recipe_image = '';
 
         if (isset($_FILES['recipe_image']) && isset($_FILES['recipe_image']['tmp_name'])) {
@@ -188,7 +189,7 @@ if (isset($_POST)) {
         $recipe->setRecipeImage($recipe_image);
         $recipe->setCategory($category);
 
-        if ($recipeDAO->createRecipe($recipe)) {
+        if ($recipeDAO->create($recipe)) {
           Error::clearErrors();
           unset($_POST);
           header('location: index.php');
@@ -196,7 +197,6 @@ if (isset($_POST)) {
           Error::setError('ERR_FILURE_TO_ADD_RECIPE', true);
           unset($_POST);
         }
-
       }
     }
   }
@@ -243,7 +243,7 @@ if (isset($_POST)) {
             <a href="index.php">Recipes</a>
           </li>
           <li>
-            <a href="#">Categories</a>
+            <a href="users_list.php">Users</a>
           </li>
         </ul>
       </div>

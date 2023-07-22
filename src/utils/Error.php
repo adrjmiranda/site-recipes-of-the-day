@@ -34,7 +34,8 @@ class Error
     'ERR_INVALID_PORTIONS' => false,
     'ERR_INVALID_PREPARATION_TIME' => false,
     'ERR_INVALID_CATEGORY' => false,
-    'ERR_INVALID_IMAGE' => false
+    'ERR_INVALID_IMAGE' => false,
+    'ERR_UPDATING_RECIPE' => false
   ];
 
   static public $ERROR_MSG = [
@@ -68,7 +69,8 @@ class Error
     'ERR_INVALID_PORTIONS' => 'Only positive integers.',
     'ERR_INVALID_PREPARATION_TIME' => 'Only positive integers.',
     'ERR_INVALID_CATEGORY' => 'Invalid category entered.',
-    'ERR_INVALID_IMAGE' => 'Only jpeg, jpg or png images.'
+    'ERR_INVALID_IMAGE' => 'Only jpeg, jpg or png images.',
+    'ERR_UPDATING_RECIPE' => 'Error updating recipe.'
   ];
 
   static public function setError($errorType, $state)

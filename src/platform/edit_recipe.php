@@ -1,15 +1,16 @@
 <?php
 
+require_once __DIR__ . '/../connection/conn.php';
 require_once __DIR__ . '/../utils/globals.php';
 require_once __DIR__ . '/../utils/Error.php';
-require_once __DIR__ . '/../connection/conn.php';
+require_once __DIR__ . '/../dao/AdminDAO.php';
 require_once __DIR__ . '/../dao/RecipeDAO.php';
 require_once __DIR__ . '/../dao/CategoryDAO.php';
-require_once __DIR__ . '/../dao/AdminDAO.php';
+require_once __DIR__ . '/utils/validations.php';
 
-use dao\RecipeDAO;
-use dao\AdminDAO;
 use utils\Error;
+use dao\AdminDAO;
+use dao\RecipeDAO;
 use dao\CategoryDAO;
 
 $adminDAO = new AdminDAO($conn);
@@ -28,10 +29,10 @@ if (!$admin) {
 
 $id = filter_input(INPUT_GET, 'id');
 
-$recipDAO = new RecipeDAO($conn);
+$recipeDAO = new RecipeDAO($conn);
 $categoryDAO = new CategoryDAO($conn);
 
-$recipe = $recipDAO->findById($id);
+$recipe = $recipeDAO->findById($id);
 
 if (!$recipe) {
   header('location: index.php');
@@ -39,8 +40,173 @@ if (!$recipe) {
 
 $categories = $categoryDAO->findAll();
 
-if (!isset($_POST)) {
-  // TODO: try update
+if (isset($_POST)) {
+  if (
+    isset($_POST['title'])
+    && isset($_POST['method_of_preparation'])
+    && isset($_POST['tips'])
+    && isset($_POST['portions'])
+    && isset($_POST['preparation_time'])
+    && isset($_POST['category'])
+  ) {
+    $title = filter_input(INPUT_POST, 'title');
+    $method_of_preparation = filter_input(INPUT_POST, 'method_of_preparation');
+    $tips = filter_input(INPUT_POST, 'tips');
+    $portions = filter_input(INPUT_POST, 'portions');
+    $preparation_time = filter_input(INPUT_POST, 'preparation_time');
+    $category = filter_input(INPUT_POST, 'category');
+
+    if (isset($_POST['ingredients'])) {
+      $ingredients = $_POST['ingredients'];
+    } else {
+      $ingredients = json_decode($recipe->getIngredients());
+    }
+
+    if (
+      isEmpty($title) ||
+      isEmpty($ingredients) ||
+      isEmpty($method_of_preparation) ||
+      isEmpty($tips) ||
+      isEmpty($portions) ||
+      isEmpty($preparation_time) ||
+      isEmpty($category)
+    ) {
+      Error::setError('ERR_UPDATING_RECIPE', true);
+
+      if (isEmpty($title)) {
+        Error::setError('ERR_EMPTY_TITLE', true);
+      } else {
+        Error::setError('ERR_EMPTY_TITLE', false);
+      }
+
+      if (isEmpty($ingredients)) {
+        Error::setError('ERR_EMPTY_INGREDIENTS', true);
+      } else {
+        Error::setError('ERR_EMPTY_INGREDIENTS', false);
+      }
+
+      if (isEmpty($method_of_preparation)) {
+        Error::setError('ERR_EMPTY_METHOD_PREPARATION', true);
+      } else {
+        Error::setError('ERR_EMPTY_METHOD_PREPARATION', false);
+      }
+
+      if (isEmpty($tips)) {
+        Error::setError('ERR_EMPTY_TIPS', true);
+      } else {
+        Error::setError('ERR_EMPTY_TIPS', false);
+      }
+
+      if (isEmpty($portions)) {
+        Error::setError('ERR_EMPTY_PORTIONS', true);
+      } else {
+        Error::setError('ERR_EMPTY_PORTIONS', false);
+      }
+
+      if (isEmpty($preparation_time)) {
+        Error::setError('ERR_EMPTY_PREPARATION_TIME', true);
+      } else {
+        Error::setError('ERR_EMPTY_PREPARATION_TIME', false);
+      }
+
+      if (isEmpty($category)) {
+        Error::setError('ERR_EMPTY_CATEGORY', true);
+      } else {
+        Error::setError('ERR_EMPTY_CATEGORY', false);
+      }
+    } else {
+      Error::clearErrors();
+
+      if (isInvalidTitle($title) || isInvalidPortions($portions) || isInvalidPreparationTime($preparation_time) || isInvalidCategory($category)) {
+        if (isInvalidTitle($title)) {
+          Error::setError('ERR_INVALID_TITLE', true);
+        } else {
+          Error::setError('ERR_INVALID_TITLE', false);
+        }
+
+        if (isInvalidPortions($portions)) {
+          Error::setError('ERR_INVALID_PORTIONS', true);
+        } else {
+          Error::setError('ERR_INVALID_PORTIONS', false);
+        }
+
+        if (isInvalidPreparationTime($preparation_time)) {
+          Error::setError('ERR_INVALID_PREPARATION_TIME', true);
+        } else {
+          Error::setError('ERR_INVALID_PREPARATION_TIME', false);
+        }
+
+        if (isInvalidCategory($category)) {
+          Error::setError('ERR_INVALID_CATEGORY', true);
+        } else {
+          Error::setError('ERR_INVALID_CATEGORY', false);
+        }
+      } else {
+        Error::clearErrors();
+
+        $title = removeUnnecessarySpaces($title);
+        $ing = json_encode($ingredients);
+
+        $recipe_image = $recipe->getRecipeImage();
+
+        if (isset($_FILES['recipe_image']) && isset($_FILES['recipe_image']['tmp_name'])) {
+          $size = intval($_FILES['recipe_image']['size']);
+
+          if ($size > 2000000) {
+            Error::setError('ERR_TOO_LARGE_IMAGE', true);
+          } else {
+            Error::setError('ERR_TOO_LARGE_IMAGE', false);
+
+            $enableTypes = ['image/jpg', 'image/jpeg', 'image/png'];
+            $jpgTypes = ['image/jpg', 'image/jpeg'];
+
+            if (in_array($_FILES['recipe_image']['type'], $enableTypes)) {
+              Error::setError('ERR_INVALID_IMAGE', false);
+
+              if (in_array($_FILES['recipe_image']['type'], $jpgTypes)) {
+                $imageFile = imagecreatefromjpeg($_FILES['recipe_image']['tmp_name']);
+              } else {
+                $imageFile = imagecreatefrompng($_FILES['recipe_image']['tmp_name']);
+              }
+
+              $imageName = $recipe->generateImageName();
+
+              if ($recipe->getRecipeImage() != '') {
+                $imagePath = dirname(__FILE__, 2) . '/images/recipes/' . $recipe->getRecipeImage();
+                unlink($imagePath);
+              }
+
+              if (imagejpeg($imageFile, '../images/recipes/' . $imageName, 100)) {
+                $recipe_image = $imageName;
+              }
+            }
+          }
+        } else {
+          Error::setError('ERR_INVALID_IMAGE', true);
+        }
+
+
+        $recipe->setTitle($title);
+        $recipe->setIngredients($ing);
+        $recipe->setMethodOfPreparation($method_of_preparation);
+        $recipe->setTips($tips);
+        $recipe->setPortions($portions);
+        $recipe->setPreparationTime($preparation_time);
+        $recipe->setRecipeImage($recipe_image);
+        $recipe->setCategory($category);
+
+        if ($recipeDAO->update($recipe)) {
+          Error::clearErrors();
+          unset($_POST);
+          header('location: index.php');
+        } else {
+          Error::setError('ERR_UPDATING_RECIPE', true);
+          unset($_POST);
+        }
+
+      }
+    }
+  }
 }
 ?>
 <!DOCTYPE html>
@@ -72,7 +238,7 @@ if (!isset($_POST)) {
 <body>
   <div id="edit-recipe-container">
     <div id="add-recipe">
-      <form action="index.php" method="post" enctype="multipart/form-data">
+      <form action="edit_recipe.php?id=<?= $recipe->getId() ?>" method="post" enctype="multipart/form-data">
         <h3>Update recipe:</h3>
         <div class="form-left">
           <div class="recipe-image input-field">
@@ -197,8 +363,13 @@ if (!isset($_POST)) {
               <?php endif; ?>
             </ul>
             <div id="ingredients" class="hide">
-              <?php if (isset($ingredients)): ?>
+              <?php if (isset($_POST['ingredients'])): ?>
                 <?php foreach ($ingredients as $key => $ingredient): ?>
+                  <input type="checkbox" name="ingredients[]" value="<?= $ingredient ?>" checked="checked"
+                    data-order="<?= $key ?>">
+                <?php endforeach; ?>
+              <?php else: ?>
+                <?php foreach (json_decode($recipe->getIngredients()) as $key => $ingredient): ?>
                   <input type="checkbox" name="ingredients[]" value="<?= $ingredient ?>" checked="checked"
                     data-order="<?= $key ?>">
                 <?php endforeach; ?>

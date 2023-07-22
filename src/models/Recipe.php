@@ -124,7 +124,7 @@ class Recipe
 interface RecipeDAOInterface
 {
   public function buildRecipe($data);
-  public function createRecipe(Recipe $recipe);
+  public function create(Recipe $recipe);
   public function findAll($orderBy, $limit = null);
   public function findById($id);
   public function findByTitle($title, $limit = null);
