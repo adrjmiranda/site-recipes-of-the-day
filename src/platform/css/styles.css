@@ -211,7 +211,7 @@ form .general-error p {
 	gap: 1rem;
 }
 
-.td-actions button {
+.td-actions a {
 	flex: 1 1 50%;
 	cursor: pointer;
 	border: none;
@@ -220,9 +220,11 @@ form .general-error p {
 	height: 30px;
 	opacity: 0.8;
 	transition: 0.3s ease;
+	text-align: center;
+	line-height: 30px;
 }
 
-.td-actions button:hover {
+.td-actions a:hover {
 	opacity: 1;
 }
 
@@ -324,7 +326,8 @@ form .general-error p {
 	gap: 2rem;
 }
 
-.form-actions button {
+.form-actions button,
+.form-actions a {
 	background-color: var(--btn-secundary-color);
 	color: #fff;
 	border: none;
@@ -335,7 +338,8 @@ form .general-error p {
 	transition: 0.3s;
 }
 
-.form-actions button:hover {
+.form-actions button:hover,
+.form-actions a:hover {
 	background-color: var(--quaternary-color);
 }
 

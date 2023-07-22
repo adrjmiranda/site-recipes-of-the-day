@@ -224,7 +224,7 @@ if (isset($_POST)) {
   <!-- bootstrap icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
   <!-- scripts -->
-  <script src="<?= $BASE_URL ?>/../platform/js/scripts.js" defer></script>
+  <script src="<?= $BASE_URL ?>/../platform/js/more-options.js" defer></script>
   <script src="<?= $BASE_URL ?>/../platform/js/show-add-recipe.js" defer></script>
   <script src="<?= $BASE_URL ?>/../platform/js/add-ingredient.js" defer></script>
   <script src="<?= $BASE_URL ?>/../platform/js/image-preview.js" defer></script>
@@ -378,7 +378,7 @@ if (isset($_POST)) {
           <select name="category" id="category">
             <option value="">Choice a category</option>
             <?php foreach ($categories as $cat): ?>
-              <option value="<?= $cat->getCategoryName() ?>" <?= isset($_POST['$category']) ? $category == $cat->getCategoryName() ? 'selected' : '' : '' ?>>
+              <option value="<?= $cat->getCategoryName() ?>" <?= isset($_POST['category']) ? $category == $cat->getCategoryName() ? 'selected' : '' : '' ?>>
                 <?= $cat->getCategoryName() ?>
               </option>
             <?php endforeach; ?>

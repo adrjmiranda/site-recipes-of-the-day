@@ -91,7 +91,7 @@ class RecipeDAO implements RecipeDAOInterface
   {
     $recipes = [];
 
-    $query = 'SELECT * FROM recipes ORDER BY replace_name DESC LIMIT';
+    $query = 'SELECT * FROM recipes ORDER BY replace_name DESC';
 
     switch ($orderBy) {
       case 'title':
@@ -109,7 +109,7 @@ class RecipeDAO implements RecipeDAOInterface
     }
 
     if ($limit) {
-      $query = $query . ' ' . ':limit';
+      $query = $query . ' LIMIT :limit';
       $stmt = $this->conn->prepare($query);
       $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
     } else {
@@ -133,7 +133,7 @@ class RecipeDAO implements RecipeDAOInterface
 
   public function findById($id)
   {
-    $recipe = [];
+    $recipe = null;
 
     $stmt = $this->conn->prepare('SELECT * FROM recipes WHERE id = :id LIMIT 1');
 
@@ -252,7 +252,11 @@ class RecipeDAO implements RecipeDAOInterface
 
     $stmt->bindParam(':id', $id);
 
-    $stmt->execute();
+    try {
+      $stmt->execute();
+      return true;
+    } catch (\PDOException $e) {
+      return false;
+    }
   }
-
 }
