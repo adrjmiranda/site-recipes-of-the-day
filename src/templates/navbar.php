@@ -82,10 +82,10 @@ $categories = $categoryDAO->findAll();
                   alt="Logo - Recipes Of The Day">
                 Recipes Of The Day</a>
             </div>
-            <div id="close-menu">
-              <button type="button"><i class="bi bi-x-lg"></i></button>
-            </div>
-            <h3>Menu:</h3>
+            <h3>Menu: <div id="close-menu">
+                <button type="button"><i class="bi bi-x-lg"></i></button>
+              </div>
+            </h3>
             <ul>
               <?php foreach ($categories as $category): ?>
                 <li>
