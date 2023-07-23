@@ -467,3 +467,42 @@ form .general-error p {
 .hide {
 	display: none;
 }
+
+#toggle-menu {
+	display: flex;
+	justify-content: flex-end;
+}
+
+#hide-menu {
+	background-color: var(--btn-primary-color);
+	color: var(--text-tertiary-color);
+	border: none;
+	border-radius: 3px;
+	padding: 10px;
+	display: block;
+	margin-top: 2rem;
+	cursor: pointer;
+}
+
+/* responsive */
+
+@media screen and (min-width: 576px) {
+	#toggle-menu {
+		display: none;
+	}
+}
+
+@media screen and (max-width: 576px) {
+	.recipe-category,
+	.recipe-rating {
+		display: none;
+	}
+
+	#more-options {
+		position: absolute;
+		width: 100vw;
+		z-index: 999;
+		background-color: var(--bg-secundary-color);
+		height: 100vh;
+	}
+}

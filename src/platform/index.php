@@ -231,6 +231,9 @@ if (isset($_POST)) {
 <body>
   <div class="home">
     <div id="more-options" class="hide">
+      <div id="toggle-menu">
+        <button id="hide-menu" class="hide"><i class="bi bi-caret-right"></i></button>
+      </div>
       <div class="profile">
         <div class="profile-image"></div>
         <h4 class="profile-name">Admin Name</h4>
@@ -270,10 +273,10 @@ if (isset($_POST)) {
             <thead>
               <tr>
                 <th class="hide">Id</th>
-                <th>Title</th>
-                <th>Category</th>
-                <th>Rating</th>
-                <th>Actions</th>
+                <th class="recipe-title">Title</th>
+                <th class="recipe-category">Category</th>
+                <th class="recipe-rating">Rating</th>
+                <th class="recipe-actions">Actions</th>
               </tr>
             </thead>
             <tbody>
