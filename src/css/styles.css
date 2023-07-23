@@ -1228,6 +1228,10 @@ li.more:hover .drop-more {
 	.container-wrapper {
 		padding: 0 18px;
 	}
+
+	form {
+		margin: 0 15px;
+	}
 }
 
 @media screen and (max-width: 576px) {
