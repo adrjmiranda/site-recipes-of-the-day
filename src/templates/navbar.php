@@ -23,6 +23,7 @@ $categories = $categoryDAO->findAll();
   <!-- js scipts -->
   <script src="<?= $BASE_URL ?>js/scripts.js" defer></script>
   <script src="<?= $BASE_URL ?>js/selected-rate.js" defer></script>
+  <script src="<?= $BASE_URL ?>js/toggle-menu-hidden.js" defer></script>
 </head>
 
 <body>
@@ -72,5 +73,28 @@ $categories = $categoryDAO->findAll();
           <? else: ?>
             <a href="<?= $BASE_URL ?>login.php" class="btn login"><i class="bi bi-person-fill"></i> enter</a>
           <?php endif; ?>
+          <div id="toggle-menu">
+            <button type="button"><i class="bi bi-list"></i></button>
+          </div>
+          <div id="menu-hidden" class="hidden">
+            <div class="main logo">
+              <a href="<?= $BASE_URL ?>index.php"><img src="<?= $BASE_URL ?>assets/recipesoftheday_logo.svg"
+                  alt="Logo - Recipes Of The Day">
+                Recipes Of The Day</a>
+            </div>
+            <div id="close-menu">
+              <button type="button"><i class="bi bi-x-lg"></i></button>
+            </div>
+            <h3>Menu:</h3>
+            <ul>
+              <?php foreach ($categories as $category): ?>
+                <li>
+                  <a href="<?= $BASE_URL ?>category.php?id=<?= $category->getId() ?>">
+                    <?= $category->getCategoryName() ?>
+                  </a>
+                </li>
+              <?php endforeach; ?>
+            </ul>
+          </div>
         </div>
       </nav>

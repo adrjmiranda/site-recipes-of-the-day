@@ -1145,3 +1145,142 @@ li.more:hover .drop-more {
 .hidden {
 	display: none;
 }
+
+#toggle-menu {
+	display: none;
+}
+
+#toggle-menu button {
+	padding: 9px 12px;
+	cursor: pointer;
+	background-color: var(--primary-color);
+	color: var(--bg-primary-color);
+	border: none;
+	border-radius: 3px;
+}
+
+#menu-hidden {
+	position: absolute;
+	top: 0;
+	left: 0;
+	min-height: 100vh;
+	z-index: 199;
+	background-color: var(--secundary-color);
+	width: 100%;
+	padding: 30px;
+}
+
+#menu-hidden h3 {
+	font-family: 'Pacifico', cursive;
+	color: var(--primary-color);
+	text-align: center;
+	font-size: 2rem;
+	margin-bottom: 1rem;
+	text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+#menu-hidden ul {
+	display: flex;
+	flex-direction: column;
+	list-style: none;
+	gap: 0.8rem;
+}
+
+#menu-hidden ul li a {
+	background-color: var(--primary-color);
+	width: 100%;
+	display: block;
+	color: var(--bg-primary-color);
+	padding: 3px;
+	border-radius: 3px;
+	text-transform: capitalize;
+	transition: 0.3s ease;
+}
+
+#menu-hidden ul li a:hover {
+	background-color: var(--tertiary-color);
+}
+
+#close-menu {
+	text-align: right;
+	margin-top: 2rem;
+}
+
+#close-menu button {
+	background-color: var(--primary-color);
+	border: none;
+	border-radius: 3px;
+	padding: 7px 12px;
+	color: var(--bg-primary-color);
+	cursor: pointer;
+}
+
+/* responsive */
+
+@media screen and (max-width: 1200px) {
+	.container-wrapper {
+		padding: 0 18px;
+	}
+}
+
+@media screen and (max-width: 576px) {
+	#menu,
+	#search,
+	#navbar .logo:not(.main) {
+		display: none;
+	}
+
+	#navbar .nav {
+		flex-wrap: wrap;
+		height: 120px;
+		flex-direction: row-reverse;
+	}
+
+	#toggle-menu {
+		display: block;
+		width: 100%;
+		text-align: right;
+	}
+
+	.category-bg {
+		max-width: 90%;
+		max-height: 50%;
+		top: 270px;
+	}
+
+	.category-name {
+		top: -30%;
+		font-size: 2.7rem;
+	}
+
+	.special {
+		row-gap: 4.5rem;
+	}
+
+	.most-searched-recipes-card,
+	.top-rated-card,
+	.special-card,
+	.recipe-card {
+		max-width: 100%;
+	}
+
+	.social {
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+
+	.social .logo {
+		flex-basis: 100%;
+		flex-grow: 1;
+	}
+
+	.social .logo a {
+		text-align: center;
+		display: block;
+		width: 100%;
+	}
+
+	.social-about {
+		flex-direction: column;
+	}
+}
