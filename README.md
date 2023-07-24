@@ -15,4 +15,4 @@ After installing the necessary dependencies, run docker compose up -d, and acces
 
 ## 📄 License
 
-This project is under license (your license) - see the [LICENSE.md](https://github.com/adrjmiranda/site-recipes-of-the-day/license) file for details.
+This project is under license (your license) - see the [LICENSE.md](https://github.com/adrjmiranda/site-recipes-of-the-day/LICENSE) file for details.
