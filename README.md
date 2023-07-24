@@ -6,7 +6,7 @@ This is a simple website design that recipes the DAO pattern, which is a pattern
 
 After installing the necessary dependencies, run docker compose up -d, and access http://localhost from your browser.
 
-### 📋 Prerequisites
+### 📋 Dependencies
 
 - [Docker] (https://docs.docker.com/desktop/)
 - [Compose] (https://getcomposer.org/)
