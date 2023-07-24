@@ -13,6 +13,10 @@ After installing the necessary dependencies, run docker compose up -d, and acces
 - [Summernote] (https://summernote.org/)
 - [DataTables] (https://datatables.net/)
 
+## ⚙️ Comments
+
+To access the site's administrator area, use the password 12345678 and email admin@admin.com at http://localhost/platform in the browser after starting the containers.
+
 ## 📄 License
 
 This project is under license (your license) - see the [LICENSE.md](https://github.com/adrjmiranda/site-recipes-of-the-day/blob/main/LICENSE) file for details.
