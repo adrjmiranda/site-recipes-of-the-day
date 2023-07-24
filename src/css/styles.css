@@ -1226,19 +1226,96 @@ li.more:hover .drop-more {
 
 @media screen and (max-width: 1200px) {
 	.container-wrapper {
-		padding: 0 18px;
+		padding: 0 15px;
+	}
+
+	#menu {
+		display: none;
+	}
+
+	.category-bg {
+		max-width: 90%;
 	}
 
 	form {
-		margin: 0 15px;
+		margin: 0 1rem;
+	}
+}
+
+@media screen and (max-width: 1110px) {
+	.most-searched-recipes,
+	.top-rated,
+	.special,
+	.new-recipes {
+		justify-content: space-between;
+	}
+
+	#category-recipes {
+		justify-content: space-between;
+	}
+
+	#category-recipes .recipe-card {
+		max-width: unset;
+	}
+}
+
+@media screen and (max-width: 900px) {
+	.recipe-photo {
+		height: 70%;
+	}
+
+	#recipe-image .info {
+		height: 50%;
+		flex-direction: column;
+		justify-content: flex-start;
+		padding-top: 35px;
+	}
+
+	#recipe-container {
+		flex-direction: column;
+		flex-wrap: wrap;
+	}
+
+	#recipe-container #recipe,
+	#recipe-container #others-recipes {
+		max-width: 100%;
+	}
+
+	#comment-form {
+		padding: 0;
+	}
+
+	#comment-form input[type='text'] {
+		height: 40px;
+		margin-top: 1rem;
+	}
+}
+
+@media screen and (max-width: 834px) {
+	.most-searched-recipes,
+	.top-rated,
+	.special,
+	.new-recipes {
+		justify-content: center;
+	}
+
+	#category-banner h1 {
+		font-size: 2rem;
+	}
+
+	.category-simbol {
+		display: none;
+	}
+}
+
+@media screen and (max-width: 690px) {
+	#navbar .logo:not(.main) {
+		display: none;
 	}
 }
 
 @media screen and (max-width: 576px) {
-	/* home */
-	#menu,
-	#search,
-	#navbar .logo:not(.main) {
+	#search {
 		display: none;
 	}
 
@@ -1255,7 +1332,6 @@ li.more:hover .drop-more {
 	}
 
 	.category-bg {
-		max-width: 90%;
 		max-height: 50%;
 		top: 270px;
 	}
@@ -1294,50 +1370,5 @@ li.more:hover .drop-more {
 
 	.social-about {
 		flex-direction: column;
-	}
-
-	/* category page */
-	#category-banner h1 {
-		font-size: 2rem;
-	}
-
-	.category-simbol {
-		display: none;
-	}
-
-	#category-recipes .recipe-card {
-		max-width: 100%;
-	}
-
-	/* recipe page */
-	.recipe-photo {
-		height: 70%;
-	}
-
-	#recipe-image .info {
-		height: 50%;
-		flex-direction: column;
-		justify-content: flex-start;
-		padding-top: 35px;
-	}
-
-	#recipe-container {
-		flex-direction: column;
-		flex-wrap: wrap;
-	}
-
-	#recipe-container #recipe,
-	#recipe-container #others-recipes {
-		max-width: 100%;
-	}
-
-	/* comments */
-	#comment-form {
-		padding: 0;
-	}
-
-	#comment-form input[type='text'] {
-		height: 40px;
-		margin-top: 1rem;
 	}
 }
