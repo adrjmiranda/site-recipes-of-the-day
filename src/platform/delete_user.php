@@ -1,5 +1,6 @@
 <?php
 
+require_once __DIR__ . '/../utils/globals.php';
 require_once __DIR__ . '/../connection/conn.php';
 require_once __DIR__ . '/../dao/UserDAO.php';
 require_once __DIR__ . '/../dao/AdminDAO.php';

@@ -78,6 +78,7 @@ if (!empty($_POST)) {
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=7">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="<?= $BASE_URL ?>/../platform/assets/profile_image_default.svg" type="image/x-icon">
   <title>Recipes Of The Day</title>
   <link rel="stylesheet" href="<?= $BASE_URL ?>/../platform/css/styles.css">
   <!-- google fonts -->

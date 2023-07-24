@@ -109,25 +109,21 @@ class CommentDAO implements CommentDAOInterface
 
   public function findByRecipeId($recipe_id)
   {
-    $comments = [];
+    $comment = null;
 
-    $stmt = $this->conn->prepare('SELECT * FROM comments WHERE recipe_id = :recipe_id');
+    $stmt = $this->conn->prepare('SELECT * FROM comments WHERE recipe_id = :recipe_id LIMIT 1');
 
     $stmt->bindParam(':recipe_id', $recipe_id);
 
     $stmt->execute();
 
     if ($stmt->rowCount() > 0) {
-      $data = $stmt->fetchAll();
+      $data = $stmt->fetch();
 
-      foreach ($data as $comment) {
-        $comment = $this->buildComment($comment);
-
-        array_push($comments, $comment);
-      }
+      $comment = $this->buildComment($data);
     }
 
-    return $comments;
+    return $comment;
   }
 
   public function update(Comment $comment)

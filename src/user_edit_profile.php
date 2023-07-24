@@ -91,11 +91,7 @@ if (!empty($_POST)) {
 
             $imageName = $newUserData->generateImageName();
 
-            $path = 'images/users/' . $newUserData->getId();
-
-            if (!file_exists($path)) {
-              mkdir($path);
-            }
+            $path = 'images/users/';
 
             if (imagejpeg($imageFile, $path . '/' . $imageName, 100)) {
               if ($newUserData->getProfileImage() != '') {
@@ -116,6 +112,8 @@ if (!empty($_POST)) {
         // update user
         if ($userDAO->update($newUserData)) {
           Error::setError('ERR_UPDATING_USER', false);
+
+          header('location: user_profile.php');
         } else {
           Error::setError('ERR_UPDATING_USER', true);
         }
@@ -139,7 +137,7 @@ require_once __DIR__ . '/templates/navbar.php';
       <?php endif; ?>
     </div>
     <div class="profile-image"
-      style="background-image: url('<?= $user->getProfileImage() == '' ? $BASE_URL . 'images/users/default_user.png' : $BASE_URL . 'images/users/' . $user->getId() . '/' . $user->getProfileImage() ?>');">
+      style="background-image: url('<?= $user->getProfileImage() == '' ? $BASE_URL . 'images/users/default_user.png' : $BASE_URL . 'images/users/' . $user->getProfileImage() ?>');">
     </div>
     <div class="input-field">
       <p>New profile image:</p>

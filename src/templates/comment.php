@@ -4,7 +4,7 @@ $user = $userDAO->findById($comment->getUserId());
 <div class="comment">
   <div class="user-profile">
     <div class="profile-image"
-      style="background-image: url('<?= $user->getProfileImage() == '' ? $BASE_URL . 'images/users/default_user.png' : $BASE_URL . 'images/users/' . $user->getId() . '/' . $user->getProfileImage() ?>');">
+      style="background-image: url('<?= $user->getProfileImage() == '' ? $BASE_URL . 'images/users/default_user.png' : $BASE_URL . 'images/users/' . $user->getProfileImage() ?>');">
     </div>
     <div class="profile-name">
       <h5>

@@ -3,12 +3,12 @@
 namespace dao;
 
 require_once __DIR__ . '/../models/User.php';
-require_once __DIR__ . '/../utils/Error.php';
+require_once __DIR__ . '/CommentDAO.php';
 
 use models\UserDAOInterface;
 use models\User;
+use dao\CommentDAO;
 use PDO;
-use utils\Error;
 
 class UserDAO implements UserDAOInterface
 {
@@ -178,6 +178,14 @@ class UserDAO implements UserDAOInterface
 
   public function delete($id)
   {
+    $commnetDAO = new CommentDAO($this->conn);
+
+    $comment = $commnetDAO->findByUserId($id);
+
+    if($comment) {
+      $commnetDAO->delete($comment->getId());
+    }
+
     $stmt = $this->conn->prepare('DELETE FROM users WHERE id = :id');
 
     $stmt->bindParam(':id', $id);

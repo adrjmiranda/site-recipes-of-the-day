@@ -3,7 +3,9 @@
 namespace dao;
 
 require_once __DIR__ . '/../models/Recipe.php';
+require_once __DIR__ . '/CommentDAO.php';
 
+use dao\CommentDAO;
 use models\Recipe;
 use models\RecipeDAOInterface;
 use PDO;
@@ -253,6 +255,13 @@ class RecipeDAO implements RecipeDAOInterface
 
   public function delete($id)
   {
+    $commentDAO = new CommentDAO($this->conn);
+    $comment = $commentDAO->findByRecipeId($id);
+
+    if ($comment) {
+      $commentDAO->delete($comment->getId());
+    }
+
     $stmt = $this->conn->prepare('DELETE FROM recipes WHERE id = :id');
 
     $stmt->bindParam(':id', $id);
