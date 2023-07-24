@@ -76,16 +76,16 @@ $users = $userDAO->findAll();
           <a href="logout.php" class="btn"><i class="bi bi-box-arrow-right"></i></a>
         </div>
       </nav>
-      <div id="recipes-list">
+      <div id="users-list">
         <h2>Recipes Added:</h2>
-        <div id="recipes">
-          <table id="recipes-table" class="display compact" style="width:100%">
+        <div id="users">
+          <table id="users-table" class="display compact" style="width:100%">
             <thead>
               <tr>
                 <th class="hide">Id</th>
-                <th>E-mail</th>
-                <th>Name</th>
-                <th>Actions</th>
+                <th class="users-email">E-mail</th>
+                <th class="users-name">Name</th>
+                <th class="users-actions">Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -96,9 +96,9 @@ $users = $userDAO->findAll();
               <?php else: ?>
                 <tr>
                   <td class="hide">-</td>
-                  <td>-</td>
-                  <td>-</td>
-                  <td class="td-actions">
+                  <td class="users-email">-</td>
+                  <td class="users-name">-</td>
+                  <td class="td-actions users-actions">
                     <a class="delete-user"><i class="bi bi-trash"></i></a>
                   </td>
                 </tr>
@@ -113,7 +113,7 @@ $users = $userDAO->findAll();
   <!-- init -->
   <script>
     $(document).ready(function () {
-      $('#recipes-table').DataTable({
+      $('#users-table').DataTable({
         "order": [0, "DESC"]
       });
     });
