@@ -156,15 +156,14 @@ class RecipeDAO implements RecipeDAOInterface
   {
     $recipes = [];
 
-
     if ($limit) {
-      $stmt = $this->conn->prepare('SELECT * FROM recipes WHERE title = :title LIMIT :limit');
+      $stmt = $this->conn->prepare('SELECT * FROM recipes WHERE title LIKE :title LIMIT :limit');
       $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
     } else {
-      $stmt = $this->conn->prepare('SELECT * FROM recipes WHERE title = :title');
+      $stmt = $this->conn->prepare('SELECT * FROM recipes WHERE title LIKE :title');
     }
 
-    $stmt->bindParam(':title', $title);
+    $stmt->bindValue(':title', '%' . $title . '%');
 
     $stmt->execute();
 

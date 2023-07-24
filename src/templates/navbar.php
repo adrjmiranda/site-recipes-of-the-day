@@ -62,7 +62,7 @@ $categories = $categoryDAO->findAll();
             </ul>
           </div>
           <div id="search">
-            <form action="">
+            <form action="search.php" method="post">
               <input type="search" name="search" id="search" placeholder="search recipe">
               <button type="submit"><i class="bi bi-search"></i></button>
             </form>
